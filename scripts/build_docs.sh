@@ -11,4 +11,4 @@ sphinx-apidoc -f -o source ../src/$DIST_NAME
 make html
 
 open _build/html/source/$DIST_NAME.html
-open https://${DIST_NAME}-nuuuwan.readthedocs.io/en/latest/?
+open https://${DIST_NAME}-nuuuwan.readthedocs.io/en/latest/source/${DIST_NAME}.html
