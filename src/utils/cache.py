@@ -78,7 +78,7 @@ class _Cache:
     def __set(self, key, data):
         self.__acquire_lock(key)
         with open(self.__get_cache_file_name(key), 'w') as fout:
-            fout.write(json.dumps(data, ensure_ascii=False))
+            fout.write(json.dumps(data, ensure_ascii=True))
             fout.close()
         self.__store[key] = data
         self.__release_lock(key)

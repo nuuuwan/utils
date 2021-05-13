@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 VERSION = 1
-SUB_VERSION = 2
+SUB_VERSION = 3
 
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,

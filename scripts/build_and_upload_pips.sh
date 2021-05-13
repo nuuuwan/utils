@@ -6,6 +6,8 @@ REPOSITORY_DOMAIN=test.pypi
 # REPOSITORY_DOMAIN=pypi
 
 # Build
+rm -rf dist
+rm -rf build
 python3 -m build
 
 # Upload
