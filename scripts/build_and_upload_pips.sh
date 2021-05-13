@@ -2,8 +2,10 @@ DIST_NAME=utils
 REPOSITORY=testpypi
 REPOSITORY_DOMAIN=test.pypi
 
+# REPOSITORY=pypi
+# REPOSITORY_DOMAIN=pypi
+
 # Build
-scripts/clean.sh
 python3 -m build
 
 # Upload

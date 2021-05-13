@@ -5,7 +5,6 @@ import ssl
 import requests
 
 from utils import tsv
-from utils.cache import cache
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0)' \
     + 'Gecko/20100101 Firefox/65.0'
@@ -15,7 +14,6 @@ ENCODING = 'utf-8'
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-@cache('utils.www.v20210510.1')
 def _read_helper(url):
     try:
         logging.info('utils.www.read: %s', url)

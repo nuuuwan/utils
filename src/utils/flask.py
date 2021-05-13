@@ -1,5 +1,6 @@
 """Flask (https://en.wikipedia.org/wiki/Flask_(web_framework)) utils."""
 
+import logging
 from utils import www
 
 
@@ -33,14 +34,16 @@ class FlaskClient:
 
         Assumes URL building convention:
             http://<host>:<port>/<server_name>_server/<cmd>/<params>
+            or
+            http://<host>:<port>/<cmd>/<params>
 
         Returns:
             URLs
         """
-        return 'http://%s:%d/%s_server/%s/%s' % (
+        return 'http://%s:%d%s/%s/%s' % (
             self.host,
             self.port,
-            self.server_name,
+            ('/%s_server' % self.server_name) if self.server_name else '',
             cmd,
             '/'.join(param_list),
         )
@@ -62,4 +65,6 @@ class FlaskClient:
             >>> client.run('get_entity', 'LK-11')
 
         """
-        return www.read_json(self.get_url(cmd, param_list))
+        url = self.get_url(cmd, param_list)
+        logging.info('utils.flask.FlaskClient.run: %s', url)
+        return www.read_json(url)
