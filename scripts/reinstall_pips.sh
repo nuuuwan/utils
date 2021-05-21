@@ -1,3 +1,6 @@
 DIST_NAME=utils
-pip uninstall -y https://test.pypi.org/simple/ $DIST_NAME-nuuuwan
-pip install -i https://test.pypi.org/simple/ $DIST_NAME-nuuuwan
+
+# REPOSITORY_DOMAIN=test.pypi
+REPOSITORY_DOMAIN=pypi
+
+pip install -i https://${REPOSITORY_DOMAIN}.org/simple/ --upgrade --force-reinstall $DIST_NAME-nuuuwan

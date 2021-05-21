@@ -32,3 +32,16 @@ class TestGeo(unittest.TestCase):
                 expected_latlng,
                 geo.parse_latlng(latlng_str),
             )
+
+    def test_get_area(self):
+        """Test."""
+        latlng_list_list = [
+            [
+                [79.88103657474609, 6.773556777772627],
+                [79.84936944177436, 6.938697429248654],
+                [80.1895235454997, 6.976344734804433],
+                [80.18457380299158, 6.815202975465847],
+                [79.88103657474609, 6.773556777772627],
+            ]
+        ]
+        self.assertEqual(geo.get_area(latlng_list_list), 652.4958132934988)

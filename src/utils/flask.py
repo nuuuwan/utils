@@ -66,5 +66,5 @@ class FlaskClient:
 
         """
         url = self.get_url(cmd, param_list)
-        logging.info('utils.flask.FlaskClient.run: %s', url)
+        logging.debug('utils.flask.FlaskClient.run: %s', url)
         return www.read_json(url)

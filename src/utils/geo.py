@@ -1,5 +1,6 @@
 """Geo-Spatial Utils."""
 from math import sin, cos, sqrt, atan2, pi
+from area import area
 
 EARTH_RADIUS = 6373.0
 QUANTUMS = 1_000_000
@@ -99,3 +100,15 @@ def get_distance(latlng1, latlng2):
     a_var = (sin(dlat / 2)) ** 2 + cos(lat1) * cos(lat2) * (sin(dlng / 2)) ** 2
     c_var = 2 * atan2(sqrt(a_var), sqrt(1 - a_var))
     return EARTH_RADIUS * c_var
+
+
+def get_area(lnglat_list_list):
+    """Find the area of a lnglat list list."""
+    def get_area_for_lnglat_list(lnglat_list):
+        obj = {
+            'type': 'Polygon',
+            'coordinates': [lnglat_list],
+        }
+        return area(obj) / 1000_000
+
+    return sum(list(map(get_area_for_lnglat_list, lnglat_list_list)))
