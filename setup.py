@@ -8,8 +8,7 @@ with open("README.md", "r") as fh:
 
 MAJOR, MINOR, PATCH = 0, 1, 0
 PRE_RELEASE_LABEL = '%d' % (time.time())
-# version = '%d.%d.%drc%s' % (MAJOR, MINOR, PATCH, PRE_RELEASE_LABEL)
-version = '%d.%d.%d' % (MAJOR, MINOR, PATCH)
+version = '%d.%d.%drc%s' % (MAJOR, MINOR, PATCH, PRE_RELEASE_LABEL)
 
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
