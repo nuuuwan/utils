@@ -30,5 +30,4 @@ def log_metrics():
         'cpu_percent': psutil.cpu_percent(),
         'vm_percent': psutil.virtual_memory().percent,
     }
-    logging.info(json.dumps(log))
     return log
