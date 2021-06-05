@@ -1,17 +1,18 @@
 """Setup."""
+import time
 import setuptools
 
 DIST_NAME = 'utils'
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-VERSION = 0
-SUB_VERSION = 2
-SUB_SUB_VERSION = 2
+MAJOR, MINOR, PATCH = 0, 0, 0
+PRE_RELEASE_LABEL = '%d' % (time.time())
+version = '%d.%d.%d-%s' % (MAJOR, MINOR, PATCH, MINOR)
 
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
-    version="%d.%d.%d" % (VERSION, SUB_VERSION, SUB_SUB_VERSION),
+    version=version,
     author="Nuwan I. Senaratna",
     author_email="nuuuwan@gmail.com",
     description="Simple extensions to the core python libraries.",
