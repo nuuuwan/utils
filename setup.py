@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 VERSION = 0
 SUB_VERSION = 2
-SUB_SUB_VERSION = 1
+SUB_SUB_VERSION = 2
 
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
