@@ -6,9 +6,9 @@ DIST_NAME = 'utils'
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-MAJOR, MINOR, PATCH = 0, 0, 0
+MAJOR, MINOR, PATCH = 0, 1, 0
 PRE_RELEASE_LABEL = '%d' % (time.time())
-version = '%d.%d.%d-pre-%s' % (MAJOR, MINOR, PATCH, PRE_RELEASE_LABEL)
+version = '%d.%d.%drc%s' % (MAJOR, MINOR, PATCH, PRE_RELEASE_LABEL)
 
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
