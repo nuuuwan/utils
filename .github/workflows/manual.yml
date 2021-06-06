@@ -1,0 +1,20 @@
+name: Print Version
+
+on:
+  workflow_dispatch:
+
+jobs:
+ 
+  print-versiont:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "Checkout python"
+    - uses: actions/checkout@v2
+    
+    - name: "Print Version"
+      if: $(python ./setup.py --version) == "hell"
+      run: echo "HELL"
+     
+    - name: "Print Not Hell"
+      run: echo "NOT HELL"
