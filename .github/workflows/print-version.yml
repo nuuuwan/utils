@@ -1,0 +1,20 @@
+name: Print Version
+
+on:
+  workflow_dispatch:
+
+jobs:
+ 
+  print-versiont:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: "Get version"
+      id: get_version
+      run: VERSION=$(python ./setup.py --version) && echo "::set-output name=VERSION::$VERSION" && echo "VERSION = $VERSION"
+     
+    - name: "Print Not Hell"
+      if: contains(steps.get_version.outputs.VERSION, 'rc')
+      run: echo "PRE-VERSION!"
