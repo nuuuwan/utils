@@ -13,5 +13,11 @@ jobs:
       - name: "Checkout source code"
         uses: "actions/checkout@v1"
 
+      - name: "Print pre-version"
+        if: ${{ contains($(python ./setup.py --version), 'rc') }}
+        run: echo 'PRE VERSION'
+
       - name: "Print version"
-        run: echo "$(python ./setup.py --version)"
+        if: ${{ !contains($(python ./setup.py --version), 'rc') }}
+        run: echo 'MAIN VERSION'
+
