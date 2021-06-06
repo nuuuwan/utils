@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: "Checkout python"
     - uses: actions/checkout@v2
     
     - name: "Print Version"
