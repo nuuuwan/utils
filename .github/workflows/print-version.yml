@@ -1,0 +1,17 @@
+name: Print Version
+
+on:
+  workflow_dispatch:
+
+jobs:
+  print-version:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: "Checkout source code"
+        uses: "actions/checkout@v1"
+
+      - name: "Print version"
+        run: echo "$(python ./setup.py --version)"
