@@ -59,6 +59,5 @@ jobs:
       if: contains(steps.get_version.outputs.VERSION, 'rc') == false
       uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:
-        repository_url: https://pypi.org/legacy/
         user: ${{ secrets.PYPI_USERNAME }}
         password: ${{ secrets.PYPI_PASSWORD }}
