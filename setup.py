@@ -9,8 +9,8 @@ with open("README.md", "r") as fh:
 IS_PRE_RELEASE = True
 MAJOR, MINOR, PATCH = 1, 0, 0
 if IS_PRE_RELEASE:
-    PRE_RELEASE_LABEL = '%d' % (time.time())
-    version = '%d.%d.%drc%s' % (MAJOR, MINOR, PATCH, PRE_RELEASE_LABEL)
+    ts = time.strftime('%Y%m%d_%H%M%S', time.localtime())
+    version = '%d.%d.%d.%s' % (MAJOR, MINOR, PATCH, ts)
 else:
     version = '%d.%d.%d' % (MAJOR, MINOR, PATCH)
 
