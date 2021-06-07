@@ -39,9 +39,9 @@ def run(cmd):
 
         >>> from utils import sysx
         >>> print(sysx.run('echo "hello"'))
-        hello
+        ['hello']
 
     """
     process = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
     (output, _) = process.communicate()
-    return output.decode()
+    return output.decode().split('\n')[:-1]
