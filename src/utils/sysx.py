@@ -1,9 +1,8 @@
 """System utils."""
-import json
 import os
 import time
 
-import logging
+import subprocess
 import psutil
 
 
@@ -31,3 +30,19 @@ def log_metrics():
         'vm_percent': psutil.virtual_memory().percent,
     }
     return log
+
+
+def run(cmd):
+    """Run commands.
+
+    .. code-block:: python
+
+        >>> from utils import sysx
+        >>> print(sysx.run('ls'))
+        {"ut": 1620724794.43984, "pid": 15129,
+            "cpu_percent": 16.3, "vm_percent": 65.7}
+
+    """
+    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+    (output, _) = process.communicate()
+    return output.decode()

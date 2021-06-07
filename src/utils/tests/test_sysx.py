@@ -9,3 +9,9 @@ class TestSys(unittest.TestCase):
     def test_log_metric(self):
         """Test."""
         sysx.log_metrics()
+
+
+    def test_run(self):
+        """Test."""
+        output = sysx.run('echo "hello"')
+        self.assertEqual(output, 'hello\n')
