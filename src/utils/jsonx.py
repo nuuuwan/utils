@@ -39,5 +39,5 @@ def write(file_name, data):
 
     """
     with open(file_name, 'w') as fout:
-        fout.write(json.dumps(data))
+        fout.write(json.dumps(data, indent=2))
         fout.close()
