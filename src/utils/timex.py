@@ -10,10 +10,10 @@ def get_unixtime():
     return (int)(time.time())
 
 
-def parse_time(time_str, format=DEFAULT_TIME_FORMAT):
+def parse_time(time_str, time_format=DEFAULT_TIME_FORMAT):
     """Parse time string, and return unixtime."""
     return (int)(time.mktime(
-        datetime.datetime.strptime(time_str, format).timetuple(),
+        datetime.datetime.strptime(time_str, time_format).timetuple(),
     ))
 
 

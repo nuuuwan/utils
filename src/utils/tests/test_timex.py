@@ -19,7 +19,7 @@ class TestTime(unittest.TestCase):
 
     def test_parse_time(self):
         """Test."""
-        for [time_str, format, expected_unixtime] in [
+        for [time_str, time_format, expected_unixtime] in [
             ['2021-01-01', '%Y-%m-%d', 1_609_439_400],
             ['2021-01-01 12:34:56', '%Y-%m-%d %H:%M:%S', 1_609_484_696],
             ['April 1, 2020', '%B %d, %Y', 1_585_679_400],
@@ -29,8 +29,8 @@ class TestTime(unittest.TestCase):
             if expected_unixtime:
                 self.assertEqual(
                     expected_unixtime,
-                    timex.parse_time(time_str, format),
+                    timex.parse_time(time_str, time_format),
                 )
             else:
                 with self.assertRaises(ValueError):
-                    timex.parse_time(time_str, format)
+                    timex.parse_time(time_str, time_format)
