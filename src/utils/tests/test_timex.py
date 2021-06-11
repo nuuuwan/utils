@@ -27,7 +27,6 @@ class TestTime(unittest.TestCase):
             ['2021-01-01 12:34:56', '%Y-%m-%d %H:%M:%S', 1_609_484_696],
             ['April 1, 2020', '%B %d, %Y', 1_585_679_400],
             ['February 29, 2021', '%B %d, %Y', None],
-            ['12:34:56', '%H:%M:%S', -2_208_962_676],
         ]:
             if expected_unixtime:
                 self.assertEqual(

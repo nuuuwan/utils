@@ -17,7 +17,7 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
-## 1.0.1
+## 1.0.1 (DO NOT USE - WILL BREAK utils.cache)
 
 * Added get_unixtime and parse_time to *timex*.
 * Fixed big in timeout logic in *cache*
