@@ -3,6 +3,7 @@ import hashlib
 import json
 import os
 import threading
+import time
 from functools import wraps
 
 CACHE_DIR = '/tmp/cache'
@@ -17,6 +18,7 @@ class _Cache:
 
     Args:
         cache_name(str): Name to identify cache.
+        timeout (int): timeout in seconds
 
     Note:
         Used by decorator *cache* (See below).
@@ -33,9 +35,10 @@ class _Cache:
     __lock_map = {}
     __cache_name = 'new_cache'
 
-    def __init__(self, cache_name):
+    def __init__(self, cache_name, timeout):
         """Implement class constructor."""
         self.__cache_name = cache_name
+        self.__timeout = timeout
         os.system('mkdir -p %s' % self.__get_dir())
 
     def __get_dir(self):
@@ -72,15 +75,19 @@ class _Cache:
 
         if data_json == '':
             return None
-        content = json.loads(data_json)
-        return content
+        packet = json.loads(data_json)
+        return packet
 
     def __set(self, key, data):
         self.__acquire_lock(key)
+        packet = {
+            'data': data,
+            'set_time': time.time(),  # TODO: Change this later to use timex
+        }
         with open(self.__get_cache_file_name(key), 'w') as fout:
-            fout.write(json.dumps(data, ensure_ascii=True))
+            fout.write(json.dumps(packet, ensure_ascii=True))
             fout.close()
-        self.__store[key] = data
+        self.__store[key] = packet
         self.__release_lock(key)
 
     def get(self, key_or_list, fallback):
@@ -100,15 +107,22 @@ class _Cache:
         else:
             key = key_or_list
 
-        if key in self.__store:
-            data = self.__store[key]
-            return data
+        packet = None
 
-        if self.__get_file_exists(key):
-            data = self.__get_from_file(key)
-            if data is not None:
-                self.__store[key] = data
-                return data
+        if key in self.__store:
+            packet = self.__store[key]
+
+        if not packet:
+            if self.__get_file_exists(key):
+                packet = self.__get_from_file(key)
+                if packet is not None:
+                    self.__store[key] = packet
+
+        if packet:
+            if 'set_time' in packet:
+                min_set_time = time.time() - self.__timeout
+                if packet['set_time'] > min_set_time:
+                    return packet['data']
 
         data = fallback()
         if data is not None:
@@ -133,17 +147,18 @@ class _Cache:
         self.__release_lock(key)
 
 
-def cache(cache_name):
+def cache(cache_name, timeout):
     """Wrap class Cache as decorator.
 
     Args:
         cache_name (str): cache name
+        timeout (int): timeout in seconds
 
     .. code-block:: python
 
         from utils.cache import cache
 
-        @cache('test')
+        @cache('test', 86400)
         def long_operation():
             import time
             time.sleep(100)
@@ -168,7 +183,7 @@ def cache(cache_name):
             def fallback():
                 return func(*args, **kwargs)
 
-            return _Cache(cache_name).get(cache_key, fallback)
+            return _Cache(cache_name, timeout).get(cache_key, fallback)
 
         return cache_inner_inner
     return cache_inner
