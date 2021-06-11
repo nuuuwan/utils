@@ -1,5 +1,20 @@
 """Time utils."""
 import time
+import datetime
+
+DEFAULT_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
+
+
+def get_unixtime():
+    """Get current unixtime."""
+    return (int)(time.time())
+
+
+def parse_time(time_str, format=DEFAULT_TIME_FORMAT):
+    """Parse time string, and return unixtime."""
+    return (int)(time.mktime(
+        datetime.datetime.strptime(time_str, format).timetuple(),
+    ))
 
 
 class StopWatch:

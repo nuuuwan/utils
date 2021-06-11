@@ -14,3 +14,10 @@ less stable):
 ```
 pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 ```
+
+# Release History
+
+## 1.0.1
+
+* Added get_unixtime and parse_time to *timex*.
+* Fixed big in timeout logic in *cache*
