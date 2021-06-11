@@ -21,7 +21,7 @@ class TestCache(unittest.TestCase):
         func_not_cached(x)
         t_not_cached = sw.stop()
 
-        @cache('test', 86400)
+        @cache('test')
         def func_cached(x):
             return func_not_cached(x)
 

@@ -7,6 +7,7 @@ import time
 from functools import wraps
 
 CACHE_DIR = '/tmp/cache'
+CACHE_DEFAULT_TIMEOUT = 60
 
 
 class _Cache:
@@ -35,7 +36,7 @@ class _Cache:
     __lock_map = {}
     __cache_name = 'new_cache'
 
-    def __init__(self, cache_name, timeout):
+    def __init__(self, cache_name, timeout=CACHE_DEFAULT_TIMEOUT):
         """Implement class constructor."""
         self.__cache_name = cache_name
         self.__timeout = timeout
@@ -147,7 +148,7 @@ class _Cache:
         self.__release_lock(key)
 
 
-def cache(cache_name, timeout):
+def cache(cache_name, timeout=CACHE_DEFAULT_TIMEOUT):
     """Wrap class Cache as decorator.
 
     Args:

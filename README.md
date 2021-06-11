@@ -21,3 +21,7 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 * Added get_unixtime and parse_time to *timex*.
 * Fixed big in timeout logic in *cache*
+
+## 1.0.2
+
+* Fixed breaking bug in *cache* timeout logic.
