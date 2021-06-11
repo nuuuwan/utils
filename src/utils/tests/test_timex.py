@@ -1,7 +1,9 @@
 """Test."""
 import unittest
+import time
 from utils import timex
 
+TIMEZONE_OFFSET_LK = 19800
 
 class TestTime(unittest.TestCase):
     """Test."""
@@ -19,6 +21,7 @@ class TestTime(unittest.TestCase):
 
     def test_parse_time(self):
         """Test."""
+        timezone_offset = (TIMEZONE_OFFSET_LK + time.timezone)
         for [time_str, time_format, expected_unixtime] in [
             ['2021-01-01', '%Y-%m-%d', 1_609_439_400],
             ['2021-01-01 12:34:56', '%Y-%m-%d %H:%M:%S', 1_609_484_696],
@@ -28,7 +31,7 @@ class TestTime(unittest.TestCase):
         ]:
             if expected_unixtime:
                 self.assertEqual(
-                    expected_unixtime,
+                    expected_unixtime + timezone_offset,
                     timex.parse_time(time_str, time_format),
                 )
             else:
