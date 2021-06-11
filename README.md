@@ -2,13 +2,13 @@
 
 Implements simple extensions to the core python libraries.
 
-To install:
+To install a stable version:
 
 ```
 pip install utils-nuuuwan
 ```
 
-To install development version (which might have more features, but also be
+To install a pre-release (which might have more features, but also be
 less stable):
 
 ```
@@ -17,11 +17,16 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
-## 1.0.1 (DO NOT USE - WILL BREAK utils.cache)
+## 1.0.3
 
-* Added get_unixtime and parse_time to *timex*.
-* Fixed big in timeout logic in *cache*
+Coming soon!
 
 ## 1.0.2
 
 * Fixed breaking bug in *cache* timeout logic.
+
+
+## 1.0.1 (DO NOT USE - WILL BREAK utils.cache)
+
+* Added get_unixtime and parse_time to *timex*.
+* Fixed big in timeout logic in *cache*
