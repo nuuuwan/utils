@@ -16,13 +16,13 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 def _read_helper(url):
     try:
-        logging.info('utils.www.read: %s', url)
+        logging.info('utils.www._read_helper: %s', url)
         resp = requests.get(url, headers={'user-agent': USER_AGENT})
 
         if resp.status_code != 200:
             return None
 
-        return resp.content.decode(ENCODING)
+        return resp.content
 
     except requests.exceptions.ConnectionError:
         return None
@@ -38,7 +38,10 @@ def read(url):
         Contents at URL
 
     """
-    return _read_helper(url)
+    content = _read_helper(url)
+    if not content:
+        return None
+    return content.decode(ENCODING)
 
 
 def read_json(url):
@@ -68,3 +71,7 @@ def read_tsv(url):
     """
     csv_lines = read(url).split('\n')
     return tsv._read_helper(csv_lines)
+
+
+def download_binary(url, file_name):
+    pass

@@ -19,7 +19,8 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 ## 1.0.3 (PRE-RELEASE ONLY)
 
-* Add hashx
+* Added hashx with md5 hashing
+* Added filex with read and write
 * Add www.download_binary
 
 Coming soon!
