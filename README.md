@@ -19,18 +19,21 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 ## 1.0.3 (PRE-RELEASE ONLY)
 
-* Added hashx with md5 hashing
-* Added filex with read and write
-* Add www.download_binary
+* Added New Module *hashx* with md5 hashing
+* Added New Module *filex* with read and write
+* Added download_binary in Module *www*
 
 Coming soon!
 
 ## 1.0.2
 
-* Fixed breaking bug in *cache* timeout logic.
-
+* Fixed breaking bug in Module *cache* timeout logic.
 
 ## 1.0.1 (DO NOT USE - WILL BREAK utils.cache)
 
-* Added get_unixtime and parse_time to *timex*.
-* Fixed big in timeout logic in *cache*
+* Added get_unixtime and parse_time to Module *timex*.
+* Fixed big in timeout logic in Module *cache*
+
+## 1.0.0
+
+- Initial Release. See source for details
