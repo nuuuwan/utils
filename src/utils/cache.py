@@ -6,6 +6,8 @@ import threading
 import time
 from functools import wraps
 
+from utils import filex
+
 CACHE_DIR = '/tmp/cache'
 CACHE_DEFAULT_TIMEOUT = 60
 
@@ -70,9 +72,7 @@ class _Cache:
         return os.path.exists(self.__get_cache_file_name(key))
 
     def __get_from_file(self, key):
-        with open(self.__get_cache_file_name(key)) as fin:
-            data_json = fin.read()
-            fin.close()
+        data_json = filex.read(self.__get_cache_file_name(key))
 
         if data_json == '':
             return None
@@ -85,9 +85,10 @@ class _Cache:
             'data': data,
             'set_time': time.time(),  # TODO: Change this later to use timex
         }
-        with open(self.__get_cache_file_name(key), 'w') as fout:
-            fout.write(json.dumps(packet, ensure_ascii=True))
-            fout.close()
+        filex.write(
+            self.__get_cache_file_name(key),
+            json.dumps(packet, ensure_ascii=True),
+        )
         self.__store[key] = packet
         self.__release_lock(key)
 

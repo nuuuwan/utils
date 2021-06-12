@@ -13,6 +13,8 @@
 """
 import json
 
+from utils import filex
+
 
 def read(file_name):
     """Read JSON from file.
@@ -24,10 +26,7 @@ def read(file_name):
         Parsed JSON data
 
     """
-    with open(file_name, 'r') as fin:
-        data = json.loads(fin.read())
-        fin.close()
-    return data
+    return json.loads(filex.read(file_name))
 
 
 def write(file_name, data):
@@ -38,6 +37,4 @@ def write(file_name, data):
         data: data as serializable object
 
     """
-    with open(file_name, 'w') as fout:
-        fout.write(json.dumps(data, indent=2))
-        fout.close()
+    filex.write(file_name, json.dumps(data, indent=2))

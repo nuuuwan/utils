@@ -15,6 +15,9 @@ The default tab delimiter can be overridden,
 """
 
 import csv
+
+from utils import filex
+
 DEFAULT_DELIMITER = '\t'
 DIALECT = 'excel'
 NULL_VALUE = ''
@@ -64,9 +67,7 @@ def read(
         TSV file contents as dict list
 
     """
-    with open(file_name, encoding='utf-8') as fin:
-        csv_lines = fin.readlines()
-        fin.close()
+    csv_lines = filex.read(file_name).split('\n')
     return _read_helper(csv_lines, delimiter)
 
 
