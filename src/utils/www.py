@@ -4,7 +4,7 @@ import logging
 import ssl
 import requests
 
-from utils import tsv
+from utils import filex, tsv
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0)' \
     + 'Gecko/20100101 Firefox/65.0'
@@ -74,4 +74,17 @@ def read_tsv(url):
 
 
 def download_binary(url, file_name):
-    pass
+    """Download binary.
+
+    Args:
+        url (str): URL
+        file_name (str): file name for output
+    """
+    content = _read_helper(url)
+    filex.write(file_name, content, 'wb')
+    logging.debug(
+        'Wrote %dB from %s to %s',
+        len(content),
+        url,
+        file_name,
+    )

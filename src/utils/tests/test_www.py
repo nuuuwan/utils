@@ -17,6 +17,8 @@ TEST_TSV_URL = os.path.join(
 
 TEST_INVALID_URL = 'http://www.29df.c'
 
+TEST_IMAGE_LINK = 'https://www.python.org/static/img/python-logo@2x.png'
+
 
 class testWWW(unittest.TestCase):
     """Test."""
@@ -41,3 +43,11 @@ class testWWW(unittest.TestCase):
         """Test."""
         data = www.read_json(TEST_INVALID_URL)
         self.assertEqual(data, None)
+
+    def test_download_binary(self):
+        """Test."""
+        file_name = '/tmp/utils.test_www.file.png'
+        www.download_binary(
+            TEST_IMAGE_LINK,
+            file_name,
+        )

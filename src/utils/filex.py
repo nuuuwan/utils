@@ -9,8 +9,8 @@ def read(file_name):
         return content
 
 
-def write(file_name, content):
+def write(file_name, content, mode='w'):
     """Write."""
-    with open(file_name, 'w') as fout:
+    with open(file_name, mode) as fout:
         fout.write(content)
         fout.close()
