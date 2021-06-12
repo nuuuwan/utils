@@ -17,7 +17,7 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
-## 1.0.3 (PRE-RELEASE ONLY)
+## 1.0.3
 
 * Added New Module *hashx* with md5 hashing
 * Added New Module *filex* with read and write
