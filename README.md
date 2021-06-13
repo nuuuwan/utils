@@ -17,13 +17,16 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
+## 1.0.4 (PRE-RELEASE)
+
+* #TODO www.exists(url) in Module *www*
+
 ## 1.0.3
 
 * Added New Module *hashx* with md5 hashing
 * Added New Module *filex* with read and write
 * Added download_binary in Module *www*
 
-Coming soon!
 
 ## 1.0.2
 
