@@ -28,7 +28,6 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 * Added New Module *filex* with read and write
 * Added download_binary in Module *www*
 
-Coming soon!
 
 ## 1.0.2
 

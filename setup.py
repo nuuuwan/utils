@@ -7,7 +7,11 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 IS_PRE_RELEASE = True
+<<<<<<< HEAD
 MAJOR, MINOR, PATCH = 1, 0, 3
+=======
+MAJOR, MINOR, PATCH = 1, 0, 4
+>>>>>>> 73c8c7dee29c9f109fadbdd71d2c64e0fb056ee4
 if IS_PRE_RELEASE:
     ts = time.strftime('%Y%m%d_%H%M%S', time.localtime())
     version = '%d.%d.%d.%s' % (MAJOR, MINOR, PATCH, ts)
