@@ -17,6 +17,11 @@ def parse_time(time_str, time_format=DEFAULT_TIME_FORMAT):
     ))
 
 
+def format_time(unixtime, time_format=DEFAULT_TIME_FORMAT):
+    """Format unixtime as time string."""
+    return datetime.datetime.fromtimestamp(unixtime).strftime(time_format)
+
+
 class StopWatch:
     """Implements StopWatch.
 
