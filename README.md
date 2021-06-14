@@ -17,6 +17,11 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
+## 1.0.4 (PRE-RELEASE)
+
+* Added *www.exist*
+* #TODO timex.format_time
+
 ## 1.0.3
 
 * Added New Module *hashx* with md5 hashing

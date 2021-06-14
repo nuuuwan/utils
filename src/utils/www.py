@@ -88,3 +88,12 @@ def download_binary(url, file_name):
         url,
         file_name,
     )
+
+
+def exists(url):
+    """Check if URL exists."""
+    try:
+        response = requests.head(url, timeout=1)
+    except requests.exceptions.ConnectTimeout:
+        return False
+    return response.status_code == requests.codes.ok

@@ -51,3 +51,8 @@ class testWWW(unittest.TestCase):
             TEST_IMAGE_LINK,
             file_name,
         )
+
+    def test_exists(self):
+        """Test."""
+        self.assertTrue(www.exists('https://www.python.org/'))
+        self.assertFalse(www.exists('https://www.python123.org/'))

@@ -10,7 +10,6 @@ class TestSys(unittest.TestCase):
         """Test."""
         sysx.log_metrics()
 
-
     def test_run(self):
         """Test."""
         output = sysx.run('echo "hello"')

@@ -5,6 +5,7 @@ from utils import timex
 
 TIMEZONE_OFFSET_LK = 19800
 
+
 class TestTime(unittest.TestCase):
     """Test."""
 
