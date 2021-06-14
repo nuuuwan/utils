@@ -17,7 +17,7 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
-## 1.0.4 (PRE-RELEASE)
+## 1.0.4
 
 * Added *www.exist*
 * Added *timex.format_time*
