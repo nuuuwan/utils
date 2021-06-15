@@ -26,12 +26,14 @@ class testWWW(unittest.TestCase):
     def test_read(self):
         """Test."""
         data = www.read(TEST_JSON_URL)
-        self.assertTrue('Station' in data)
+        self.assertIn('Station', data)
+        data_selenium = www.read(TEST_JSON_URL, use_selenium=True)
+        self.assertIn(data, data_selenium)
 
     def test_read_json(self):
         """Test."""
         data = www.read_json(TEST_JSON_URL)
-        self.assertTrue('Station' in data[0])
+        self.assertIn('Station', data[0])
 
     def test_read_tsv(self):
         """Test."""

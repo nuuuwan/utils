@@ -2,16 +2,22 @@
 import json
 import logging
 import ssl
-import requests
-import httplib2
+import time
 
-from bs4 import BeautifulSoup, SoupStrainer
+import requests
+
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 
 from utils import filex, tsv
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0)' \
     + 'Gecko/20100101 Firefox/65.0'
 ENCODING = 'utf-8'
+SELENIUM_SCROLL_SCRIPT = "window.scrollTo(0, document.body.scrollHeight);"
+SELENIUM_SCROLL_REPEATS = 3
+SELENIUM_SCROLL_WAIT_TIME = 0.5
 
 # pylint: disable=W0212
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -31,7 +37,23 @@ def _read_helper(url):
         return None
 
 
-def read(url):
+def _read_helper_selenium(url):
+    options = Options()
+    options.headless = True
+
+    browser = webdriver.Firefox(options=options)
+    browser.get(url)
+
+    for _ in range(0, SELENIUM_SCROLL_REPEATS):
+        browser.execute_script(SELENIUM_SCROLL_SCRIPT)
+        time.sleep(SELENIUM_SCROLL_WAIT_TIME)
+
+    content = browser.page_source
+    browser.quit()
+    return content
+
+
+def read(url, use_selenium=False):
     """Read url.
 
     Args:
@@ -41,10 +63,14 @@ def read(url):
         Contents at URL
 
     """
-    content = _read_helper(url)
-    if not content:
-        return None
-    return content.decode(ENCODING)
+    if use_selenium:
+        content = _read_helper_selenium(url)
+    else:
+        content = _read_helper(url)
+        if content:
+            content = content.decode(ENCODING)
+
+    return content
 
 
 def read_json(url):
@@ -108,5 +134,5 @@ def get_all_urls(root_url):
     urls = []
     for a_link in soup.find_all('a', href=True):
         urls.append(a_link['href'])
-    logging.debug('Found %d links on %s' % root_url)
+    logging.debug('Found %d links on %s', len(urls), root_url)
     return urls
