@@ -17,7 +17,7 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
-## 1.0.5 (PRE-RELEASE)
+## 1.0.5
 
 * Added *use_selenium* option to *www.read*
 * Added *www.get_all_urls*
