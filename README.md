@@ -17,6 +17,8 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
+## 1.0.6 (PRE-RELEASE ONLY)
+
 ## 1.0.5
 
 * Added *use_selenium* option to *www.read*
@@ -47,3 +49,7 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 ## 1.0.0
 
 - Initial Release. See source for details
+
+# Wish-List
+
+* Add sort_dict_by_key

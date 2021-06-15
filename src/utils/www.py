@@ -25,7 +25,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 def _read_helper(url):
     try:
-        logging.info('utils.www._read_helper: %s', url)
+        logging.debug('utils.www._read_helper: %s', url)
         resp = requests.get(url, headers={'user-agent': USER_AGENT})
 
         if resp.status_code != 200:

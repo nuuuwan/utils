@@ -6,11 +6,11 @@ DIST_NAME = 'utils'
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-IS_PRE_RELEASE = False
-MAJOR, MINOR, PATCH = 1, 0, 5
+IS_PRE_RELEASE = True
+MAJOR, MINOR, PATCH = 1, 0, 6
 
 if IS_PRE_RELEASE:
-    ts = time.strftime('%Y%m%d%H%M%S', time.localtime())
+    ts = time.strftime('%Y%m%d%_H%M%S', time.localtime())
     version = '%d.%d.%d.%s' % (MAJOR, MINOR, PATCH, ts)
 else:
     version = '%d.%d.%d' % (MAJOR, MINOR, PATCH)
