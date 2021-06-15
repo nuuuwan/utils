@@ -17,9 +17,13 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
+## 1.0.5 (PRE-RELEASE)
+
+* Added *www.get_all_urls*
+
 ## 1.0.4
 
-* Added *www.exist*
+* Added *www.exists*
 * Added *timex.format_time*
 
 ## 1.0.3

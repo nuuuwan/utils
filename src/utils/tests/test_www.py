@@ -56,3 +56,10 @@ class testWWW(unittest.TestCase):
         """Test."""
         self.assertTrue(www.exists('https://www.python.org/'))
         self.assertFalse(www.exists('https://www.python123.org/'))
+
+    def test_get_all_urls(self):
+        """Test."""
+        self.assertGreater(
+            len(www.get_all_urls('https://www.python.org/')),
+            50,
+        )

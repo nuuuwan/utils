@@ -3,6 +3,9 @@ import json
 import logging
 import ssl
 import requests
+import httplib2
+
+from bs4 import BeautifulSoup, SoupStrainer
 
 from utils import filex, tsv
 
@@ -97,3 +100,13 @@ def exists(url):
     except requests.exceptions.ConnectTimeout:
         return False
     return response.status_code == requests.codes.ok
+
+
+def get_all_urls(root_url):
+    """Get all URLs linked to a webpage."""
+    soup = BeautifulSoup(read(root_url), 'html.parser')
+    urls = []
+    for a_link in soup.find_all('a', href=True):
+        urls.append(a_link['href'])
+    logging.debug('Found %d links on %s' % root_url)
+    return urls

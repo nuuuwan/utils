@@ -6,8 +6,8 @@ DIST_NAME = 'utils'
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-IS_PRE_RELEASE = False
-MAJOR, MINOR, PATCH = 1, 0, 4
+IS_PRE_RELEASE = True
+MAJOR, MINOR, PATCH = 1, 0, 5
 
 if IS_PRE_RELEASE:
     ts = time.strftime('%Y%m%d_%H%M%S', time.localtime())

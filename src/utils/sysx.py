@@ -1,5 +1,6 @@
 """System utils."""
 import os
+import sys
 import time
 
 import subprocess
@@ -45,3 +46,17 @@ def run(cmd):
     process = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
     (output, _) = process.communicate()
     return output.decode().split('\n')[:-1]
+
+
+def printx(
+    *objects,
+    sep=' ',
+    end='\n',
+    file=sys.stdout,
+    flush=False,
+    color_code=31,
+):
+    """Wrap standard print command, to add color."""
+    color_cmd = '\033[0;%dm' % (color_code)
+    end_cmd = '\033[0m'
+    print([color_cmd] + objects + [end_cmd], sep, end, file, flush)
