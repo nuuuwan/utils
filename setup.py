@@ -11,11 +11,9 @@ requirements = []
 with open('requirements.txt') as fin:
     for line in fin.readlines():
         requirements.append(line.strip())
-print(requirements)
-
 
 IS_PRE_RELEASE = False
-MAJOR, MINOR, PATCH = 1, 0, 6
+MAJOR, MINOR, PATCH = 1, 0, 7
 
 if IS_PRE_RELEASE:
     ts = time.strftime('%Y%m%d%H%M%S0000', time.localtime())

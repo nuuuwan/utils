@@ -15,14 +15,17 @@ less stable):
 pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 ```
 
-
 # Release History
 
-## 1.0.6
+## 1.0.7
+
+* Fixed bug with selenium import
+
+## 1.0.6 (DO NOT USE - WILL BREAK utils.www)
 
 * Added ds.sort_dict_items_by_key
 
-## 1.0.5
+## 1.0.5 (DO NOT USE - WILL BREAK utils.www)
 
 * Added *use_selenium* option to *www.read*
 * Added *www.get_all_urls*
