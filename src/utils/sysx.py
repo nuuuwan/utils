@@ -48,15 +48,8 @@ def run(cmd):
     return output.decode().split('\n')[:-1]
 
 
-def printx(
-    *objects,
-    sep=' ',
-    end='\n',
-    file=sys.stdout,
-    flush=False,
-    color_code=31,
-):
+def str_color(output_str, color_code=31):
     """Wrap standard print command, to add color."""
     color_cmd = '\033[0;%dm' % (color_code)
     end_cmd = '\033[0m'
-    print([color_cmd] + objects + [end_cmd], sep, end, file, flush)
+    return '%s%s%s' % (color_cmd, str(output_str), end_cmd)

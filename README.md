@@ -20,6 +20,7 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 ## 1.0.5 (PRE-RELEASE)
 
 * Added *www.get_all_urls*
+* Added *sys.str_color*
 
 ## 1.0.4
 
