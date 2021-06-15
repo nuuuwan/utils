@@ -17,7 +17,9 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
-## 1.0.6 (PRE-RELEASE ONLY)
+## 1.0.6
+
+* Added ds.sort_dict_items_by_key
 
 ## 1.0.5
 
@@ -49,7 +51,3 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 ## 1.0.0
 
 - Initial Release. See source for details
-
-# Wish-List
-
-* Add sort_dict_by_key

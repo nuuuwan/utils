@@ -77,3 +77,11 @@ def flatten(list_of_list):
     for lst in list_of_list:
         flattened_list += lst
     return flattened_list
+
+
+def sort_dict_items_by_key(_dict):
+    """Sort dict items by key."""
+    return sorted(
+        _dict.items(),
+        key=lambda item: item[0],
+    )
