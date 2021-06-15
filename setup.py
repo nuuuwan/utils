@@ -3,8 +3,16 @@ import time
 import setuptools
 
 DIST_NAME = 'utils'
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+long_description = ''
+with open('README.md') as fin:
+    long_description = fin.read()
+
+requirements = []
+with open('requirements.txt') as fin:
+    for line in fin.readlines():
+        requirements.append(line.strip())
+print(requirements)
+
 
 IS_PRE_RELEASE = False
 MAJOR, MINOR, PATCH = 1, 0, 6
@@ -36,11 +44,7 @@ setuptools.setup(
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",
 
-    install_requires=[
-        'requests',
-        'psutil',
-        'area',
-    ],
+    install_requires=requirements,
     test_suite='nose.collector',
     tests_require=['nose'],
 )
