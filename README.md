@@ -55,3 +55,9 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 ## 1.0.0
 
 - Initial Release. See source for details
+
+
+## Wishlist
+* Add SECONDS_IN constants to *timex*
+* Added module *twitter*
+* Add parse int

@@ -12,8 +12,8 @@ with open('requirements.txt') as fin:
     for line in fin.readlines():
         requirements.append(line.strip())
 
-IS_PRE_RELEASE = False
-MAJOR, MINOR, PATCH = 1, 0, 7
+IS_PRE_RELEASE = True
+MAJOR, MINOR, PATCH = 1, 0, 8
 
 if IS_PRE_RELEASE:
     ts = time.strftime('%Y%m%d%H%M%S0000', time.localtime())
