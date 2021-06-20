@@ -4,11 +4,15 @@ import setuptools
 
 DIST_NAME = 'utils'
 long_description = ''
-with open('README.md') as fin:
+with open('./README.md') as fin:
     long_description = fin.read()
 
 requirements = []
-with open('requirements.txt') as fin:
+
+import os
+print(os.system('ls -la'))
+
+with open('./requirements.txt') as fin:
     for line in fin.readlines():
         requirements.append(line.strip())
 
