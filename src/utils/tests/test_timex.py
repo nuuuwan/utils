@@ -25,7 +25,7 @@ class TestTime(unittest.TestCase):
     def test_get_timezone(self):
         """Test."""
         timezone = timex.get_timezone()
-        self.assertIn(timezone, ['+0530', '+0000'])
+        self.assertIn(timezone, ['+0530', 'UTC'])
 
     def test_get_unixtime(self):
         """Test."""
