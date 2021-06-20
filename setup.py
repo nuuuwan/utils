@@ -4,17 +4,8 @@ import setuptools
 
 DIST_NAME = 'utils'
 long_description = ''
-with open('./README.md') as fin:
+with open('README.md') as fin:
     long_description = fin.read()
-
-requirements = []
-
-import os
-print(os.system('ls -la'))
-
-with open('./requirements.txt') as fin:
-    for line in fin.readlines():
-        requirements.append(line.strip())
 
 IS_PRE_RELEASE = True
 MAJOR, MINOR, PATCH = 1, 0, 8
@@ -45,8 +36,14 @@ setuptools.setup(
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",
-
-    install_requires=requirements,
+    install_requires=[
+        'area',
+        'bs4',
+        'psutil',
+        'requests',
+        'selenium',
+        'pytz',
+    ],
     test_suite='nose.collector',
     tests_require=['nose'],
 )
