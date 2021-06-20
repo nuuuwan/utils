@@ -3,4 +3,3 @@ bs4
 psutil
 requests
 selenium
-pytz

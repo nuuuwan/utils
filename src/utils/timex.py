@@ -1,10 +1,8 @@
 """Time utils."""
 import time
 import datetime
-from pytz import timezone
 
 DEFAULT_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
-DEFAULT_TZINFO = timezone('Asia/Colombo')
 
 
 def get_unixtime():
@@ -15,22 +13,18 @@ def get_unixtime():
 def parse_time(
     time_str,
     time_format=DEFAULT_TIME_FORMAT,
-    tzinfo=DEFAULT_TZINFO,
 ):
     """Parse time string, and return unixtime."""
     _datetime = datetime.datetime.strptime(time_str, time_format)
-    _datetime = _datetime.replace(tzinfo=tzinfo)
     return (int)(time.mktime(_datetime.timetuple()))
 
 
 def format_time(
     unixtime,
     time_format=DEFAULT_TIME_FORMAT,
-    tzinfo=DEFAULT_TZINFO,
 ):
     """Format unixtime as time string."""
     _datetime = datetime.datetime.fromtimestamp(unixtime)
-    _datetime = _datetime.replace(tzinfo=tzinfo)
     return _datetime.strftime(time_format)
 
 

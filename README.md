@@ -17,6 +17,10 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
+## 1.0.9
+
+* Reverted Timezone Support
+
 ## 1.0.8
 
 * Added timezone support
