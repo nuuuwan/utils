@@ -5,6 +5,11 @@ import datetime
 DEFAULT_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 
+def get_timezone():
+    """Get timezone."""
+    return str(datetime.datetime.now().astimezone().tzinfo)
+
+
 def get_unixtime():
     """Get current unixtime."""
     return (int)(time.time())

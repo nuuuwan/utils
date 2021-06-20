@@ -20,6 +20,7 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 ## 1.0.9
 
 * Reverted Timezone Support
+* Added timex.get_timezone
 
 ## 1.0.8
 

@@ -22,6 +22,11 @@ class TestTime(unittest.TestCase):
         delta_t = stopwatch.stop()
         self.assertTrue(1000 < delta_t < 1100)
 
+    def test_get_timezone(self):
+        """Test."""
+        timezone = timex.get_timezone()
+        self.assertIn(timezone, ['+0530', '+0000'])
+
     def test_get_unixtime(self):
         """Test."""
         unixtime = timex.get_unixtime()
