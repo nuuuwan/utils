@@ -1,10 +1,10 @@
-name: Text, Build and Upload to PyPi
+name: Test
 
 on:
   push
 
 jobs:
-  test-build-and-deploy:
+  test:
     runs-on: ubuntu-latest
 
     strategy:
