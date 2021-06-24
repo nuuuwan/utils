@@ -57,3 +57,9 @@ class TestTime(unittest.TestCase):
                     expected_time_str,
                     timex.format_time(unixtime + timezone_offset, time_format),
                 )
+
+    def test_seconds_in(self):
+        """Test."""
+        self.assertEqual(timex.SECONDS_IN.HOUR, 3600)
+        self.assertEqual(timex.SECONDS_IN.DAY, 86400)
+        self.assertEqual(timex.SECONDS_IN.YEAR, 31557600)

@@ -5,6 +5,18 @@ import datetime
 DEFAULT_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 
+class SECONDS_IN:
+    """Units of time."""
+    MINUTE = 60
+    HOUR = 3600
+    DAY = 86400
+    WEEK = 7 * 86400
+    FORTNIGHT = 14 * 86400
+    MONTH = 365.25 * 4 * 86400 / 12
+    QTR = 365.25 * 86400 / 4
+    YEAR = 365.25 * 86400
+
+
 def get_timezone():
     """Get timezone."""
     return str(datetime.datetime.now().astimezone().tzinfo)
