@@ -26,3 +26,11 @@ def parse_float(float_str, default=None):
         return (float)(float_str)
     except ValueError:
         return default
+
+
+def parse_int(int_str, default=None):
+    """Parse int."""
+    try:
+        return (int)(int_str)
+    except ValueError:
+        return default

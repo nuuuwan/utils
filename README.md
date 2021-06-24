@@ -17,6 +17,10 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
+## 1.0.10
+
+* Add parse int
+
 ## 1.0.9
 
 * Reverted Timezone Support
@@ -69,4 +73,3 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 ## Wishlist
 * Add SECONDS_IN constants to *timex*
 * Added module *twitter*
-* Add parse int
