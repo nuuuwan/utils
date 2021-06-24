@@ -42,7 +42,7 @@ setuptools.setup(
         'psutil',
         'requests',
         'selenium',
-        'pytz',
+        'tweepy',
     ],
     test_suite='nose.collector',
     tests_require=['nose'],

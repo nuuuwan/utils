@@ -21,6 +21,7 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 * Add parse int
 * Add SECONDS_IN constants to *timex*
+* Added module *twitter*
 
 ## 1.0.9
 
@@ -72,4 +73,3 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 
 ## Wishlist
-* Added module *twitter*
