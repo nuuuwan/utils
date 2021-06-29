@@ -6,7 +6,6 @@ import time
 
 from pandas.core.frame import DataFrame
 from shapely.geometry import Point, MultiPolygon
-from geopandas import read_file
 from geopandas.geodataframe import GeoDataFrame
 
 from utils.cache import cache, _json_serialize, _json_deserialize
@@ -21,7 +20,6 @@ TEST_VALUES = [
     Point(1, 2),
     MultiPolygon(),
     GeoDataFrame(),
-    read_file('/Users/nuwan.senaratna/Not.Dropbox/DATA/sl_maps_topojson_province.json'),
 ]
 
 
