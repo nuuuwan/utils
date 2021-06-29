@@ -19,6 +19,8 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 ## 1.0.12 (PRE-RELEASE ONLY)
 
+* Add pandas.DataFrame support to cache
+
 ## 1.0.11
 
 * Added caching to www.read
