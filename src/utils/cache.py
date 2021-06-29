@@ -4,12 +4,33 @@ import json
 import os
 import threading
 import time
+import base64
 from functools import wraps
 
 from utils import filex
 
 CACHE_DIR = '/tmp/cache'
 CACHE_DEFAULT_TIMEOUT = 60
+
+
+def _json_serialize(data):
+    if isinstance(data, bytes):
+        return {
+            'type': 'bytes',
+            'data': base64.b64encode(data).decode('ascii'),
+        }
+    return {
+        'type': None,
+        'data': data,
+    }
+
+
+def _json_deserialize(data):
+    data_type = data['type']
+    data_data = data['data']
+    if data_type == 'bytes':
+        return base64.b64decode(data_data)
+    return data_data
 
 
 class _Cache:
@@ -82,8 +103,8 @@ class _Cache:
     def __set(self, key, data):
         self.__acquire_lock(key)
         packet = {
-            'data': data,
-            'set_time': time.time(),  # TODO: Change this later to use timex
+            'data': _json_serialize(data),
+            'set_time': time.time(),
         }
         filex.write(
             self.__get_cache_file_name(key),
@@ -124,7 +145,7 @@ class _Cache:
             if 'set_time' in packet:
                 min_set_time = time.time() - self.__timeout
                 if packet['set_time'] > min_set_time:
-                    return packet['data']
+                    return _json_deserialize(packet['data'])
 
         data = fallback()
         if data is not None:

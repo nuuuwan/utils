@@ -10,7 +10,8 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
-from utils import filex, tsv
+from utils import filex, tsv, timex
+from utils.cache import cache
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0)' \
     + 'Gecko/20100101 Firefox/65.0'
@@ -23,7 +24,18 @@ SELENIUM_SCROLL_WAIT_TIME = 0.5
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-def _read_helper(url):
+def _read_helper(url, cached=True):
+    if cached:
+        return _read_helper_cached(url)
+    return _read_helper_nocached(url)
+
+
+@cache('utils.www', timex.SECONDS_IN.HOUR)
+def _read_helper_cached(url):
+    return _read_helper_nocached(url)
+
+
+def _read_helper_nocached(url):
     try:
         logging.debug('utils.www._read_helper: %s', url)
         resp = requests.get(url, headers={'user-agent': USER_AGENT})
@@ -53,7 +65,7 @@ def _read_helper_selenium(url):
     return content
 
 
-def read(url, use_selenium=False):
+def read(url, cached=True, use_selenium=False):
     """Read url.
 
     Args:
@@ -66,14 +78,14 @@ def read(url, use_selenium=False):
     if use_selenium:
         content = _read_helper_selenium(url)
     else:
-        content = _read_helper(url)
+        content = _read_helper(url, cached)
         if content:
             content = content.decode(ENCODING)
 
     return content
 
 
-def read_json(url):
+def read_json(url, cached=True):
     """Read JSON content from url.
 
     Args:
@@ -84,12 +96,12 @@ def read_json(url):
 
     """
     try:
-        return json.loads(read(url))
+        return json.loads(read(url, cached))
     except TypeError:
         return None
 
 
-def read_tsv(url):
+def read_tsv(url, cached=True):
     """Read TSV content from url.
 
     Args:
@@ -98,18 +110,18 @@ def read_tsv(url):
     Return:
         TSV parsed data at URL
     """
-    csv_lines = read(url).split('\n')
+    csv_lines = read(url, cached).split('\n')
     return tsv._read_helper(csv_lines)
 
 
-def download_binary(url, file_name):
+def download_binary(url, file_name, cached=True):
     """Download binary.
 
     Args:
         url (str): URL
         file_name (str): file name for output
     """
-    content = _read_helper(url)
+    content = _read_helper(url, cached)
     filex.write(file_name, content, 'wb')
     logging.debug(
         'Wrote %dB from %s to %s',
@@ -128,9 +140,9 @@ def exists(url):
     return response.status_code == requests.codes.ok
 
 
-def get_all_urls(root_url):
+def get_all_urls(root_url, cached=True):
     """Get all URLs linked to a webpage."""
-    soup = BeautifulSoup(read(root_url), 'html.parser')
+    soup = BeautifulSoup(read(root_url, cached), 'html.parser')
     urls = []
     for a_link in soup.find_all('a', href=True):
         urls.append(a_link['href'])
