@@ -17,7 +17,9 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
-## 1.0.11 (PRE-RELEASE ONLY)
+## 1.0.12 (PRE-RELEASE ONLY)
+
+## 1.0.11
 
 * Added caching to www.read
 
