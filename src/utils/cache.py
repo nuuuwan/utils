@@ -10,6 +10,7 @@ from functools import wraps
 
 from geopandas.geodataframe import GeoDataFrame
 from pandas.core.frame import DataFrame
+from pandas import read_pickle
 from shapely.geometry.base import BaseGeometry
 from shapely.geometry import shape, mapping
 
@@ -25,20 +26,25 @@ def _json_serialize(data):
             'type': 'bytes',
             'data': base64.b64encode(data).decode('ascii'),
         }
-    if isinstance(data, GeoDataFrame):
-        return {
-            'type': 'GeoDataFrame',
-            'data': data.to_dict(),
-        }
-    if isinstance(data, DataFrame):
-        return {
-            'type': 'DataFrame',
-            'data': data.to_dict(),
-        }
     if isinstance(data, BaseGeometry):
         return {
             'type': 'BaseGeometry',
             'data': mapping(data),
+        }
+
+    if isinstance(data, GeoDataFrame):
+        tmp_file = filex.get_tmp_file()
+        return {
+            'type': 'GeoDataFrame',
+            'data': data.to_pickle(tmp_file),
+            'pickle_file': tmp_file,
+        }
+    if isinstance(data, DataFrame):
+        tmp_file = filex.get_tmp_file()
+        return {
+            'type': 'DataFrame',
+            'data': data.to_pickle(tmp_file),
+            'pickle_file': tmp_file,
         }
 
     return {
@@ -53,12 +59,15 @@ def _json_deserialize(data):
 
     if data_type == 'bytes':
         return base64.b64decode(data_data)
-    if data_type == 'DataFrame':
-        return DataFrame.from_dict(data_data)
-    if data_type == 'GeoDataFrame':
-        return GeoDataFrame.from_dict(data_data)
     if data_type == 'BaseGeometry':
         return shape(data_data)
+
+    if data_type == 'GeoDataFrame':
+        pickle_file = data['pickle_file']
+        return read_pickle(pickle_file)
+    if data_type == 'DataFrame':
+        pickle_file = data['pickle_file']
+        return read_pickle(pickle_file)
 
     return data_data
 

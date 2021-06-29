@@ -6,10 +6,23 @@ import time
 
 from pandas.core.frame import DataFrame
 from shapely.geometry import Point, MultiPolygon
+from geopandas import read_file
 from geopandas.geodataframe import GeoDataFrame
 
 from utils.cache import cache, _json_serialize, _json_deserialize
 from utils import timex
+
+TEST_VALUES = [
+    1234,
+    '1234',
+    b'1234',
+    {'test': 123},
+    DataFrame(data={'col1': [1, 2], 'col2': [3, 4]}),
+    Point(1, 2),
+    MultiPolygon(),
+    GeoDataFrame(),
+    read_file('/Users/nuwan.senaratna/Not.Dropbox/DATA/sl_maps_topojson_province.json'),
+]
 
 
 class TestCache(unittest.TestCase):
@@ -17,16 +30,8 @@ class TestCache(unittest.TestCase):
 
     def test_json_serialize_deserialize(self):
         """Test."""
-        for data in [
-            1234,
-            '1234',
-            b'1234',
-            {'test': 123},
-            DataFrame(data={'col1': [1, 2], 'col2': [3, 4]}),
-            Point(1, 2),
-            MultiPolygon(),
-            GeoDataFrame(),
-        ]:
+        for data in TEST_VALUES:
+            print(type(data))
             serlialized_data = _json_serialize(data)
             self.assertTrue(json.dumps(serlialized_data) is not None)
             deserialized_data = _json_deserialize(serlialized_data)
@@ -34,21 +39,18 @@ class TestCache(unittest.TestCase):
 
     def test_cache_values(self):
         """Test."""
-        random_salt = random.randint(1_000_000, 1_000_000 * 10 - 1)
-        random_int = random.randint(1_000_000, 1_000_000 * 10 - 1)
-        random_bytes = b'%d' % (random_int)
-
-        for value in [random_bytes]:
+        for value in TEST_VALUES:
+            random_salt = random.randint(1_000_000, 1_000_000 * 10 - 1)
 
             @cache('test')
-            def get_random_int(value_dummy):
+            def get_value(value_dummy):
                 return value
 
-            value_nocache = get_random_int(random_salt)
-            value_cache = get_random_int(random_salt)
+            value_nocache = get_value(random_salt)
+            value_cache = get_value(random_salt)
 
-            self.assertEqual(value_nocache, value)
-            self.assertEqual(value_cache, value)
+            self.assertEqual(str(value_nocache), str(value))
+            self.assertEqual(str(value_cache), str(value))
 
     def test_cache_speed(self):
         """Test."""
