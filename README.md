@@ -19,6 +19,8 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 ## 1.0.11 (PRE-RELEASE ONLY)
 
+* Added caching to www.read
+
 ## 1.0.10
 
 * Add parse int
