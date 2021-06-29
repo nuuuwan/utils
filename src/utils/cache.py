@@ -5,9 +5,12 @@ import os
 import threading
 import time
 import base64
-import pandas
 
 from functools import wraps
+
+from pandas import DataFrame
+from shapely.geometry.base import BaseGeometry
+from shapely.geometry import shape, mapping
 
 from utils import filex
 
@@ -21,10 +24,15 @@ def _json_serialize(data):
             'type': 'bytes',
             'data': base64.b64encode(data).decode('ascii'),
         }
-    if isinstance(data, pandas.DataFrame):
+    if isinstance(data, DataFrame):
         return {
             'type': 'pandas.DataFrame',
             'data': data.to_dict(),
+        }
+    if isinstance(data, BaseGeometry):
+        return {
+            'type': 'shapely.geometry.base.BaseGeometry',
+            'data': mapping(data),
         }
 
     return {
@@ -36,10 +44,14 @@ def _json_serialize(data):
 def _json_deserialize(data):
     data_type = data['type']
     data_data = data['data']
+
     if data_type == 'bytes':
         return base64.b64decode(data_data)
     if data_type == 'pandas.DataFrame':
-        return pandas.DataFrame.from_dict(data_data)
+        return DataFrame.from_dict(data_data)
+    if data_type == 'shapely.geometry.base.BaseGeometry':
+        return shape(data_data)
+
     return data_data
 
 

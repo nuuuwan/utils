@@ -7,8 +7,8 @@ long_description = ''
 with open('README.md') as fin:
     long_description = fin.read()
 
-IS_PRE_RELEASE = False
-MAJOR, MINOR, PATCH = 1, 0, 12
+IS_PRE_RELEASE = True
+MAJOR, MINOR, PATCH = 1, 0, 13
 
 if IS_PRE_RELEASE:
     ts = time.strftime('%Y%m%d%H%M%S0000', time.localtime())
@@ -44,6 +44,7 @@ setuptools.setup(
         'selenium',
         'tweepy',
         'pandas',
+        'shapely',
     ],
     test_suite='nose.collector',
     tests_require=['nose'],
