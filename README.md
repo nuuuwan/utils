@@ -17,6 +17,10 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 
 # Release History
 
+## 1.0.14
+
+* Added GeoDataFrame support in cache.
+
 ## 1.0.13
 
 * Added MultiPolygon and other geometry support to cache

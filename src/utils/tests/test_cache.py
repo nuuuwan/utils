@@ -4,8 +4,9 @@ import json
 import random
 import time
 
-import pandas
-from shapely.geometry import Point
+from pandas.core.frame import DataFrame
+from shapely.geometry import Point, MultiPolygon
+from geopandas.geodataframe import GeoDataFrame
 
 from utils.cache import cache, _json_serialize, _json_deserialize
 from utils import timex
@@ -21,8 +22,10 @@ class TestCache(unittest.TestCase):
             '1234',
             b'1234',
             {'test': 123},
-            pandas.DataFrame(data={'col1': [1, 2], 'col2': [3, 4]}),
+            DataFrame(data={'col1': [1, 2], 'col2': [3, 4]}),
             Point(1, 2),
+            MultiPolygon(),
+            GeoDataFrame(),
         ]:
             serlialized_data = _json_serialize(data)
             self.assertTrue(json.dumps(serlialized_data) is not None)

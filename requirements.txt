@@ -6,3 +6,4 @@ selenium
 tweepy
 pandas
 shapely
+geopandas

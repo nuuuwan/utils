@@ -8,7 +8,8 @@ import base64
 
 from functools import wraps
 
-from pandas import DataFrame
+from geopandas.geodataframe import GeoDataFrame
+from pandas.core.frame import DataFrame
 from shapely.geometry.base import BaseGeometry
 from shapely.geometry import shape, mapping
 
@@ -24,14 +25,19 @@ def _json_serialize(data):
             'type': 'bytes',
             'data': base64.b64encode(data).decode('ascii'),
         }
+    if isinstance(data, GeoDataFrame):
+        return {
+            'type': 'GeoDataFrame',
+            'data': data.to_dict(),
+        }
     if isinstance(data, DataFrame):
         return {
-            'type': 'pandas.DataFrame',
+            'type': 'DataFrame',
             'data': data.to_dict(),
         }
     if isinstance(data, BaseGeometry):
         return {
-            'type': 'shapely.geometry.base.BaseGeometry',
+            'type': 'BaseGeometry',
             'data': mapping(data),
         }
 
@@ -47,9 +53,11 @@ def _json_deserialize(data):
 
     if data_type == 'bytes':
         return base64.b64decode(data_data)
-    if data_type == 'pandas.DataFrame':
+    if data_type == 'DataFrame':
         return DataFrame.from_dict(data_data)
-    if data_type == 'shapely.geometry.base.BaseGeometry':
+    if data_type == 'GeoDataFrame':
+        return GeoDataFrame.from_dict(data_data)
+    if data_type == 'BaseGeometry':
         return shape(data_data)
 
     return data_data
