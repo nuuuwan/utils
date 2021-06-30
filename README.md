@@ -20,6 +20,9 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 
 ## 1.0.19
 
+* Fixed download bug in Browser
+* Added *sysx*.retry
+
 ## 1.0.18
 
 * Added default unixtime to timex.get_date_id

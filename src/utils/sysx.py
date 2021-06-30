@@ -1,9 +1,13 @@
 """System utils."""
 import os
 import time
+import logging
 
 import subprocess
 import psutil
+
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger('sysx')
 
 
 def log_metrics():
@@ -23,13 +27,12 @@ def log_metrics():
 
             pip install psutil
     """
-    log = {
+    return {
         'ut': time.time(),
         'pid': os.getpid(),
         'cpu_percent': psutil.cpu_percent(),
         'vm_percent': psutil.virtual_memory().percent,
     }
-    return log
 
 
 def run(cmd):
@@ -52,3 +55,29 @@ def str_color(output_str, color_code=31):
     color_cmd = '\033[0;%dm' % (color_code)
     end_cmd = '\033[0m'
     return '%s%s%s' % (color_cmd, str(output_str), end_cmd)
+
+
+def retry(process_name, func_process, max_t_wait=60):
+    """Retry function, until it returns not None."""
+    t_wait = 1
+    while True:
+        result = func_process()
+        if result is not None:
+            log.info('"%s" complete.', process_name)
+            return result
+
+        if t_wait > max_t_wait:
+            log.warning(
+                '"%s" reached max retry limit (%ds). Aborting.',
+                process_name,
+                max_t_wait,
+            )
+            return None
+
+        log.warning(
+            '"%s" returned None. Waiting %ds...',
+            process_name,
+            t_wait,
+        )
+        time.sleep(t_wait)
+        t_wait = (int)(t_wait * 1.414)
