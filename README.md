@@ -20,6 +20,8 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 ## 1.0.16
 
 * Added module *open_browser* with open
+* Added module *image*, with crop and resize
+* Added more loggiing to *twitter*
 
 ## 1.0.15
 
@@ -42,9 +44,3 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 * Added caching to www.read
 
 See also [Older Releases](OLDER_RELEASES.md)
-
-
-## Wishlist
-
-* Add module *image*, with crop and resize
-* Add more loggiing to *twitter*
