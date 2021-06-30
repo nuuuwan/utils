@@ -7,7 +7,7 @@ long_description = ''
 with open('README.md') as fin:
     long_description = fin.read()
 
-IS_PRE_RELEASE = True
+IS_PRE_RELEASE = False
 MAJOR, MINOR, PATCH = 1, 0, 19
 
 if IS_PRE_RELEASE:
