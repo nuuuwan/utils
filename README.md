@@ -21,7 +21,9 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 ## 1.0.18
 
 * Added default unixtime to timex.get_date_id
-* Added auto download for other filetypes in *browser*
+* Renamed Module *browser* to *browserx*
+* Added auto download for other filetypes in *browserx*
+* Added various utils to *browserx*
 
 ## 1.0.17
 
