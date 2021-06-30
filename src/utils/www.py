@@ -8,7 +8,7 @@ import requests
 
 from bs4 import BeautifulSoup
 
-from utils import filex, tsv, timex, browser
+from utils import filex, tsv, timex, browserx
 from utils.cache import cache
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0)' \
@@ -42,12 +42,12 @@ def _read_helper_nocached(url):
 
 
 def _read_helper_selenium(url):
-    _browser = browser.open_browser(url)
+    browser = browserx.open_browser(url)
     for _ in range(0, SELENIUM_SCROLL_REPEATS):
-        _browser.execute_script(SELENIUM_SCROLL_SCRIPT)
+        browser.execute_script(SELENIUM_SCROLL_SCRIPT)
         time.sleep(SELENIUM_SCROLL_WAIT_TIME)
-    content = _browser.page_source
-    _browser.quit()
+    content = browser.page_source
+    browser.quit()
     return content
 
 
