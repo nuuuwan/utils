@@ -18,6 +18,10 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 # Release History
 See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 
+## 1.0.17
+
+* Added timex.get_date_id
+
 ## 1.0.16
 
 * Added module *open_browser* with open
