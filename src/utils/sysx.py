@@ -80,4 +80,4 @@ def retry(process_name, func_process, max_t_wait=60):
             t_wait,
         )
         time.sleep(t_wait)
-        t_wait = (int)(t_wait * 1.414)
+        t_wait = t_wait * 1.414

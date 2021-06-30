@@ -8,7 +8,7 @@ with open('README.md') as fin:
     long_description = fin.read()
 
 IS_PRE_RELEASE = False
-MAJOR, MINOR, PATCH = 1, 0, 19
+MAJOR, MINOR, PATCH = 1, 0, 20
 
 if IS_PRE_RELEASE:
     ts = time.strftime('%Y%m%d%H%M%S0000', time.localtime())

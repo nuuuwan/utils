@@ -18,6 +18,10 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 # Release History
 See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 
+## 1.0.20
+
+* Fixed bug in *sysx*.retry
+
 ## 1.0.19
 
 * Fixed download bug in Browser
