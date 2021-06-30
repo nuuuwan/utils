@@ -8,13 +8,13 @@ import requests
 
 from bs4 import BeautifulSoup
 
-from utils import filex, tsv, timex, browserx
+from utils import filex, tsv, timex
+from utils.browserx import Browser
 from utils.cache import cache
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0)' \
     + 'Gecko/20100101 Firefox/65.0'
 ENCODING = 'utf-8'
-SELENIUM_SCROLL_SCRIPT = "window.scrollTo(0, document.body.scrollHeight);"
 SELENIUM_SCROLL_REPEATS = 3
 SELENIUM_SCROLL_WAIT_TIME = 0.5
 
@@ -42,11 +42,11 @@ def _read_helper_nocached(url):
 
 
 def _read_helper_selenium(url):
-    browser = browserx.open_browser(url)
+    browser = Browser(url)
     for _ in range(0, SELENIUM_SCROLL_REPEATS):
-        browser.execute_script(SELENIUM_SCROLL_SCRIPT)
+        browser.scroll_to_bottom()
         time.sleep(SELENIUM_SCROLL_WAIT_TIME)
-    content = browser.page_source
+    content = browser.get_source()
     browser.quit()
     return content
 

@@ -18,6 +18,8 @@ pip install -i https://test.pypi.org/simple/ utils-nuuuwan
 # Release History
 See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 
+## 1.0.19
+
 ## 1.0.18
 
 * Added default unixtime to timex.get_date_id
