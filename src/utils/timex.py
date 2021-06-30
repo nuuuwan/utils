@@ -52,6 +52,13 @@ def format_current_date_with_timezone():
     return '{date} {timezone}'.format(date=date, timezone=timezone)
 
 
+def get_date_id(unixtime):
+    """Get date id."""
+    if unixtime is None:
+        unixtime = get_unixtime()
+    return format_time(unixtime, '%Y%m%d')
+
+
 class StopWatch:
     """Implements StopWatch.
 
