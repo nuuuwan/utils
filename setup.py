@@ -46,6 +46,7 @@ setuptools.setup(
         'pandas',
         'shapely',
         'geopandas',
+        'pillow',
     ],
     test_suite='nose.collector',
     tests_require=['nose'],
