@@ -81,3 +81,11 @@ def scroll_to_bottom(browser):
 def scroll_to_element(browser, elem):
     """Scroll to element."""
     browser.execute_script("arguments[0].scrollIntoView();", elem)
+
+
+def find_scroll_and_click(browser, elem_id):
+    """Find element, scroll to it and click."""
+    elem = find_element_by_id_retry(browser, elem_id)
+    scroll_to_element(browser, elem)
+    elem.click()
+    return elem
