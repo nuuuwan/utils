@@ -1,39 +1,15 @@
 """Test."""
 import unittest
-import json
 import random
 import time
 
-from pandas.core.frame import DataFrame
-from shapely.geometry import Point, MultiPolygon
-from geopandas.geodataframe import GeoDataFrame
-
-from utils.cache import cache, _json_serialize, _json_deserialize
 from utils import timex
-
-TEST_VALUES = [
-    1234,
-    '1234',
-    b'1234',
-    {'test': 123},
-    DataFrame(data={'col1': [1, 2], 'col2': [3, 4]}),
-    Point(1, 2),
-    MultiPolygon(),
-    GeoDataFrame(),
-]
+from utils.cache import cache
+from utils.tests.test_jsonx import TEST_VALUES
 
 
 class TestCache(unittest.TestCase):
     """Tests."""
-
-    def test_json_serialize_deserialize(self):
-        """Test."""
-        for data in TEST_VALUES:
-            print(type(data))
-            serlialized_data = _json_serialize(data)
-            self.assertTrue(json.dumps(serlialized_data) is not None)
-            deserialized_data = _json_deserialize(serlialized_data)
-            self.assertEqual(str(data), str(deserialized_data))
 
     def test_cache_values(self):
         """Test."""

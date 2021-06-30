@@ -1,17 +1,12 @@
-"""JSON utils.
-
-.. code-block:: python
-
-    >>> from utils import jsonx
-    >>> data = {'name': 'Alice', 'age': 20}
-    >>> file_name = '/tmp/data.json'
-    >>> jsonx.write(file_name, data)
-    >>> data2 = jsonx.read(file_name)
-    >>> data == data2
-    True
-
-"""
+"""JSON utils."""
 import json
+import base64
+
+from geopandas.geodataframe import GeoDataFrame
+from pandas.core.frame import DataFrame
+from pandas import read_pickle
+from shapely.geometry.base import BaseGeometry
+from shapely.geometry import shape, mapping
 
 from utils import filex
 
@@ -38,3 +33,55 @@ def write(file_name, data):
 
     """
     filex.write(file_name, json.dumps(data, indent=2))
+
+
+def serialize(data):
+    if isinstance(data, bytes):
+        return {
+            'type': 'bytes',
+            'data': base64.b64encode(data).decode('ascii'),
+        }
+    if isinstance(data, BaseGeometry):
+        return {
+            'type': 'BaseGeometry',
+            'data': mapping(data),
+        }
+
+    if isinstance(data, GeoDataFrame):
+        tmp_file = filex.get_tmp_file()
+        return {
+            'type': 'GeoDataFrame',
+            'data': data.to_pickle(tmp_file),
+            'pickle_file': tmp_file,
+        }
+    if isinstance(data, DataFrame):
+        tmp_file = filex.get_tmp_file()
+        return {
+            'type': 'DataFrame',
+            'data': data.to_pickle(tmp_file),
+            'pickle_file': tmp_file,
+        }
+
+    return {
+        'type': None,
+        'data': data,
+    }
+
+
+def deserialize(data):
+    data_type = data['type']
+    data_data = data['data']
+
+    if data_type == 'bytes':
+        return base64.b64decode(data_data)
+    if data_type == 'BaseGeometry':
+        return shape(data_data)
+
+    if data_type == 'GeoDataFrame':
+        pickle_file = data['pickle_file']
+        return read_pickle(pickle_file)
+    if data_type == 'DataFrame':
+        pickle_file = data['pickle_file']
+        return read_pickle(pickle_file)
+
+    return data_data

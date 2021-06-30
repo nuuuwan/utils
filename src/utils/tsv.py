@@ -57,16 +57,7 @@ def read(
     file_name,
     delimiter=DEFAULT_DELIMITER,
 ):
-    """Read from xsv file, and output dict list.
-
-    Args:
-        file_name (str): File name
-        delimiter (str, optional): delimiter
-
-    Returns:
-        TSV file contents as dict list
-
-    """
+    """Read file."""
     csv_lines = filex.read(file_name).split('\n')
     return _read_helper(csv_lines, delimiter)
 
@@ -76,13 +67,7 @@ def write(
     dict_list,
     delimiter=DEFAULT_DELIMITER,
 ):
-    """Write dict_list to file.
-
-    Args:
-        file_name (str): File name
-        dict_list (dict list): TSV content
-        delimiter (str, optional): delimiter
-    """
+    """Write dict_list to file."""
     with open(file_name, 'w') as fout:
         writer = csv.writer(
             fout,

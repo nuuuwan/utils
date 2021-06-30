@@ -9,23 +9,7 @@ LAT_LNG_KANDY = [7.2906, 80.6337]
 
 
 def parse_latlng(latlng_str):
-    """Parse latlng string.
-
-    Args:
-        latlng_str(str): String containing lat, lng
-    Return:
-        [lat, lng] float pair
-
-    .. code-block:: python
-
-        >>> from utils import geo
-        >>> print(geo.parse_latlng('5N,70E'))
-        (5.0, 70.0)
-        >>> print(geo.parse_latlng('5°N,70°E'))
-        (5.0, 70.0)
-        >>> print(geo.parse_latlng('5,70'))
-        (5.0, 70.0)
-    """
+    """Parse latlng string."""
     latlng_str = latlng_str.replace('°', '')
     lat_sign = 1
     if 'N' in latlng_str:
@@ -46,46 +30,13 @@ def parse_latlng(latlng_str):
 
 
 def deg_to_rad(deg):
-    """Convert degrees to radians.
-
-    Args:
-        deg (float): Angle in degrees
-
-    Return:
-        Angle in radians
-
-    .. code-block:: python
-
-        >>> from utils import geo
-        >>> print(geo.deg_to_rad(180))
-        3.141592653589793
-
-    """
+    """Convert degrees to radians."""
     deg_round = round(deg * QUANTUMS, 0) / QUANTUMS
     return deg_round * pi / 180
 
 
 def get_distance(latlng1, latlng2):
-    """Get distance between two points.
-
-    Args:
-        latlng1 ([lat, lng]): First point
-        latlng2 ([lat, lng]): Second point
-
-
-    Returns:
-        Distance in km
-
-    Note:
-        Assumes EARTH_RADIUS = 6373.0 km
-
-    .. code-block:: python
-
-        >>> from utils import geo
-        >>> print(geo.get_distance(geo.LAT_LNG_COLOMBO, geo.LAT_LNG_KANDY))
-        94.36504869698388
-
-    """
+    """Get distance between two points."""
     lat1, lng1 = latlng1
     lat2, lng2 = latlng2
 

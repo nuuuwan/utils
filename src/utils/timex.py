@@ -45,6 +45,13 @@ def format_time(
     return _datetime.strftime(time_format)
 
 
+def format_current_date_with_timezone():
+    """Format date with timezone."""
+    date = format_time(get_unixtime(), '%B %d, %Y %H:%M%p')
+    timezone = get_timezone()
+    return '{date} {timezone}'.format(date=date, timezone=timezone)
+
+
 class StopWatch:
     """Implements StopWatch.
 

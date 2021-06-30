@@ -7,10 +7,8 @@ import time
 import requests
 
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
 
-from utils import filex, tsv, timex
+from utils import filex, tsv, timex, browser
 from utils.cache import cache
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0)' \
@@ -25,9 +23,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 
 def _read_helper(url, cached=True):
-    if cached:
-        return _read_helper_cached(url)
-    return _read_helper_nocached(url)
+    return _read_helper_cached(url) if cached else _read_helper_nocached(url)
 
 
 @cache('utils.www', timex.SECONDS_IN.HOUR)
@@ -37,114 +33,67 @@ def _read_helper_cached(url):
 
 def _read_helper_nocached(url):
     try:
-        logging.debug('utils.www._read_helper: %s', url)
         resp = requests.get(url, headers={'user-agent': USER_AGENT})
-
         if resp.status_code != 200:
             return None
-
         return resp.content
-
     except requests.exceptions.ConnectionError:
         return None
 
 
 def _read_helper_selenium(url):
-    options = Options()
-    options.headless = True
-
-    browser = webdriver.Firefox(options=options)
-    browser.get(url)
-
+    _browser = browser.open_browser(url)
     for _ in range(0, SELENIUM_SCROLL_REPEATS):
-        browser.execute_script(SELENIUM_SCROLL_SCRIPT)
+        _browser.execute_script(SELENIUM_SCROLL_SCRIPT)
         time.sleep(SELENIUM_SCROLL_WAIT_TIME)
-
-    content = browser.page_source
-    browser.quit()
+    content = _browser.page_source
+    _browser.quit()
     return content
 
 
 def read(url, cached=True, use_selenium=False):
-    """Read url.
-
-    Args:
-        url (str): URL
-
-    Return:
-        Contents at URL
-
-    """
+    """Read url."""
     if use_selenium:
-        content = _read_helper_selenium(url)
-    else:
-        content = _read_helper(url, cached)
-        if content:
-            content = content.decode(ENCODING)
-
-    return content
+        return _read_helper_selenium(url)
+    content = _read_helper(url, cached)
+    return content.decode(ENCODING) if content else None
 
 
 def read_json(url, cached=True):
-    """Read JSON content from url.
-
-    Args:
-        url (str): URL
-
-    Return:
-        JSON parsed data at URL
-
-    """
-    try:
-        return json.loads(read(url, cached))
-    except TypeError:
-        return None
+    """Read JSON content from url."""
+    content = read(url, cached)
+    return json.loads(content) if content else None
 
 
 def read_tsv(url, cached=True):
-    """Read TSV content from url.
-
-    Args:
-        url (str): URL
-
-    Return:
-        TSV parsed data at URL
-    """
+    """Read TSV content from url."""
     csv_lines = read(url, cached).split('\n')
     return tsv._read_helper(csv_lines)
 
 
 def download_binary(url, file_name, cached=True):
-    """Download binary.
-
-    Args:
-        url (str): URL
-        file_name (str): file name for output
-    """
+    """Download binary."""
     content = _read_helper(url, cached)
     filex.write(file_name, content, 'wb')
-    logging.debug(
-        'Wrote %dB from %s to %s',
-        len(content),
-        url,
-        file_name,
-    )
+    logging.debug('Wrote %dB from %s to %s', len(content), url, file_name)
 
 
 def exists(url):
     """Check if URL exists."""
     try:
         response = requests.head(url, timeout=1)
+        # pylint: disable=E1101
+        return response.status_code == requests.codes.ok
     except requests.exceptions.ConnectTimeout:
         return False
-    return response.status_code == requests.codes.ok
 
 
 def get_all_urls(root_url, cached=True):
     """Get all URLs linked to a webpage."""
     soup = BeautifulSoup(read(root_url, cached), 'html.parser')
-    urls = []
-    for a_link in soup.find_all('a', href=True):
-        urls.append(a_link['href'])
+    urls = list(map(
+        lambda a_link: a_link['href'],
+        soup.find_all('a', href=True),
+    ))
     logging.debug('Found %d links on %s', len(urls), root_url)
     return urls
