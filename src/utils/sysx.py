@@ -1,9 +1,9 @@
 """System utils."""
-import os
-import time
 import logging
-
+import os
 import subprocess
+import time
+
 import psutil
 
 logging.basicConfig(level=logging.INFO)

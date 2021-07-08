@@ -1,12 +1,12 @@
 """JSON utils."""
-import json
 import base64
+import json
 
 from geopandas.geodataframe import GeoDataFrame
-from pandas.core.frame import DataFrame
 from pandas import read_pickle
+from pandas.core.frame import DataFrame
+from shapely.geometry import mapping, shape
 from shapely.geometry.base import BaseGeometry
-from shapely.geometry import shape, mapping
 
 from utils import filex
 

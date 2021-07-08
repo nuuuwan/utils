@@ -1,6 +1,7 @@
 """Test."""
-import unittest
 import os
+import unittest
+
 from utils import www
 
 TEST_JSON_URL = os.path.join(

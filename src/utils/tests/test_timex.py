@@ -1,6 +1,7 @@
 """Test."""
-import unittest
 import time
+import unittest
+
 from utils import timex
 
 TIMEZONE_OFFSET_LK = 19800
@@ -35,9 +36,12 @@ class TestTime(unittest.TestCase):
 
     def test_parse_time(self):
         """Test."""
-        timezone_offset = (TIMEZONE_OFFSET_LK + time.timezone)
-        for [time_str, time_format, expected_unixtime] \
-                in PARSE_FORMAT_TEST_CASES:
+        timezone_offset = TIMEZONE_OFFSET_LK + time.timezone
+        for [
+            time_str,
+            time_format,
+            expected_unixtime,
+        ] in PARSE_FORMAT_TEST_CASES:
             if expected_unixtime:
                 self.assertEqual(
                     expected_unixtime + timezone_offset,
@@ -49,9 +53,12 @@ class TestTime(unittest.TestCase):
 
     def test_format_time(self):
         """Test."""
-        timezone_offset = (TIMEZONE_OFFSET_LK + time.timezone)
-        for [expected_time_str, time_format, unixtime] \
-                in PARSE_FORMAT_TEST_CASES:
+        timezone_offset = TIMEZONE_OFFSET_LK + time.timezone
+        for [
+            expected_time_str,
+            time_format,
+            unixtime,
+        ] in PARSE_FORMAT_TEST_CASES:
             if unixtime:
                 self.assertEqual(
                     expected_time_str,

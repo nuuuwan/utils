@@ -1,8 +1,9 @@
 """Test."""
 import unittest
-from utils import tsv
 
 from test_ds import TEST_DICT_LIST
+
+from utils import tsv
 
 
 class TestTSV(unittest.TestCase):

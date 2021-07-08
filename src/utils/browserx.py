@@ -1,7 +1,7 @@
 """Browser utils."""
 
-import os
 import logging
+import os
 
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options

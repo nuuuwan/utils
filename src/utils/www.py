@@ -5,15 +5,16 @@ import ssl
 import time
 
 import requests
-
 from bs4 import BeautifulSoup
 
-from utils import filex, tsv, timex
+from utils import filex, timex, tsv
 from utils.browserx import Browser
 from utils.cache import cache
 
-USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0)' \
+USER_AGENT = (
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) '
     + 'Gecko/20100101 Firefox/65.0'
+)
 ENCODING = 'utf-8'
 SELENIUM_SCROLL_REPEATS = 3
 SELENIUM_SCROLL_WAIT_TIME = 0.5
@@ -91,9 +92,11 @@ def exists(url):
 def get_all_urls(root_url, cached=True):
     """Get all URLs linked to a webpage."""
     soup = BeautifulSoup(read(root_url, cached), 'html.parser')
-    urls = list(map(
-        lambda a_link: a_link['href'],
-        soup.find_all('a', href=True),
-    ))
+    urls = list(
+        map(
+            lambda a_link: a_link['href'],
+            soup.find_all('a', href=True),
+        )
+    )
     logging.debug('Found %d links on %s', len(urls), root_url)
     return urls

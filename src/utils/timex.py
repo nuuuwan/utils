@@ -1,12 +1,13 @@
 """Time utils."""
-import time
 import datetime
+import time
 
 DEFAULT_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 
 class SECONDS_IN:
     """Units of time."""
+
     MINUTE = 60
     HOUR = 3600
     DAY = 86400

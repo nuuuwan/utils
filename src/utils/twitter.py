@@ -2,7 +2,9 @@
 
 import argparse
 import logging
+
 import tweepy
+
 from utils import twitter_helpers
 
 MAX_LEN_TWEET = 280
@@ -16,8 +18,10 @@ class Twitter:
 
     def __init__(
         self,
-        twtr_api_key, twtr_api_secret_key,
-        twtr_access_token, twtr_access_token_secret,
+        twtr_api_key,
+        twtr_api_secret_key,
+        twtr_access_token,
+        twtr_access_token_secret,
     ):
         """Construct Twitter."""
         if twtr_api_key:
@@ -28,7 +32,7 @@ class Twitter:
             log.info(
                 'Created Twitter for @%s (%s).',
                 api_me.screen_name,
-                api_me.id_str
+                api_me.id_str,
             )
         else:
             log.error('Missing twitter API Key etc. Cannot create Twitter.')
@@ -39,24 +43,32 @@ class Twitter:
         """Construct Twitter from Args."""
         parser = argparse.ArgumentParser(description=description)
         for twtr_arg_name in [
-            'twtr_api_key', 'twtr_api_secret_key',
-            'twtr_access_token', 'twtr_access_token_secret',
+            'twtr_api_key',
+            'twtr_api_secret_key',
+            'twtr_access_token',
+            'twtr_access_token_secret',
         ]:
             parser.add_argument(
                 '--' + twtr_arg_name,
-                type=str, required=False, default=None,
+                type=str,
+                required=False,
+                default=None,
             )
         args = parser.parse_args()
         return Twitter(
-            args.twtr_api_key, args.twtr_api_secret_key,
-            args.twtr_access_token, args.twtr_access_token_secret,
+            args.twtr_api_key,
+            args.twtr_api_secret_key,
+            args.twtr_access_token,
+            args.twtr_access_token_secret,
         )
 
     def tweet(
         self,
         tweet_text,
-        status_image_files=None, update_user_profile=False,
-        profile_image_file=None, banner_image_file=None,
+        status_image_files=None,
+        update_user_profile=False,
+        profile_image_file=None,
+        banner_image_file=None,
     ):
         """Tweet."""
         if status_image_files is None:

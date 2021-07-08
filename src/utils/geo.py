@@ -1,5 +1,6 @@
 """Geo-Spatial Utils."""
-from math import sin, cos, sqrt, atan2, pi
+from math import atan2, cos, pi, sin, sqrt
+
 from area import area
 
 EARTH_RADIUS = 6373.0
@@ -55,6 +56,7 @@ def get_distance(latlng1, latlng2):
 
 def get_area(lnglat_list_list):
     """Find the area of a lnglat list list."""
+
     def get_area_for_lnglat_list(lnglat_list):
         obj = {
             'type': 'Polygon',

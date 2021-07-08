@@ -1,5 +1,6 @@
 """Test."""
 import unittest
+
 from utils import ds
 
 TEST_DICT_LIST = [
@@ -29,9 +30,11 @@ class TestDS(unittest.TestCase):
                 ('three', 3),
                 ('two', 2),
             ],
-            ds.sort_dict_items_by_key({
-                'one': 1,
-                'two': 2,
-                'three': 3,
-            }),
+            ds.sort_dict_items_by_key(
+                {
+                    'one': 1,
+                    'two': 2,
+                    'three': 3,
+                }
+            ),
         )

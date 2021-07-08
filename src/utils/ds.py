@@ -29,13 +29,17 @@ def dict_list_to_index(dict_list, key):
 
 
     """
-    return dict(zip(
-        list(map(
-            lambda d: d.get(key, None),
+    return dict(
+        zip(
+            list(
+                map(
+                    lambda d: d.get(key, None),
+                    dict_list,
+                )
+            ),
             dict_list,
-        )),
-        dict_list,
-    ))
+        )
+    )
 
 
 def unique(lst):

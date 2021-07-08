@@ -1,7 +1,7 @@
 """Test."""
-import unittest
 import random
 import time
+import unittest
 
 from utils import timex
 from utils.cache import cache

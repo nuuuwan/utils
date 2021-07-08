@@ -1,10 +1,10 @@
 """Tests."""
-import unittest
 import json
+import unittest
 
-from pandas.core.frame import DataFrame
-from shapely.geometry import Point, MultiPolygon
 from geopandas.geodataframe import GeoDataFrame
+from pandas.core.frame import DataFrame
+from shapely.geometry import MultiPolygon, Point
 
 from utils import jsonx
 

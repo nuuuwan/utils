@@ -4,7 +4,7 @@ import os
 import threading
 import time
 
-from utils import filex, jsonx, hashx
+from utils import filex, hashx, jsonx
 
 CACHE_DIR = '/tmp/cache'
 CACHE_DEFAULT_TIMEOUT = 60

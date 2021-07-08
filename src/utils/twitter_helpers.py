@@ -30,7 +30,8 @@ def _upload_media(api, image_files):
 
 def _update_profile_description(api):
     date_with_timezone = timex.format_current_date_with_timezone()
-    description = 'Automatically updated at {date_with_timezone}'\
-        .format(date_with_timezone=date_with_timezone)
+    description = 'Automatically updated at {date_with_timezone}'.format(
+        date_with_timezone=date_with_timezone
+    )
     api.update_profile(description=description)
     log.info('Updated profile description to: %s', description)

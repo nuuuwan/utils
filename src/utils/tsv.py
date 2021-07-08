@@ -44,10 +44,12 @@ def _read_helper(
         if not field_names:
             field_names = row
         else:
-            datum = dict(zip(
-                field_names,
-                row,
-            ))
+            datum = dict(
+                zip(
+                    field_names,
+                    row,
+                )
+            )
             if datum:
                 dict_list.append(datum)
     return dict_list
@@ -78,12 +80,16 @@ def write(
         field_names = _get_field_names_from_dict_list(dict_list)
         writer.writerow(field_names)
         writer.writerows(
-            list(map(
-                lambda d: list(map(
-                    lambda field_name: d.get(field_name, NULL_VALUE),
-                    field_names,
-                )),
-                dict_list,
-            )),
+            list(
+                map(
+                    lambda d: list(
+                        map(
+                            lambda field_name: d.get(field_name, NULL_VALUE),
+                            field_names,
+                        )
+                    ),
+                    dict_list,
+                )
+            ),
         )
         fout.close()

@@ -38,13 +38,17 @@ def map_parallel(func_map, params_list, max_threads=DEFAULT_MAX_THREADS):
         [1, 4, 9, 16]
 
     """
+
     def get_worker(params):
         def worker():
             return func_map(params)
+
         return worker
 
-    workers = list(map(
-        lambda params: get_worker(params=params),
-        params_list,
-    ))
+    workers = list(
+        map(
+            lambda params: get_worker(params=params),
+            params_list,
+        )
+    )
     return _run_parallel(workers, max_threads)

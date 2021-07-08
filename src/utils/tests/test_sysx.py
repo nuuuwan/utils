@@ -1,5 +1,6 @@
 """Test."""
 import unittest
+
 from utils import sysx
 from utils.sysx import str_color
 
