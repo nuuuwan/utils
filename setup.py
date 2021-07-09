@@ -8,14 +8,14 @@ long_description = ''
 with open('README.md') as fin:
     long_description = fin.read()
 
-IS_PRE_RELEASE = False
-MAJOR, MINOR, PATCH = 1, 0, 21
+IS_RELEASE = False
+MAJOR, MINOR, PATCH = 1, 0, 22
 
-if IS_PRE_RELEASE:
+if IS_RELEASE:
+    version = '%d.%d.%d' % (MAJOR, MINOR, PATCH)
+else:
     ts = time.strftime('%Y%m%d%H%M%S0000', time.localtime())
     version = '%d.%d.%d.%s' % (MAJOR, MINOR, PATCH, ts)
-else:
-    version = '%d.%d.%d' % (MAJOR, MINOR, PATCH)
 
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
