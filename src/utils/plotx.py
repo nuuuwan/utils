@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
 logging.basicConfig(level=logging.INFO)
-log = logging.getLogger('cartogram')
+log = logging.getLogger('utils.plotx')
 
 
 class DEFAULTS:
