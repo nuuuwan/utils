@@ -8,3 +8,4 @@ pandas
 shapely
 geopandas
 pillow
+matplotlib

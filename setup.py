@@ -8,7 +8,7 @@ long_description = ''
 with open('README.md') as fin:
     long_description = fin.read()
 
-IS_RELEASE = False
+IS_RELEASE = True
 MAJOR, MINOR, PATCH = 1, 0, 22
 
 if IS_RELEASE:
@@ -48,6 +48,7 @@ setuptools.setup(
         'shapely',
         'geopandas',
         'pillow',
+        'matplotlib',
     ],
     test_suite='nose.collector',
     tests_require=['nose'],
