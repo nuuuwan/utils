@@ -25,3 +25,5 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 * Added dict_list_get_values_for_key
 * Added get_date
 * Added logging to twitter
+
+## 1.0.24 (PRE-RELEASE ONLY)
