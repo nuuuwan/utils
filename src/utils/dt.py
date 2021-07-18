@@ -28,4 +28,4 @@ def to_kebab(s):
 
 def to_snake(s):
     """Convert string to snakes case."""
-    return s.replace(' ', '-').lower()
+    return s.replace(' ', '_').lower()
