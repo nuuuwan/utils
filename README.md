@@ -5,6 +5,10 @@ General utilities complimenting and expanding on standard python.
 # Release History
 See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 
+## 1.0.23
+
+* Make parse_int and parse_float more general
+
 ## 1.0.22
 
 * Added *plotx* (Various helpers for MatPlotLib)

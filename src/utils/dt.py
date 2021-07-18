@@ -2,26 +2,9 @@
 
 
 def parse_float(float_str, default=None):
-    """Parse float.
-
-    Args:
-        float_str (str): float as string
-        default (, optional): optional value to return of parsing fails
-
-    Return:
-        float value
-
-    .. code-block:: python
-
-        >>> from utils.dt import parse_float
-        >>> parse_float('1.23')
-        1.23
-        >>> parse_float('1.23abc')
-        None
-        >>> parse_float('1.23abc', 'abc')
-        'abc'
-
-    """
+    """Parse float."""
+    float_str = float_str.replace(',', '')
+    float_str = float_str.replace('-', '0')
     try:
         return (float)(float_str)
     except ValueError:
@@ -30,6 +13,8 @@ def parse_float(float_str, default=None):
 
 def parse_int(int_str, default=None):
     """Parse int."""
+    int_str = int_str.replace(',', '')
+    int_str = int_str.replace('-', '0')
     try:
         return (int)(int_str)
     except ValueError:
