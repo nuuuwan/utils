@@ -3,6 +3,8 @@
 import os
 import unittest
 
+import pytest
+
 from utils.browserx import Browser
 
 TEST_URL = os.path.join(
@@ -14,6 +16,7 @@ TEST_URL = os.path.join(
 class TestBrowserX(unittest.TestCase):
     """Tests."""
 
+    @pytest.mark.slow
     def test_browser(self):
         """Test."""
         os.system('rm -rf /tmp/TestData.xls')

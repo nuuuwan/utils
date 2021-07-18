@@ -3,6 +3,8 @@ import random
 import time
 import unittest
 
+import pytest
+
 from utils import timex
 from utils.cache import cache
 from utils.tests.test_jsonx import TEST_VALUES
@@ -26,6 +28,7 @@ class TestCache(unittest.TestCase):
             self.assertEqual(str(value_nocache), str(value))
             self.assertEqual(str(value_cache), str(value))
 
+    @pytest.mark.slow
     def test_cache_speed(self):
         """Test."""
 

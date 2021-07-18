@@ -2,6 +2,8 @@
 import time
 import unittest
 
+import pytest
+
 from utils import timex
 
 TIMEZONE_OFFSET_LK = 19800
@@ -16,6 +18,7 @@ PARSE_FORMAT_TEST_CASES = [
 class TestTime(unittest.TestCase):
     """Test."""
 
+    @pytest.mark.slow
     def test_stop_watch(self):
         """Test."""
         stopwatch = timex.StopWatch()

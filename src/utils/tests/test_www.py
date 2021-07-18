@@ -2,6 +2,8 @@
 import os
 import unittest
 
+import pytest
+
 from utils import www
 
 TEST_JSON_URL = os.path.join(
@@ -24,6 +26,7 @@ TEST_IMAGE_LINK = 'https://www.python.org/static/img/python-logo@2x.png'
 class testWWW(unittest.TestCase):
     """Test."""
 
+    @pytest.mark.slow
     def test_read(self):
         """Test."""
         data = www.read(TEST_JSON_URL)
@@ -55,6 +58,7 @@ class testWWW(unittest.TestCase):
             file_name,
         )
 
+    @pytest.mark.slow
     def test_exists(self):
         """Test."""
         self.assertTrue(www.exists('https://www.python.org/'))
