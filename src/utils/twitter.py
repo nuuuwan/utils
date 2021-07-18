@@ -80,7 +80,10 @@ class Twitter:
         log.info('profile_image_file: %s', str(profile_image_file))
         log.info('banner_image_file: %s', str(banner_image_file))
 
-        if len(tweet_text) > MAX_LEN_TWEET:
+        n_tweet_text = len(tweet_text)
+        log.info('Tweet Length = %d', n_tweet_text)
+
+        if n_tweet_text > MAX_LEN_TWEET:
             log.error('Tweet text is too long. Not tweeting.')
             return
 

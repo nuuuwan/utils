@@ -24,3 +24,4 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 * Make parse_int and parse_float more general
 * Added dict_list_get_values_for_key
 * Added get_date
+* Add logging to twitter
