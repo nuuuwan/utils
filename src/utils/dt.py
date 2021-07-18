@@ -1,4 +1,5 @@
 """Utils related to simple data types"""
+import re
 
 
 def parse_float(float_str, default=None):
@@ -23,9 +24,9 @@ def parse_int(int_str, default=None):
 
 def to_kebab(s):
     """Convert string to kebab case."""
-    return s.replace(' ', '-').lower()
+    return re.sub(r'(\s|_)+', '-', s).lower()
 
 
 def to_snake(s):
     """Convert string to snakes case."""
-    return s.replace(' ', '_').lower()
+    return re.sub(r'(\s|-)+', '_', s).lower()
