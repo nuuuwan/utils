@@ -44,6 +44,11 @@ def dict_get(_dict, keys):
     return [_dict[key] for key in keys]
 
 
+def dict_list_get_values_for_key(dict_list, key):
+    """Get values for keys."""
+    return [d[key] for d in dict_list]
+
+
 def dict_set(_dict, keys, values):
     """Set dict values by keys."""
     for key, value in zip(keys, values):

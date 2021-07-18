@@ -38,3 +38,10 @@ class TestDS(unittest.TestCase):
                 }
             ),
         )
+
+    def dict_list_get_values_for_key(self):
+        """Test."""
+        self.assertEqual(
+            ds.dict_list_get_values_for_key(TEST_DICT_LIST, 'age'),
+            ['1', '2'],
+        )
