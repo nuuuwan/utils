@@ -19,3 +19,13 @@ def parse_int(int_str, default=None):
         return (int)(int_str)
     except ValueError:
         return default
+
+
+def to_kebab(s):
+    """Convert string to kebab case."""
+    return s.replace(' ', '-').lower()
+
+
+def to_snake(s):
+    """Convert string to snakes case."""
+    return s.replace(' ', '-').lower()
