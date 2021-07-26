@@ -9,7 +9,6 @@ with open('README.md') as fin:
     long_description = fin.read()
 
 IS_RELEASE = True
-
 MAJOR, MINOR, PATCH = 1, 0, 24
 
 if IS_RELEASE:
