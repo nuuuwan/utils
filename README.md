@@ -27,3 +27,4 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 * Added logging to twitter
 
 ## 1.0.24 (PRE-RELEASE ONLY)
+* [2021-07-26 08:38PM] Extend timeout in www.read

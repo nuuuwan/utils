@@ -79,10 +79,10 @@ def download_binary(url, file_name, cached=True):
     logging.debug('Wrote %dB from %s to %s', len(content), url, file_name)
 
 
-def exists(url):
+def exists(url, timeout=1):
     """Check if URL exists."""
     try:
-        response = requests.head(url, timeout=1)
+        response = requests.head(url, timeout=timeout)
         # pylint: disable=E1101
         return response.status_code == requests.codes.ok
     except requests.exceptions.ConnectTimeout:
