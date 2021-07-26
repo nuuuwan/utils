@@ -24,7 +24,10 @@ def parse_int(int_str, default=None):
 
 def to_kebab(s):
     """Convert string to kebab case."""
-    return re.sub(r'(\s|_)+', '-', s).lower()
+    s = re.sub(r'[^a-zA-Z0-9]+', ' ', s)
+    s = re.sub(r'\s+', ' ', s)
+    s = s.replace(' ', '-')
+    return s.lower()
 
 
 def to_snake(s):
