@@ -27,3 +27,4 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 * [2021-07-26 08:38PM] Extend timeout in www.read
 * [2021-07-26 08:45PM] release 1.0.24
 * [2021-07-27 06:25AM] Update setup.py
+* [2021-07-27 06:26AM] fix unittests
