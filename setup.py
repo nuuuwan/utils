@@ -8,8 +8,8 @@ long_description = ''
 with open('README.md') as fin:
     long_description = fin.read()
 
-IS_RELEASE = True
-MAJOR, MINOR, PATCH = 1, 0, 24
+IS_RELEASE = False
+MAJOR, MINOR, PATCH = 1, 0, 25
 
 if IS_RELEASE:
     version = '%d.%d.%d' % (MAJOR, MINOR, PATCH)
