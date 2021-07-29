@@ -19,7 +19,7 @@ jobs:
         python-version: '3.7'
 
     - name: Test with nuuuwan/python-repo-action
-      uses: nuuuwan/python-repo-action@v6
+      uses: nuuuwan/python-repo-action@v7
 
     - name: Install dependencies
       run: |
