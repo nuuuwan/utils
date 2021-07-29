@@ -1,11 +1,12 @@
+# Auto Generated
 area
 bs4
+geopandas
+matplotlib
+pandas
+pillow
 psutil
 requests
 selenium
-tweepy
-pandas
 shapely
-geopandas
-pillow
-matplotlib
+tweepy

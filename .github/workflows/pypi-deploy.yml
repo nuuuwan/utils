@@ -1,6 +1,9 @@
 name: Deploy to PyPi
 
-on: workflow_dispatch
+on:
+  push:
+    tags:
+       - '*'
 
 jobs:
   deploy:
@@ -20,25 +23,12 @@ jobs:
     - name: Test
       uses: nuuuwan/python-repo-test@v1
 
-    - name: "Get version"
-      id: get_version
-      run: VERSION=$(python ./setup.py --version) && echo "::set-output name=VERSION::$VERSION" && echo "VERSION = $VERSION"
-
     - name: Build package
       run: |
         export PYTHONPATH="$PYTHONPATH:./src"
         python -m build
 
-    - name: Publish package to Test PyPI
-      if: contains(steps.get_version.outputs.VERSION, '0000')
-      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
-      with:
-        repository_url: https://test.pypi.org/legacy/
-        user: ${{ secrets.TEST_PYPI_USERNAME }}
-        password: ${{ secrets.TEST_PYPI_PASSWORD }}
-
     - name: Publish package to PyPI
-      if: contains(steps.get_version.outputs.VERSION, '0000') == false
       uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:
         user: ${{ secrets.PYPI_USERNAME }}
