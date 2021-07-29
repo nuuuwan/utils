@@ -37,3 +37,4 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 * [2021-07-29 11:11AM] Update pypi-deploy
 * [2021-07-29 03:19PM] Update setup.py version format
 * [2021-07-29 03:20PM] Update setup.py version format2
+## 1.0.26 (PRE-RELEASE)
