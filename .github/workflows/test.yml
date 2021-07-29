@@ -14,12 +14,12 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Set up Python
-      uses: nuuuwan/python-repo-action@v5
-
-    - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.7'
+
+    - name: Test with nuuuwan/python-repo-action@v5
+      uses: nuuuwan/python-repo-action@v5
 
     - name: Install dependencies
       run: |
