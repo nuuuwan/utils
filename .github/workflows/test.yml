@@ -19,4 +19,4 @@ jobs:
         python-version: '3.7'
 
     - name: Test
-      uses: nuuuwan/python-repo-test@v7
+      uses: nuuuwan/python-repo-test@v1

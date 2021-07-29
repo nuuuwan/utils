@@ -31,3 +31,4 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 * [2021-07-29 09:29AM] Tweeting Tools
 * [2021-07-29 10:08AM] Test python-repo-action
 * [2021-07-29 10:49AM] Use nuuuwan/python-repo-test
+* [2021-07-29 10:54AM] use-nuuuwan-python-repo-test change to v1
