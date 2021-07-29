@@ -84,7 +84,10 @@ class Twitter:
         log.info('Tweet Length = %d', n_tweet_text)
 
         if n_tweet_text > MAX_LEN_TWEET:
-            log.error('Tweet text is too long. Not tweeting.')
+            log.error(
+                'Tweet text is too long (%d chars). Not tweeting.',
+                n_tweet_text,
+            )
             return
 
         if len(status_image_files) > MAX_MEDIA_FILES:
