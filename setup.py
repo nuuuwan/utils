@@ -3,8 +3,7 @@
 import setuptools
 
 DIST_NAME = 'utils'
-MAJOR, MINOR, PATCH = 1, 0, 25
-version = '%d.%d.%d' % (MAJOR, MINOR, PATCH)
+version = "1.0.25"
 
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
