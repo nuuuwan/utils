@@ -12,31 +12,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: "Get version"
-      id: get_version
-      run: VERSION=$(python ./setup.py --version) && echo "::set-output name=VERSION::$VERSION" && echo "VERSION = $VERSION"
-
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.7'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        pip install build
+    - name: Test
+      uses: nuuuwan/python-repo-test@v7
 
-    - name: Lint with flake8
-      run: |
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-
-    - name: Test with pytest
-      run: |
-        export PYTHONPATH="$PYTHONPATH:./src"
-        pytest
+    - name: "Get version"
+      id: get_version
+      run: VERSION=$(python ./setup.py --version) && echo "::set-output name=VERSION::$VERSION" && echo "VERSION = $VERSION"      
 
     - name: Build package
       run: |
