@@ -5,12 +5,53 @@ import logging
 
 import tweepy
 
-from utils import twitter_helpers
+from utils import timex
 
 MAX_LEN_TWEET = 280
 MAX_MEDIA_FILES = 4
 log = logging.getLogger('twitter-wrapper')
 logging.basicConfig(level=logging.INFO)
+
+
+def _update_status(api, tweet_text, media_ids, in_reply_to_status_id):
+    if len(media_ids) > 0 and in_reply_to_status_id:
+        return api.update_status(
+            tweet_text,
+            media_ids=media_ids,
+            in_reply_to_status_id=in_reply_to_status_id,
+        )
+
+    if len(media_ids) > 0:
+        return api.update_status(tweet_text, media_ids=media_ids)
+
+    if in_reply_to_status_id:
+        return api.update_status(
+            tweet_text, in_reply_to_status_id=in_reply_to_status_id
+        )
+
+    return api.update_status(tweet_text)
+
+
+def _upload_media(api, image_files):
+    media_ids = []
+    for image_file in image_files:
+        media_id = api.media_upload(image_file).media_id
+        media_ids.append(media_id)
+        log.info(
+            'Uploaded status image %s to twitter as %s',
+            image_file,
+            media_id,
+        )
+    return media_ids
+
+
+def _update_profile_description(api):
+    date_with_timezone = timex.format_current_date_with_timezone()
+    description = 'Automatically updated at {date_with_timezone}'.format(
+        date_with_timezone=date_with_timezone
+    )
+    api.update_profile(description=description)
+    log.info('Updated profile description to: %s', description)
 
 
 class Twitter:
@@ -69,6 +110,7 @@ class Twitter:
         update_user_profile=False,
         profile_image_file=None,
         banner_image_file=None,
+        in_reply_to_status_id=None,
     ):
         """Tweet."""
         if status_image_files is None:
@@ -98,11 +140,13 @@ class Twitter:
             log.error('Missing API. Cannot tweet')
             return False
 
-        media_ids = twitter_helpers._upload_media(self.api, status_image_files)
-        twitter_helpers._update_status(self.api, tweet_text, media_ids)
+        media_ids = _upload_media(self.api, status_image_files)
+        update_status_result = _update_status(
+            self.api, tweet_text, media_ids, in_reply_to_status_id
+        )
 
         if update_user_profile:
-            twitter_helpers._update_profile_description(self.api)
+            _update_profile_description(self.api)
 
         if profile_image_file:
             self.api.update_profile_image(profile_image_file)
@@ -112,4 +156,4 @@ class Twitter:
             self.api.update_profile_banner(banner_image_file)
             log.info('Update profile banner image to %s', banner_image_file)
 
-        return True
+        return update_status_result

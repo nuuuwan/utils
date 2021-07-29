@@ -38,3 +38,4 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 * [2021-07-29 03:19PM] Update setup.py version format
 * [2021-07-29 03:20PM] Update setup.py version format2
 ## 1.0.26 (PRE-RELEASE)
+* [2021-07-29 04:46PM] Add thread support for tweets
