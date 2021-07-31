@@ -37,6 +37,9 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 * [2021-07-29 11:11AM] Update pypi-deploy
 * [2021-07-29 03:19PM] Update setup.py version format
 * [2021-07-29 03:20PM] Update setup.py version format2
+
 ## 1.0.26 (PRE-RELEASE)
 * [2021-07-29 04:46PM] Add thread support for tweets
+
 ## 1.0.27 (PRE-RELEASE)
+* [2021-07-31 10:15AM] Ignore links in tweet block

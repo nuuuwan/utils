@@ -122,15 +122,20 @@ class Twitter:
         log.info('profile_image_file: %s', str(profile_image_file))
         log.info('banner_image_file: %s', str(banner_image_file))
 
-        n_tweet_text = len(tweet_text)
-        log.info('Tweet Length = %d', n_tweet_text)
+        tweet_text_for_length_list = []
+        for tweet_text_line in tweet_text.split('\n'):
+            if 'http' not in tweet_text_line:
+                tweet_text_for_length_list.append(tweet_text_line)
+        n_tweet_text = len('\n'.join(tweet_text_for_length_list))
 
         if n_tweet_text > MAX_LEN_TWEET:
             log.error(
                 'Tweet text is too long (%d chars). Not tweeting.',
                 n_tweet_text,
             )
-            return
+            return None
+        else:
+            log.info('Tweet Length: %d', n_tweet_text)
 
         if len(status_image_files) > MAX_MEDIA_FILES:
             log.warning('Too many (%d) status image files. Truncating.')
@@ -138,7 +143,7 @@ class Twitter:
 
         if not self.api:
             log.error('Missing API. Cannot tweet')
-            return False
+            return None
 
         media_ids = _upload_media(self.api, status_image_files)
         update_status_result = _update_status(
