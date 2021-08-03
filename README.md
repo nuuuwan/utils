@@ -44,4 +44,5 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 ### 1.0.27
 * [2021-07-31 10:15AM] Ignore links in tweet block
 
-### 1.0.28 (PRE-RELEASE)
+### 1.0.28 
+* [2021-08-03 08:15AM] Add twitter search for entity

@@ -6,6 +6,7 @@ import logging
 import tweepy
 
 from utils import timex
+from utils.cache import cache
 
 MAX_LEN_TWEET = 280
 MAX_MEDIA_FILES = 4
@@ -162,3 +163,26 @@ class Twitter:
             log.info('Update profile banner image to %s', banner_image_file)
 
         return update_status_result
+
+    def search(self, query_text):
+        if not self.api:
+            log.error('Missing API. Cannot search')
+            return None
+
+        @cache('utils.twitter', timex.SECONDS_IN.YEAR)
+        def fallback(query_text=query_text):
+            log.info('Inner call')
+            results_list = self.api.search_users(query_text)
+            if not results_list:
+                return []
+            return list(
+                map(
+                    lambda user: {
+                        'id': user.id,
+                        'screen_name': user.screen_name,
+                        'name': user.name,
+                    },
+                    results_list,
+                )
+            )
+        return fallback(query_text)
