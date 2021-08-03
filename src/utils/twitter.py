@@ -185,4 +185,5 @@ class Twitter:
                     results_list,
                 )
             )
+
         return fallback(query_text)
