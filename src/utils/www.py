@@ -24,7 +24,9 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 
 def _read_helper(url, cached=True):
-    return _read_helper_cached(url) if cached else _read_helper_nocached(url)
+    if cached:
+        return _read_helper_cached(url)
+    return _read_helper_nocached(url)
 
 
 @cache('utils.www', timex.SECONDS_IN.HOUR)
@@ -42,7 +44,18 @@ def _read_helper_nocached(url):
         return None
 
 
-def _read_helper_selenium(url):
+def _read_helper_selenium(url, cached=True):
+    if cached:
+        return _read_helper_selenium_cached(url)
+    return _read_helper_selenium_noncached(url)
+
+
+@cache('utils.www', timex.SECONDS_IN.HOUR)
+def _read_helper_selenium_cached(url):
+    return _read_helper_selenium_noncached(url)
+
+
+def _read_helper_selenium_noncached(url):
     browser = Browser(url)
     for _ in range(0, SELENIUM_SCROLL_REPEATS):
         browser.scroll_to_bottom()
@@ -55,7 +68,7 @@ def _read_helper_selenium(url):
 def read(url, cached=True, use_selenium=False):
     """Read url."""
     if use_selenium:
-        return _read_helper_selenium(url)
+        return _read_helper_selenium(url, cached)
     content = _read_helper(url, cached)
     return content.decode(ENCODING) if content else None
 
