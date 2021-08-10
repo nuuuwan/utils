@@ -47,3 +47,5 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 ### 1.0.28 
 * [2021-08-03 08:15AM] Add twitter search for entity
 ### 1.0.29 (PRE-RELEASE)
+* [2021-08-10 04:07PM] Add Caching to Selenium www.read
+  * Updated README
