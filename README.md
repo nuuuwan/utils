@@ -55,3 +55,5 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 * [2021-08-18 03:54PM] cache - set custom dir
   * Updated README
   * Pre-Merge
+### 1.0.31 (PRE-RELEASE)
+  * PRE-RELEASE 1.0.31
