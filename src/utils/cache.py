@@ -2,13 +2,13 @@
 import json
 from functools import wraps
 
-from utils.cache_impl import _Cache
-
-CACHE_DIR = '/tmp/cache'
-CACHE_DEFAULT_TIMEOUT = 60
+from utils.cache_impl import (DEFAULT_CACHE_NAME, DEFAULT_DIR, DEFAULT_TIMEOUT,
+                              _Cache)
 
 
-def cache(cache_name, timeout=CACHE_DEFAULT_TIMEOUT):
+def cache(
+    cache_name=DEFAULT_CACHE_NAME, timeout=DEFAULT_TIMEOUT, dir=DEFAULT_DIR
+):
     """Wrap class Cache as decorator."""
 
     def cache_inner(func):
@@ -26,7 +26,7 @@ def cache(cache_name, timeout=CACHE_DEFAULT_TIMEOUT):
             def fallback():
                 return func(*args, **kwargs)
 
-            return _Cache(cache_name, timeout).get(cache_key, fallback)
+            return _Cache(cache_name, timeout, dir).get(cache_key, fallback)
 
         return cache_inner_inner
 

@@ -6,27 +6,40 @@ import time
 
 from utils import filex, hashx, jsonx
 
-CACHE_DIR = '/tmp/cache'
-CACHE_DEFAULT_TIMEOUT = 60
+DEFAULT_TIMEOUT = 60
+DEFAULT_DIR = '/tmp/cache'
+DEFAULT_CACHE_NAME = 'new_cache'
 
 
 class _Cache:
     """Implements base cache logic."""
 
-    __dir = '/tmp/cache'
     __store = {}
     __lock_map_lock = threading.Lock()
     __lock_map = {}
-    __cache_name = 'new_cache'
 
-    def __init__(self, cache_name, timeout=CACHE_DEFAULT_TIMEOUT):
+    __dir = DEFAULT_DIR
+    __cache_name = DEFAULT_CACHE_NAME
+    __timeout = DEFAULT_TIMEOUT
+
+    def __init__(
+        self,
+        cache_name=None,
+        timeout=None,
+        dir=None,
+    ):
         """Implement class constructor."""
-        self.__cache_name = cache_name
-        self.__timeout = timeout
+        if cache_name is not None:
+            self.__cache_name = cache_name
+        if timeout is not None:
+            self.__timeout = timeout
+        if dir is not None:
+            self.__dir = dir
+
         os.system('mkdir -p %s' % self.__get_dir())
 
     def __get_dir(self):
-        return '%s/%s' % (CACHE_DIR, self.__cache_name)
+        return '%s/%s' % (self.__dir, self.__cache_name)
 
     def __get_lock(self, key):
         # pylint: disable=R1732
