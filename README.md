@@ -57,3 +57,4 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
   * Pre-Merge
 ### 1.0.31 (PRE-RELEASE)
   * PRE-RELEASE 1.0.31
+  * Updated setup and workflows
