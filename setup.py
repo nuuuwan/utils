@@ -3,11 +3,11 @@
 import setuptools
 
 DIST_NAME = 'utils'
-version = "1.0.31"
+VERSION = "1.0.32"
 
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
-    version=version,
+    version=VERSION,
     author="Nuwan I. Senaratna",
     author_email="nuuuwan@gmail.com",
     description="Simple extensions to the core python libraries.",

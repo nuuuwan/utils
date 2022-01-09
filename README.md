@@ -58,3 +58,4 @@ See also [Older Releases](OLDER_RELEASES.md) and [Wish-list](WISHLIST.md)
 ### 1.0.31 (PRE-RELEASE)
   * PRE-RELEASE 1.0.31
   * Updated setup and workflows
+  *  [2022-01-09 07:49PM] Fixed parse_int bug

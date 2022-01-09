@@ -17,7 +17,7 @@ def parse_int(int_str, default=None):
     int_str = int_str.replace(',', '')
     int_str = int_str.replace('-', '0')
     try:
-        return (int)(int_str)
+        return (int)((float)(int_str))
     except ValueError:
         return default
 

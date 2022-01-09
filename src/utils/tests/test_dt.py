@@ -26,7 +26,7 @@ class TestDT(unittest.TestCase):
             ['0', 0],
             ['123', 123],
             ['123abc', None],
-            ['123.456', None],
+            ['123.456', 123],
         ]:
             self.assertEqual(
                 dt.parse_int(input),
