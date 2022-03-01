@@ -33,3 +33,11 @@ def to_kebab(s):
 def to_snake(s):
     """Convert string to snakes case."""
     return re.sub(r'(\s|-)+', '_', s).lower()
+
+
+def snake_to_camel(s):
+    return s.replace('_', ' ').title().replace(' ', '')
+
+
+def camel_to_snake(s):
+    return re.sub(r'(?<!^)(?=[A-Z])', '_', s).lower()

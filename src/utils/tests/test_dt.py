@@ -3,6 +3,12 @@ import unittest
 
 from utils import dt
 
+SNAKE_AND_CAMEL_EXAMPLES = [
+    ['this_is_a_test', 'ThisIsATest'],
+    ['123', '123'],
+    ['123_testing123', '123Testing123'],
+]
+
 
 class TestDT(unittest.TestCase):
     """Test."""
@@ -54,5 +60,19 @@ class TestDT(unittest.TestCase):
         ]:
             self.assertEqual(
                 dt.to_kebab(input),
+                expected_output,
+            )
+
+    def test_snake_to_camel(self):
+        for [input, expected_output] in SNAKE_AND_CAMEL_EXAMPLES:
+            self.assertEqual(
+                dt.snake_to_camel(input),
+                expected_output,
+            )
+
+    def test_camel_to_snake(self):
+        for [expected_output, input] in SNAKE_AND_CAMEL_EXAMPLES:
+            self.assertEqual(
+                dt.camel_to_snake(input),
                 expected_output,
             )
