@@ -1,7 +1,7 @@
 import xml.dom.minidom as minidom
 import xml.etree.ElementTree as ElementTree
 
-from utils import filex, dt
+from utils import dt, filex
 
 FONT_FAMILY = 'Gill Sans'
 DEFAULT_ATTRIB_MAP = {
