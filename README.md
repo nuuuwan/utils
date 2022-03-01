@@ -14,6 +14,8 @@ pip install utils-nuuuwan
 
 ### 1.0.36 (NOT RELEASED AS YET)
 
+* Added printx with printing utils
+
 ### 1.0.35
 
 * Added xmlx, which contains various utils for manipulating xml
