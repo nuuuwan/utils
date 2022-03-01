@@ -14,6 +14,8 @@ pip install utils-nuuuwan
 
 ### 1.0.35 (NOT RELEASED AS YET)
 
+* Added xmlx, which contains various utils for manipulating xml
+
 ### 1.0.34
 (No Release)
 
