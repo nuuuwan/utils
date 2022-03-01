@@ -16,6 +16,7 @@ pip install utils-nuuuwan
 
 * Added printx with printing utils
 * Added snake_to_camel and camel_to_snake to dt
+* Addex zipx - with basic Zip utils.
 
 ### 1.0.35
 
