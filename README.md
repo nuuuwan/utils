@@ -15,6 +15,7 @@ pip install utils-nuuuwan
 ### 1.0.36 (NOT RELEASED AS YET)
 
 * Added printx with printing utils
+* Added snake_to_camel and camel_to_snake to dt
 
 ### 1.0.35
 
