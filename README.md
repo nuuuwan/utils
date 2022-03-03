@@ -14,6 +14,8 @@ pip install utils-nuuuwan
 
 ### 1.0.37 (NOT RELEASED AS YET)
 
+* Added basic latlng container
+
 ### 1.0.36
 
 * Added printx with printing utils
