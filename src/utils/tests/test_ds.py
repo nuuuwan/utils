@@ -45,3 +45,8 @@ class TestDS(unittest.TestCase):
             ds.dict_list_get_values_for_key(TEST_DICT_LIST, 'age'),
             ['1', '2'],
         )
+
+    def test_get_count(self):
+        int_list = [(i + 1) for i in range(0, 10000)]
+        key_to_count = ds.get_count(int_list, lambda i: [i % 3])
+        self.assertEqual({0: 3333, 1: 3334, 2: 3333}, key_to_count)

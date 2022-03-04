@@ -15,6 +15,7 @@ pip install utils-nuuuwan
 ### 1.0.37 (NOT RELEASED AS YET)
 
 * Added basic latlng container
+* Added ds.get_count
 
 ### 1.0.36
 
