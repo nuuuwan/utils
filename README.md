@@ -12,6 +12,8 @@ pip install utils-nuuuwan
 
 ## Version History
 
+### 1.0.38 (NEXT RELEASE)
+
 ### 1.0.37 (LATEST RELEASE)
 
 * Added defaults to colorx
