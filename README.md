@@ -12,8 +12,9 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.0.37 (NOT RELEASED AS YET)
+### 1.0.37 (LATEST RELEASE)
 
+* Added defaults to colorx
 * Added colorx with various random color generators
 * Added basic latlng container
 * Added ds.get_count
