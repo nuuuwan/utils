@@ -14,6 +14,8 @@ pip install utils-nuuuwan
 
 ### 1.0.38 (NEXT RELEASE)
 
+* Fixed propogate #BUG in logx.get_logger
+
 ### 1.0.37 (LATEST RELEASE)
 
 * Added defaults to colorx
