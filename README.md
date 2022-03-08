@@ -14,6 +14,7 @@ pip install utils-nuuuwan
 
 ### 1.0.38 (NEXT RELEASE)
 
+* Added timezone logic to timex.format_time and parse_time
 * Removed StopWatch
 * Fixed propogate #BUG in logx.get_logger
 * Added xmlx.render_link_styles
