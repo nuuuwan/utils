@@ -9,6 +9,7 @@ FORMAT_DATE_ID = '%Y%m%d'
 TIMEZONE_OFFSET_LK = -19_800
 TIMEZONE_OFFSET_GMT = 0
 
+
 class SECONDS_IN:
     """Units of time."""
     MINUTE = 60
