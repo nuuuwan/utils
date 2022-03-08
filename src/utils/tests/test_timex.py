@@ -1,30 +1,44 @@
 """Test."""
-import time
 import unittest
-
-import pytest
 
 from utils import timex
 
-TIMEZONE_OFFSET_LK = 19800
 PARSE_FORMAT_TEST_CASES = [
-    ['2021-01-01', '%Y-%m-%d', 1_609_439_400],
-    ['2021-01-01 12:34:56', '%Y-%m-%d %H:%M:%S', 1_609_484_696],
-    ['April 01, 2020', '%B %d, %Y', 1_585_679_400],
-    ['February 29, 2021', '%B %d, %Y', None],
+    [
+        '2021-01-01',
+        '%Y-%m-%d',
+        timex.TIMEZONE_OFFSET_LK,
+        1_609_439_400,
+    ],
+    [
+        '2021-01-01',
+        '%Y-%m-%d',
+        timex.TIMEZONE_OFFSET_GMT,
+        1_609_439_400 + 19_800,
+    ],
+    [
+        '2021-01-01 12:34:56',
+        '%Y-%m-%d %H:%M:%S',
+        timex.TIMEZONE_OFFSET_LK,
+        1_609_484_696,
+    ],
+    [
+        'April 01, 2020',
+        '%B %d, %Y',
+        timex.TIMEZONE_OFFSET_LK,
+        1_585_679_400,
+    ],
+    [
+        'February 29, 2021',
+        '%B %d, %Y',
+        timex.TIMEZONE_OFFSET_LK,
+        None,
+    ],
 ]
 
 
 class TestTime(unittest.TestCase):
     """Test."""
-
-    @pytest.mark.slow
-    def test_stop_watch(self):
-        """Test."""
-        stopwatch = timex.StopWatch()
-        time.sleep(1)
-        delta_t = stopwatch.stop()
-        self.assertTrue(1000 < delta_t < 1100)
 
     def test_get_timezone(self):
         """Test."""
@@ -39,33 +53,33 @@ class TestTime(unittest.TestCase):
 
     def test_parse_time(self):
         """Test."""
-        timezone_offset = TIMEZONE_OFFSET_LK + time.timezone
         for [
             time_str,
             time_format,
+            timezone,
             expected_unixtime,
         ] in PARSE_FORMAT_TEST_CASES:
             if expected_unixtime:
                 self.assertEqual(
-                    expected_unixtime + timezone_offset,
-                    timex.parse_time(time_str, time_format),
+                    expected_unixtime,
+                    timex.parse_time(time_str, time_format, timezone),
                 )
             else:
                 with self.assertRaises(ValueError):
-                    timex.parse_time(time_str, time_format)
+                    timex.parse_time(time_str, time_format, timezone)
 
     def test_format_time(self):
         """Test."""
-        timezone_offset = TIMEZONE_OFFSET_LK + time.timezone
         for [
             expected_time_str,
             time_format,
+            timezone,
             unixtime,
         ] in PARSE_FORMAT_TEST_CASES:
             if unixtime:
                 self.assertEqual(
                     expected_time_str,
-                    timex.format_time(unixtime + timezone_offset, time_format),
+                    timex.format_time(unixtime, time_format, timezone),
                 )
 
     def test_seconds_in(self):
