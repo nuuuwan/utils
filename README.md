@@ -12,7 +12,7 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.0.29 (NEXT RELEASE)
+### 1.0.39 (NEXT RELEASE)
 
 ### 1.0.38 (LATEST RELEASE)
 
