@@ -26,6 +26,10 @@ DEFAULT_ATTRIB_MAP = {
 }
 
 
+def render_link_styles(css_file='styles.css'):
+    return _('link', None, {'rel': 'stylesheet', 'href': css_file})
+
+
 def style(**kwargs):
     style_content = ''.join(list(map(
         lambda item: '%s:%s;' % (dt.to_kebab(str(item[0])), str(item[1])),

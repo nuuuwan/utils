@@ -15,6 +15,7 @@ pip install utils-nuuuwan
 ### 1.0.38 (NEXT RELEASE)
 
 * Fixed propogate #BUG in logx.get_logger
+* Added xmlx.render_link_styles
 
 ### 1.0.37 (LATEST RELEASE)
 
