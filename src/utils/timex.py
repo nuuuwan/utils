@@ -22,6 +22,12 @@ class SECONDS_IN:
     YEAR = 365.25 * 86400
 
 
+class AVG_DAYS_IN:
+    WEEK = 7
+    MONTH = 365.25 / 12
+    YEAR = 365.25
+
+
 def get_timezone_offset(timezone=None):
     if timezone is None:
         return 0
