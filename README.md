@@ -12,14 +12,16 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.0.38 (NEXT RELEASE)
+### 1.0.29 (NEXT RELEASE)
+
+### 1.0.38 (LATEST RELEASE)
 
 * Added timezone logic to timex.format_time and parse_time
 * Removed StopWatch
 * Fixed propogate #BUG in logx.get_logger
 * Added xmlx.render_link_styles
 
-### 1.0.37 (LATEST RELEASE)
+### 1.0.37
 
 * Added defaults to colorx
 * Added colorx with various random color generators
