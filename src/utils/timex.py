@@ -62,6 +62,10 @@ def get_date_id(unixtime=None):
     return format_time(unixtime, FORMAT_DATE_ID)
 
 
+def parse_date_id(date_id):
+    return parse_time(date_id, FORMAT_DATE_ID)
+
+
 def get_date(unixtime=None):
     """Get date id."""
     if unixtime is None:
