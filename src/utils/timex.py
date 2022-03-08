@@ -6,6 +6,8 @@ DEFAULT_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 FORMAT_DATE = '%Y-%m-%d'
 FORMAT_DATE_ID = '%Y%m%d'
 
+TIMEZONE_OFFSET_LK = -19_800
+TIMEZONE_OFFSET_GMT = 0
 
 class SECONDS_IN:
     """Units of time."""
