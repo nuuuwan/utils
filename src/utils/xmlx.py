@@ -11,18 +11,6 @@ DEFAULT_ATTRIB_MAP = {
     'svg': {
         'xmlns': 'http://www.w3.org/2000/svg',
     },
-    'text': {
-        'font-family': FONT_FAMILY,
-        'text-anchor': 'middle',
-        'fill': '#000000',
-        'stroke': 'none',
-    },
-    'text-gray': {
-        'font-family': FONT_FAMILY,
-        'text-anchor': 'middle',
-        'fill': '#c0c0c0',
-        'stroke': 'none',
-    },
 }
 
 
