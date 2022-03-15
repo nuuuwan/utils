@@ -11,7 +11,7 @@ def get_level_color(levelno):
         logging.ERROR: textColor.RED,
         logging.WARNING: textColor.YELLOW,
         logging.INFO: textColor.GREEN,
-        logging.DEBUG: textColor.WHITE,
+        logging.DEBUG: '\033[1;30m',
         logging.NOTSET: textColor.WHITE,
     }.get(levelno, textColor.WHITE)
 

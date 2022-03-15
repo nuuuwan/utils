@@ -15,6 +15,7 @@ pip install utils-nuuuwan
 ### 1.0.39 (NEXT RELEASE)
 
 * Removed text from DEFAULT_ATTRIB_MAP
+* Changed logging.DEBUG Color (easier on the eye)
 
 ### 1.0.38 (LATEST RELEASE)
 
