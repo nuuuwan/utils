@@ -5,6 +5,7 @@ import time
 DEFAULT_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 FORMAT_DATE = '%Y-%m-%d'
 FORMAT_DATE_ID = '%Y%m%d'
+FORMAT_TIME_ID = '%Y%m%d-%H%M%S'
 
 TIMEZONE_OFFSET_LK = -19_800
 TIMEZONE_OFFSET_GMT = 0
@@ -79,6 +80,13 @@ def get_date_id(unixtime=None, timezone=None,):
     if unixtime is None:
         unixtime = get_unixtime()
     return format_time(unixtime, FORMAT_DATE_ID, timezone)
+
+
+def get_time_id(unixtime=None, timezone=None,):
+    """Get date id."""
+    if unixtime is None:
+        unixtime = get_unixtime()
+    return format_time(unixtime, FORMAT_TIME_ID, timezone)
 
 
 def parse_date_id(date_id, timezone=None):

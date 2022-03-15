@@ -16,6 +16,7 @@ pip install utils-nuuuwan
 
 * Removed text from DEFAULT_ATTRIB_MAP
 * Changed logging.DEBUG Color (easier on the eye)
+* Added get_time_id
 
 ### 1.0.38 (LATEST RELEASE)
 
