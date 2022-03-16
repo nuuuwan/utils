@@ -13,7 +13,7 @@ pip install utils-nuuuwan
 ## Version History
 
 ### 1.0.40 (NEXT RELEASE)
-
+* Changed logging.DEBUG color to  textColor.BLUE (Gray was not working on some consoles)
 
 ### 1.0.39 (LATEST RELEASE)
 
