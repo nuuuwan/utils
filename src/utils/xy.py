@@ -21,38 +21,36 @@ def get_bbox(xy_list):
     y_span = max_y - min_y
 
     return [
-        min_x,
-        max_x,
-        min_y,
-        max_y,
-        x_span,
-        y_span,
+        [min_x, min_y],
+        [max_x, max_y],
+        [x_span, y_span],
     ]
 
 
-def get_func_transform(WIDTH, HEIGHT, PADDING, xy_list):
+def get_func_transform(width, height, padding, xy_list):
     [
-        min_x,
-        max_x,
-        min_y,
-        max_y,
-        x_span,
-        y_span,
+        [min_x, min_y],
+        [max_x, max_y],
+        [x_span, y_span],
     ] = get_bbox(xy_list)
 
-    r = (x_span / HEIGHT) / (y_span / WIDTH)
+    padded_width, padded_height = width - padding * 2, height - padding * 2
+    r = (x_span / padded_width) / (y_span / padded_height)
     if r > 1:
-        WIDTH /= r
+        padded_height /= r
     else:
-        HEIGHT *= r
+        padded_width *= r
+
+    padding_width = (width - padded_width) / 2
+    padding_height = (height - padded_height) / 2
 
     def func_transform(xy):
         [x, y] = xy
         px = (x - min_x) / x_span
         py = (y - min_y) / y_span
 
-        x = (px) * (WIDTH - PADDING * 2) + PADDING + WIDTH
-        y = (1 - py) * (HEIGHT - PADDING * 2) + PADDING
+        x = (px) * padded_width + padding_width
+        y = (1 - py) * padded_height + padding_height
         return [x, y]
 
     return func_transform
