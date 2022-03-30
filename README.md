@@ -14,6 +14,7 @@ pip install utils-nuuuwan
 
 ### 1.0.40 (NEXT RELEASE)
 * Changed logging.DEBUG color to  textColor.BLUE (Gray was not working on some consoles)
+* Added xy with get_bbox and get_func_transform
 
 ### 1.0.39 (LATEST RELEASE)
 
