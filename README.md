@@ -12,17 +12,17 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.0.40 (NEXT RELEASE)
+### 1.0.40 (LATEST RELEASE)
 * Changed logging.DEBUG color to  textColor.BLUE (Gray was not working on some consoles)
 * Added xy with get_bbox and get_func_transform, latlng_to_xy, xy_to_latlng
 
-### 1.0.39 (LATEST RELEASE)
+### 1.0.39
 
 * Removed text from DEFAULT_ATTRIB_MAP
 * Changed logging.DEBUG Color (easier on the eye)
 * Added get_time_id
 
-### 1.0.38 (LATEST RELEASE)
+### 1.0.38
 
 * Added timezone logic to timex.format_time and parse_time
 * Removed StopWatch
