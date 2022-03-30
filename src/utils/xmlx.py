@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ElementTree
 
 from utils import dt, filex
 
-FONT_FAMILY = 'Gill Sans'
+FONT_FAMILY = 'sans-serif'
 DEFAULT_ATTRIB_MAP = {
     'html': {
         'style': 'font-family: %s;' % FONT_FAMILY,
