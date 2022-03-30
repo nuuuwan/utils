@@ -38,7 +38,10 @@ class _:
 
         attrib = DEFAULT_ATTRIB_MAP.get(tag, {})
         attrib.update(attrib_custom)
-        attrib = dict(zip(attrib.keys(), list(map(str, attrib.values()))))
+        attrib = dict(zip(
+            list(map(lambda k: k.replace('_', '-'), attrib.keys())),
+            list(map(str, attrib.values()))),
+        )
 
         element = ElementTree.Element(tag_real)
         element.attrib = attrib
