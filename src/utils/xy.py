@@ -1,3 +1,14 @@
+
+def latlng_to_xy(latlng):
+    lat, lng = latlng
+    return [lng, lat]
+
+
+def xy_to_latlng(xy):
+    x, y = xy
+    return [y, x]
+
+
 def get_bbox(xy_list):
     max_x, max_y = min_x, min_y = xy_list[0]
     for [x, y] in xy_list[1:]:
