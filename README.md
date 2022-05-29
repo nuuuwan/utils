@@ -12,7 +12,13 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.0.40 (LATEST RELEASE)
+### 1.1.0 (LATEST RELEASE)
+
+Version 1.1 will start replacing and deprecating 1.0.
+
+* Added CSVFile, File, JSONFile, TSVFile, XSVFile which togther should replace filex, jsonx, and tsv.
+
+### 1.0.40
 * Changed logging.DEBUG color to  textColor.BLUE (Gray was not working on some consoles)
 * Added xy with get_bbox and get_func_transform, latlng_to_xy, xy_to_latlng
 
