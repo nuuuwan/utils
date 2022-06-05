@@ -12,7 +12,11 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.1.0 (LATEST RELEASE)
+### 1.1.1 (LATEST RELEASE)
+
+* Added GoogleMaps with basic mapping functions. Requires API keys
+
+### 1.1.0
 
 Version 1.1 will start replacing and deprecating 1.0.
 
