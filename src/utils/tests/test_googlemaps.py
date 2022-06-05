@@ -3,6 +3,8 @@ import unittest
 
 from utils import GoogleMaps
 
+SKIP_API_KEY = 'Needs GoogleMaps API Key'
+
 TEST_ADDRESS_AND_LATLNG = [
     [
         'WV87+7CW, Dr CWW Kannangara Mawatha, Colombo 00700, Sri Lanka',
@@ -20,12 +22,14 @@ TEST_ADDRESS_AND_LATLNG = [
 
 
 class TestCase(unittest.TestCase):
+    @unittest.skip(SKIP_API_KEY)
     def test_get_address(self):
         google_maps = GoogleMaps()
         for expected_address, latlng in TEST_ADDRESS_AND_LATLNG:
             actual_address = google_maps.get_address(latlng)
             self.assertEqual(expected_address, actual_address)
 
+    @unittest.skip(SKIP_API_KEY)
     def test_get_latlng(self):
         google_maps = GoogleMaps()
         for address, expected_latlng in TEST_ADDRESS_AND_LATLNG:
