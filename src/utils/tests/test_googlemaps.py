@@ -5,9 +5,8 @@ from utils import GoogleMaps
 
 TEST_ADDRESS_AND_LATLNG = [
     [
-        'WV87+7CW Colombo Municipal Council, ' +
-        'Dr CWW Kannangara Mawatha, Colombo 00700',
-        [6.915748863369923, 79.86357058700273],
+        'WV87+7CW, Dr CWW Kannangara Mawatha, Colombo 00700, Sri Lanka',
+        [6.9157375, 79.8635781],
     ],
 ]
 
