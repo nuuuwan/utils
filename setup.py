@@ -29,6 +29,7 @@ setuptools.setup(
         'area',
         'bs4',
         'geopandas',
+        'googlemaps',
         'matplotlib',
         'pandas',
         'pillow',
