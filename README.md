@@ -12,11 +12,11 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.1.3
+### 1.1.3 (LATEST RELEASE)
 
 * Fixed Tweepy "me" bug
 
-### 1.1.2 (LATEST RELEASE)
+### 1.1.2
 
 * Added write_lines to file
 * Added get_address_details to GoogleMaps
