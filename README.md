@@ -12,6 +12,10 @@ pip install utils-nuuuwan
 
 ## Version History
 
+### 1.1.4
+
+* Added Git 
+
 ### 1.1.3 (LATEST RELEASE)
 
 * Fixed Tweepy "me" bug
