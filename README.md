@@ -15,6 +15,7 @@ pip install utils-nuuuwan
 ### 1.1.2
 
 * Added write_lines to file
+* Added get_address_details to GoogleMaps
 
 ### 1.1.1 (LATEST RELEASE)
 
