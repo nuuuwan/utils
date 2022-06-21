@@ -12,12 +12,12 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.1.2
+### 1.1.2 (LATEST RELEASE)
 
 * Added write_lines to file
 * Added get_address_details to GoogleMaps
 
-### 1.1.1 (LATEST RELEASE)
+### 1.1.1
 
 * Added GoogleMaps with basic mapping functions. Requires API keys
 
