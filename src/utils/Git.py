@@ -42,6 +42,11 @@ class Git:
         return f'cd {self.dir_repo}'
 
     @property
+    def cmd_git_pull(self):
+        assert self.branch_name is not None
+        return f'git pull origin {self.branch_name}'
+
+    @property
     def cmd_checkout(self):
         assert self.branch_name is not None
         return f'git checkout {self.branch_name}'
@@ -62,6 +67,7 @@ class Git:
         Git.run(
             self.cmd_cd,
             self.cmd_checkout,
+            self.cmd_git_pull,
         )
 
     def add_and_commit(self, message):

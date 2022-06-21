@@ -15,6 +15,7 @@ class TestCase(unittest.TestCase):
         git = Git(TEST_REPO_URL)
         git.clone(TEST_DIR_REPO)
         self.assertTrue(os.path.exists(TEST_DIR_REPO))
+        git.checkout('main')
 
 
 if __name__ == '__main__':

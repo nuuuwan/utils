@@ -15,6 +15,7 @@ pip install utils-nuuuwan
 ### 1.1.5
 
 * Added Zip
+* Updated Git checkout to pull on checkout
 
 ### 1.1.4 (LATEST RELEASE)
 
