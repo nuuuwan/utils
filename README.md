@@ -12,6 +12,10 @@ pip install utils-nuuuwan
 
 ## Version History
 
+### 1.1.2
+
+* Added write_lines to file
+
 ### 1.1.1 (LATEST RELEASE)
 
 * Added GoogleMaps with basic mapping functions. Requires API keys

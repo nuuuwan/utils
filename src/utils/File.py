@@ -4,6 +4,7 @@ import json
 DIALECT = 'excel'
 DELIMITER_CSV = ','
 DELIMITER_TSV = '\t'
+DELIM_LINE = '\n'
 
 
 class File:
@@ -22,7 +23,12 @@ class File:
             fout.close()
 
     def read_lines(self):
-        return File.read(self).split('\n')
+        content = File.read(self)
+        return content.split(DELIM_LINE)
+
+    def write_lines(self, lines):
+        content = DELIM_LINE.join(lines)
+        File.write(self, content)
 
 
 class JSONFile(File):
