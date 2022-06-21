@@ -1,5 +1,3 @@
-"""Implements twitter."""
-
 import argparse
 import logging
 import os
