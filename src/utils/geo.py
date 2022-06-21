@@ -49,7 +49,9 @@ def get_distance(latlng1, latlng2):
     dlat = lat2 - lat1
     dlng = lng2 - lng1
 
-    a_var = (sin(dlat / 2)) ** 2 + cos(lat1) * cos(lat2) * (sin(dlng / 2)) ** 2
+    a_var = (sin(dlat / 2)) ** 2 + cos(lat1) * cos(lat2) * (
+        sin(dlng / 2)
+    ) ** 2
     c_var = 2 * atan2(sqrt(a_var), sqrt(1 - a_var))
     return EARTH_RADIUS * c_var
 

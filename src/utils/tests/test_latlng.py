@@ -25,23 +25,27 @@ class TestLatLng(unittest.TestCase):
         self.assertEqual(Bounds(LatLng(7, 81), LatLng(7, 81)), latlng.bounds)
 
     def test_polygon_len(self):
-        polygon = Polygon([
-            LatLngIndex.DONDRA_HEAD,
-            LatLngIndex.SANGAMAN_KANDA,
-            LatLngIndex.POINT_PEDRO,
-            LatLngIndex.KANCHCHATHEEVU,
-            LatLngIndex.DONDRA_HEAD,
-        ])
+        polygon = Polygon(
+            [
+                LatLngIndex.DONDRA_HEAD,
+                LatLngIndex.SANGAMAN_KANDA,
+                LatLngIndex.POINT_PEDRO,
+                LatLngIndex.KANCHCHATHEEVU,
+                LatLngIndex.DONDRA_HEAD,
+            ]
+        )
         self.assertEqual(5, len(polygon))
 
     def test_polygon_bounds(self):
-        polygon = Polygon([
-            LatLngIndex.DONDRA_HEAD,
-            LatLngIndex.SANGAMAN_KANDA,
-            LatLngIndex.POINT_PEDRO,
-            LatLngIndex.KANCHCHATHEEVU,
-            LatLngIndex.DONDRA_HEAD,
-        ])
+        polygon = Polygon(
+            [
+                LatLngIndex.DONDRA_HEAD,
+                LatLngIndex.SANGAMAN_KANDA,
+                LatLngIndex.POINT_PEDRO,
+                LatLngIndex.KANCHCHATHEEVU,
+                LatLngIndex.DONDRA_HEAD,
+            ]
+        )
         print(polygon.bounds)
         self.assertEqual(
             Bounds(

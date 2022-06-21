@@ -18,10 +18,12 @@ def random_hsl_vector(hue=None, saturation=None, lightness=None):
 
 def random_rgb_vector(red=None, green=None, blue=None):
     (hue, saturation, lightness) = random_hsl_vector()
-    (red0, green0, blue0) = list(map(
-        lambda x: (int)(x * 255),
-        colorsys.hls_to_rgb(hue, lightness, saturation),
-    ))
+    (red0, green0, blue0) = list(
+        map(
+            lambda x: (int)(x * 255),
+            colorsys.hls_to_rgb(hue, lightness, saturation),
+        )
+    )
 
     red = red0 if (red is None) else red
     green = green0 if (green is None) else green
@@ -31,7 +33,9 @@ def random_rgb_vector(red=None, green=None, blue=None):
 
 
 def random_hsl(hue=None, saturation=None, lightness=None):
-    (hue, saturation, lightness) = random_hsl_vector(hue, saturation, lightness)
+    (hue, saturation, lightness) = random_hsl_vector(
+        hue, saturation, lightness
+    )
     return f'hsl({hue:.0f},{saturation:.0%},{lightness:.0%})'
 
 

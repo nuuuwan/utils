@@ -19,10 +19,15 @@ def render_link_styles(css_file='styles.css'):
 
 
 def style(**kwargs):
-    style_content = ''.join(list(map(
-        lambda item: '%s:%s;' % (dt.to_kebab(str(item[0])), str(item[1])),
-        kwargs.items(),
-    )))
+    style_content = ''.join(
+        list(
+            map(
+                lambda item: '%s:%s;'
+                % (dt.to_kebab(str(item[0])), str(item[1])),
+                kwargs.items(),
+            )
+        )
+    )
     return dict(style=style_content)
 
 
@@ -38,9 +43,11 @@ class _:
 
         attrib = DEFAULT_ATTRIB_MAP.get(tag, {})
         attrib.update(attrib_custom)
-        attrib = dict(zip(
-            list(map(lambda k: k.replace('_', '-'), attrib.keys())),
-            list(map(str, attrib.values()))),
+        attrib = dict(
+            zip(
+                list(map(lambda k: k.replace('_', '-'), attrib.keys())),
+                list(map(str, attrib.values())),
+            ),
         )
 
         element = ElementTree.Element(tag_real)
@@ -48,13 +55,17 @@ class _:
 
         if isinstance(child_list_or_str_or_other, list):
             child_list = child_list_or_str_or_other
-            child_element_list = list(map(
-                lambda child: child.element,
-                list(filter(
-                    lambda child_or_none: child_or_none is not None,
-                    child_list,
-                ))
-            ))
+            child_element_list = list(
+                map(
+                    lambda child: child.element,
+                    list(
+                        filter(
+                            lambda child_or_none: child_or_none is not None,
+                            child_list,
+                        )
+                    ),
+                )
+            )
             for child_element in child_element_list:
                 element.append(child_element)
 

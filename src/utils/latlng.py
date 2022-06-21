@@ -3,7 +3,7 @@ import math
 from utils import geo
 
 PRECISION = 6
-ABS_TOL = 0.1 ** PRECISION
+ABS_TOL = 0.1**PRECISION
 
 
 class Bounds:
@@ -44,10 +44,12 @@ class Bounds:
         return [self.max_lat - self.min_lat, self.max_lng - self.min_lng]
 
     def __eq__(self, other):
-        return all([
-            self.min_latlng == other.min_latlng,
-            self.max_latlng == other.max_latlng,
-        ])
+        return all(
+            [
+                self.min_latlng == other.min_latlng,
+                self.max_latlng == other.max_latlng,
+            ]
+        )
 
     def __str__(self):
         return str([self.min_latlng, self.max_latlng])
@@ -62,8 +64,12 @@ class LatLng:
         return f'({self.lat:.6f}, {self.lng:.6f})'
 
     def __eq__(self, other):
-        return all([math.isclose(self.lat, other.lat, abs_tol=ABS_TOL),
-                   math.isclose(self.lng, other.lng, abs_tol=ABS_TOL), ])
+        return all(
+            [
+                math.isclose(self.lat, other.lat, abs_tol=ABS_TOL),
+                math.isclose(self.lng, other.lng, abs_tol=ABS_TOL),
+            ]
+        )
 
     @property
     def raw(self):

@@ -1,4 +1,3 @@
-
 import unittest
 
 from utils import CSVFile, File, JSONFile, TSVFile

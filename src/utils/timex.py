@@ -13,6 +13,7 @@ TIMEZONE_OFFSET_GMT = 0
 
 class SECONDS_IN:
     """Units of time."""
+
     MINUTE = 60
     HOUR = 3600
     DAY = 86400
@@ -52,8 +53,9 @@ def parse_time(
 ):
     """Parse time string, and return unixtime."""
     _datetime = datetime.datetime.strptime(time_str, time_format)
-    return (int)(time.mktime(_datetime.timetuple())) \
-        + get_timezone_offset(timezone)
+    return (int)(time.mktime(_datetime.timetuple())) + get_timezone_offset(
+        timezone
+    )
 
 
 def format_time(
@@ -75,14 +77,20 @@ def format_current_date_with_timezone():
     return '{date} {timezone}'.format(date=date, timezone=timezone)
 
 
-def get_date_id(unixtime=None, timezone=None,):
+def get_date_id(
+    unixtime=None,
+    timezone=None,
+):
     """Get date id."""
     if unixtime is None:
         unixtime = get_unixtime()
     return format_time(unixtime, FORMAT_DATE_ID, timezone)
 
 
-def get_time_id(unixtime=None, timezone=None,):
+def get_time_id(
+    unixtime=None,
+    timezone=None,
+):
     """Get date id."""
     if unixtime is None:
         unixtime = get_unixtime()

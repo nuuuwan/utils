@@ -20,8 +20,8 @@ class CustomLoggingFormatter(logging.Formatter):
     def format(self, record):
         color = get_level_color(record.levelno)
         return console.highlight(
-            f'({record.name}-{record.levelname}): {record.msg}',
-            color)
+            f'({record.name}-{record.levelname}): {record.msg}', color
+        )
 
 
 def get_logger(logger_name='custom'):

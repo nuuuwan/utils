@@ -1,4 +1,3 @@
-
 import unittest
 
 from utils import GoogleMaps
@@ -71,9 +70,9 @@ TEST_ADDRESS_AND_LATLNG_DETAILS = [
             'province': 'Central Province',
             'country': 'Sri Lanka',
             'formatted_address': '42 Sangaraja Mawatha, Kandy 20000,'
-            + ' Sri Lanka'
+            + ' Sri Lanka',
         },
-    ]
+    ],
 ]
 
 

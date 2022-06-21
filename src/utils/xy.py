@@ -1,4 +1,3 @@
-
 def latlng_to_xy(latlng):
     lat, lng = latlng
     return [lng, lat]

@@ -21,12 +21,14 @@ class GoogleMaps:
         @cache(CACHE_NAME, CACHE_TIMEOUT)
         def get_geocode_inner(address):
             return self.api.geocode(address)
+
         return get_geocode_inner(address)
 
     def __get_reverse_geocode__(self, latlng):
         @cache(CACHE_NAME, CACHE_TIMEOUT)
         def get_reverse_geocode_inner(latlng):
             return self.api.reverse_geocode(latlng)
+
         return get_reverse_geocode_inner(latlng)
 
     def get_latlng(self, address):

@@ -11,18 +11,26 @@ class TestXMLX(unittest.TestCase):
     def test_log_metric(self):
         """Test."""
         head = _('head')
-        body = _('body', [
-            _('h1', 'This is header 1', style(font_family='Georgia')),
-            _('p', 'This is a paragraph'),
-            _('div', [
-                _('span', 'This is a span in a div'),
+        body = _(
+            'body',
+            [
+                _('h1', 'This is header 1', style(font_family='Georgia')),
+                _('p', 'This is a paragraph'),
                 _(
-                    'a',
-                    'This is a a(link) in a div',
-                    dict(href='https://pypi.org/project/utils-nuuuwan'),
+                    'div',
+                    [
+                        _('span', 'This is a span in a div'),
+                        _(
+                            'a',
+                            'This is a a(link) in a div',
+                            dict(
+                                href='https://pypi.org/project/utils-nuuuwan'
+                            ),
+                        ),
+                    ],
                 ),
-            ]),
-        ])
+            ],
+        )
         html = _('html', [head, body])
         actual_file = '/tmp/utils.tests.test_xmlx.html'
         html.store(actual_file)
