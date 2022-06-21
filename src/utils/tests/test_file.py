@@ -1,6 +1,7 @@
+import os
 import unittest
 
-from utils import CSVFile, File, JSONFile, TSVFile
+from utils import CSVFile, File, JSONFile, TSVFile, Zip
 
 TEST_DATA_LIST = [
     {'name': 'Alpha', 'age': '1'},
@@ -45,6 +46,31 @@ class TestCase(unittest.TestCase):
         tsv_file.write(TEST_DATA_LIST)
         data_list = tsv_file.read()
         self.assertEqual(TEST_DATA_LIST, data_list)
+
+    def test_zip_read_and_write(self):
+        json_file_name = '/tmp/utils.test_zip_read_and_write.json'
+        data = [i for i in range(0, 1_000)]
+        json_file = JSONFile(json_file_name)
+        json_file.write(data)
+        json_file_size = os.path.getsize(json_file_name)
+        expexted_json_file_size = 6_892
+        self.assertEqual(expexted_json_file_size, json_file_size)
+
+        zip = Zip(json_file_name)
+        zip.zip()
+        self.assertFalse(os.path.exists(json_file_name))
+        self.assertTrue(os.path.exists(zip.zip_file_name))
+
+        zip_file_size = os.path.getsize(zip.zip_file_name)
+        expected_zip_file_size = 2_143
+        self.assertEqual(expected_zip_file_size, zip_file_size)
+
+        zip.unzip()
+        self.assertTrue(os.path.exists(json_file_name))
+        self.assertFalse(os.path.exists(zip.zip_file_name))
+
+        actual_data = json_file.read()
+        self.assertTrue(data, actual_data)
 
 
 if __name__ == '__main__':

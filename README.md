@@ -12,6 +12,10 @@ pip install utils-nuuuwan
 
 ## Version History
 
+### 1.1.5
+
+* Added Zip
+
 ### 1.1.4 (LATEST RELEASE)
 
 * Added Git

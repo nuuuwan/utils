@@ -1,5 +1,7 @@
 import csv
 import json
+import os
+import zipfile
 
 DIALECT = 'excel'
 DELIMITER_CSV = ','
@@ -104,3 +106,44 @@ class CSVFile(XSVFile):
 class TSVFile(XSVFile):
     def __init__(self, file_name):
         return XSVFile.__init__(self, file_name, DELIMITER_TSV)
+
+
+class Zip:
+    def __init__(self, file_name):
+        self.file_name = file_name
+
+    @property
+    def zip_file_name(self):
+        return self.file_name + '.zip'
+
+    @property
+    def arc_name(self):
+        return os.path.basename(os.path.normpath(self.file_name))
+
+    @property
+    def dir_zip(self):
+        return os.path.dirname(os.path.normpath(self.file_name))
+
+    def zip(self, skip_delete=False):
+        assert os.path.exists(self.file_name)
+        with zipfile.ZipFile(
+            self.zip_file_name,
+            mode='w',
+            compression=zipfile.ZIP_DEFLATED,
+        ) as zip_file:
+            zip_file.write(self.file_name, arcname=self.arc_name)
+            assert os.path.exists(self.zip_file_name)
+
+        if not skip_delete:
+            os.remove(self.file_name)
+            assert not os.path.exists(self.file_name)
+
+    def unzip(self, skip_delete=False):
+        assert os.path.exists(self.zip_file_name)
+        with zipfile.ZipFile(self.zip_file_name) as zip_file:
+            zip_file.extractall(self.dir_zip)
+            assert os.path.exists(self.file_name)
+
+        if not skip_delete:
+            os.remove(self.zip_file_name)
+            assert not os.path.exists(self.zip_file_name)
