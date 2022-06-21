@@ -2,6 +2,7 @@
 
 import argparse
 import logging
+import os
 
 import tweepy
 
@@ -60,22 +61,27 @@ class Twitter:
 
     def __init__(
         self,
-        twtr_api_key,
-        twtr_api_secret_key,
-        twtr_access_token,
-        twtr_access_token_secret,
+        twtr_api_key=None,
+        twtr_api_secret_key=None,
+        twtr_access_token=None,
+        twtr_access_token_secret=None,
     ):
         """Construct Twitter."""
+        if not twtr_api_key:
+            twtr_api_key = os.environ['TWTR_API_KEY']
+            twtr_api_secret_key = os.environ['TWTR_API_SECRET_KEY']
+            twtr_access_token = os.environ['TWTR_ACCESS_TOKEN']
+            twtr_access_token_secret = os.environ['TWTR_ACCESS_TOKEN_SECRET']
+
+        log.debug(
+            f'{twtr_api_key=},{twtr_api_secret_key=},'
+            + f'{twtr_access_token=},{twtr_access_token_secret=}',
+        )
+
         if twtr_api_key:
             auth = tweepy.OAuthHandler(twtr_api_key, twtr_api_secret_key)
             auth.set_access_token(twtr_access_token, twtr_access_token_secret)
             self.api = tweepy.API(auth)
-            api_me = self.api.me()
-            log.info(
-                'Created Twitter for @%s (%s).',
-                api_me.screen_name,
-                api_me.id_str,
-            )
         else:
             log.error('Missing twitter API Key etc. Cannot create Twitter.')
             self.api = None

@@ -4,45 +4,17 @@ import unittest
 
 from utils import twitter
 
+SKIP_API_CREDENTIALS = 'Needs Twitter API credentials'
+
 
 class TestCase(unittest.TestCase):
     """Tests."""
 
+    @unittest.skip(SKIP_API_CREDENTIALS)
     def test_twitter(self):
         """Test."""
         twtr = twitter.Twitter(None, None, None, None)
         self.assertEqual(twtr.tweet('Test'), None)
-
-        self.assertEqual(
-            twtr.tweet(
-                '''
-123456789_123456789_123456789_123456789
-123456789_123456789_123456789_123456789
-123456789_123456789_123456789_123456789
-123456789_123456789_123456789_123456789
-123456789_123456789_123456789_123456789
-123456789_123456789_123456789_123456789
-123456789_123456789_123456789_123456789
-123456789_123456789_123456789_123456789
-        '''
-            ),
-            None,
-        )
-
-        self.assertEqual(
-            twtr.tweet(
-                '''
-123456789_123456789_123456789_123456789
-123456789_123456789_123456789_123456789
-123456789_123456789_123456789_123456789
-123456789_123456789_123456789_123456789
-123456789_123456789_123456789_123456789
-123456789_123456789_123456789_123456789
-http
-        '''
-            ),
-            None,
-        )
 
 
 if __name__ == '__main__':
