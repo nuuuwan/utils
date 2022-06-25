@@ -6,6 +6,8 @@ import time
 
 import requests
 from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 
 from utils import filex, timex, tsv
 from utils.browserx import Browser
@@ -119,8 +121,22 @@ class WWW:
     def __init__(self, url):
         self.url = url
 
+    def readBinary(self):
+        try:
+            resp = requests.get(self.url, headers={'user-agent': USER_AGENT})
+            if resp.status_code != 200:
+                return None
+            return resp.content
+        except requests.exceptions.ConnectionError:
+            return None
+
     def read(self):
-        pass
+        return self.readBinary().decode()
 
     def readSelenium(self):
-        pass
+        options = Options()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+        driver.get(self.url)
+        driver.quit()
+        return driver.page_source
