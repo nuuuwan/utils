@@ -19,6 +19,12 @@ class File:
             fin.close()
         return content
 
+    def readBinary(self):
+        with open(self.file_name, 'rb') as fin:
+            content = fin.read()
+            fin.close()
+        return content
+
     def write(self, content):
         with open(self.file_name, 'w') as fout:
             fout.write(content)
