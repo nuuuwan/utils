@@ -4,7 +4,7 @@ import random
 
 from utils import timex
 
-MIN_INT, MAX_INT = 10**15, 10**16 - 1
+MIN_INT, MAX_INT = 10 ** 15, 10 ** 16 - 1
 
 
 def read(file_name):

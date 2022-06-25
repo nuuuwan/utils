@@ -11,7 +11,7 @@ class TestMR(unittest.TestCase):
         """Test."""
 
         def func_map(x):
-            return x**3
+            return x ** 3
 
         input_list = list(range(0, 10))
         expected_output = list(

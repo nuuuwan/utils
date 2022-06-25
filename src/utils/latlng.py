@@ -3,7 +3,7 @@ import math
 from utils import geo
 
 PRECISION = 6
-ABS_TOL = 0.1**PRECISION
+ABS_TOL = 0.1 ** PRECISION
 
 
 class Bounds:
