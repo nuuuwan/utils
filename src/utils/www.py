@@ -113,3 +113,14 @@ def get_all_urls(root_url, cached=True):
     )
     logging.debug('Found %d links on %s', len(urls), root_url)
     return urls
+
+
+class WWW:
+    def __init__(self, url):
+        self.url = url
+
+    def read(self):
+        pass
+
+    def readSelenium(self):
+        pass
