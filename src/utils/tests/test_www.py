@@ -30,9 +30,10 @@ class TestCase(unittest.TestCase):
         )
 
     def test_read_selenium(self):
-        self.assertEqual(
-            File(TEST_HTML_FILE).read(),
-            WWW(TEST_HTML_URL).readSelenium(),
+        content = WWW(TEST_HTML_URL).readSelenium()
+        self.assertIn(
+            'This is a test',
+            content,
         )
 
 
