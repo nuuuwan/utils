@@ -138,5 +138,7 @@ class WWW:
         options.headless = True
         driver = webdriver.Firefox(options=options)
         driver.get(self.url)
+        content = driver.page_source
+        print(content)
         driver.quit()
-        return driver.page_source
+        return content
