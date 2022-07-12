@@ -12,7 +12,11 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.1.6 (LATEST RELEASE)
+### 1.1.7 (LATEST RELEASE)
+
+* Fixed bug in Git
+
+### 1.1.6
 
 * Added WWW
 * Added readBinary to File
