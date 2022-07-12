@@ -16,6 +16,7 @@ pip install utils-nuuuwan
 
 * Added WWW
 * Added readBinary to File
+* Git - lazy clone. Clone only the branch to checkout
 
 ### 1.1.5 (LATEST RELEASE)
 

@@ -15,15 +15,7 @@ class Git:
 
     def clone(self, dir_repo, force=False):
         self.dir_repo = dir_repo
-
-        if not os.path.exists(self.dir_repo) or force:
-            self.init_dir_repo()
-            Git.run(
-                self.cmd_cd,
-                self.cmd_clone,
-            )
-        else:
-            log.debug(f'{self.dir_repo} exists. Not cloning!')
+        self.force = force
 
     def init_dir_repo(self):
         if os.path.exists(self.dir_repo):
@@ -34,7 +26,12 @@ class Git:
     def cmd_clone(self):
         assert self.git_repo_url is not None
         assert self.dir_repo is not None
-        return f'git clone {self.git_repo_url} {self.dir_repo}'
+        assert self.branch_name is not None
+
+        return (
+            f'git clone  -b {self.branch_name} --single-branch'
+            + f'{self.git_repo_url} {self.dir_repo}'
+        )
 
     @property
     def cmd_cd(self):
@@ -64,6 +61,16 @@ class Git:
 
     def checkout(self, branch_name):
         self.branch_name = branch_name
+
+        if not os.path.exists(self.dir_repo) or self.force:
+            self.init_dir_repo()
+            Git.run(
+                self.cmd_cd,
+                self.cmd_clone,
+            )
+        else:
+            log.debug(f'{self.dir_repo} exists. Not cloning!')
+
         Git.run(
             self.cmd_cd,
             self.cmd_checkout,

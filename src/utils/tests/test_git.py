@@ -5,6 +5,7 @@ from utils import Git
 
 TEST_REPO_URL = 'https://github.com/nuuuwan/utils'
 TEST_DIR_REPO = '/tmp/test.utils'
+TEST_BRACH_NAME = 'main'
 
 
 class TestCase(unittest.TestCase):
@@ -14,6 +15,7 @@ class TestCase(unittest.TestCase):
     def test_clone(self):
         git = Git(TEST_REPO_URL)
         git.clone(TEST_DIR_REPO)
+        git.checkout(TEST_BRACH_NAME)
         self.assertTrue(os.path.exists(TEST_DIR_REPO))
         git.checkout('main')
 
