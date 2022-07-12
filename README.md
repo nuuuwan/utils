@@ -12,13 +12,13 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.1.6
+### 1.1.6 (LATEST RELEASE)
 
 * Added WWW
 * Added readBinary to File
 * Git - lazy clone. Clone only the branch to checkout
 
-### 1.1.5 (LATEST RELEASE)
+### 1.1.5
 
 * Added Zip
 * Updated Git checkout to pull on checkout
