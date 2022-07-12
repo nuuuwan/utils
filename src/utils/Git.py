@@ -29,8 +29,8 @@ class Git:
         assert self.branch_name is not None
 
         return (
-            f'git clone  -b {self.branch_name} --single-branch'
-            + f'{self.git_repo_url} {self.dir_repo}'
+            f'git clone  -b {self.branch_name} --single-branch '
+            + f' {self.git_repo_url} {self.dir_repo}'
         )
 
     @property
