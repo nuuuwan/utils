@@ -2,10 +2,6 @@
 import json
 import unittest
 
-from geopandas.geodataframe import GeoDataFrame
-from pandas.core.frame import DataFrame
-from shapely.geometry import MultiPolygon, Point
-
 from utils import jsonx
 
 TEST_VALUES = [
@@ -13,10 +9,6 @@ TEST_VALUES = [
     '1234',
     b'1234',
     {'test': 123},
-    DataFrame(data={'col1': [1, 2], 'col2': [3, 4]}),
-    Point(1, 2),
-    MultiPolygon(),
-    GeoDataFrame(),
 ]
 
 
