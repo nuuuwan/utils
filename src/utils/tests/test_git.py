@@ -17,7 +17,6 @@ class TestCase(unittest.TestCase):
         git.clone(TEST_DIR_REPO, force=True)
         git.checkout(TEST_BRACH_NAME)
         self.assertTrue(os.path.exists(TEST_DIR_REPO))
-        
 
 
 if __name__ == '__main__':
