@@ -12,7 +12,11 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.1.7 (LATEST RELEASE)
+### 1.1.8 (LATEST RELEASE)
+
+* Removed pandas, geopandas and shapely
+
+### 1.1.7
 
 * Fixed bug in Git
 
