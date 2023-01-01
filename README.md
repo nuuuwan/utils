@@ -16,7 +16,7 @@ pip install utils-nuuuwan
 
 * Added Time, TimeDelta and TimeFormat (i.e. made time a class)
 * [a] fix: timezone offset BUG
-* [b] feat: 
+* [b] feat: various minor time related updates
 
 ### 1.1.8 
 
