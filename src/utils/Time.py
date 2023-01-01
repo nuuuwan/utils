@@ -80,5 +80,4 @@ class TimeFormat:
             self.format_str, time.localtime(t.ut + self.dut_timezone)
         )
 
-    DEFAULT_TIME_FORMAT = TimeFormat('%Y-%m-%d %H:%M:%S', TIMEZONE_OFFSET.LK)
-    DEFAULT_DATE_FORMAT = TimeFormat('%Y-%m-%d', TIMEZONE_OFFSET.LK)
+    
