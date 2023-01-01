@@ -6,6 +6,25 @@ class TIMEZONE_OFFSET:
     GMT = 0
 
 
+class SECONDS_IN:
+    """Units of time."""
+
+    MINUTE = 60
+    HOUR = 3600
+    DAY = 86400
+    WEEK = 7 * 86400
+    FORTNIGHT = 14 * 86400
+    MONTH = 365.25 * 4 * 86400 / 12
+    QTR = 365.25 * 86400 / 4
+    YEAR = 365.25 * 86400
+
+
+class AVG_DAYS_IN:
+    WEEK = 7
+    MONTH = 365.25 / 12
+    YEAR = 365.25
+
+
 class TimeDelta:
     def __init__(self, dut):
         self.dut = dut
