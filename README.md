@@ -12,7 +12,11 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.1.8 (LATEST RELEASE)
+### 1.1.9 (LATEST RELEASE)
+
+* Added Time, TimeDelta and TimeFormat (i.e. made time a class)
+
+### 1.1.8 
 
 * Removed pandas, geopandas and shapely
 
