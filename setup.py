@@ -3,7 +3,7 @@
 import setuptools
 
 DIST_NAME = 'utils'
-VERSION = "1.1.9"
+VERSION = "1.1.9a"
 
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,

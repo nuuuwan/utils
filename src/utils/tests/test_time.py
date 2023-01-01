@@ -1,7 +1,7 @@
 import time
 from unittest import TestCase
 
-from utils.Time import Time, TimeDelta, TimeFormat
+from utils.Time import TIMEZONE_OFFSET, Time, TimeDelta, TimeFormat
 
 
 class TestTime(TestCase):
@@ -39,7 +39,7 @@ class TestTime(TestCase):
             ['%Y-%m-%d %H:%M', '2009-02-14 05:01', 1234567860],
             ['%Y-%m-%d %H:%M:%S', '2009-02-14 05:01:30', 1234567890],
         ]:
-            tf = TimeFormat(format_str)
+            tf = TimeFormat(format_str, TIMEZONE_OFFSET.LK)
             self.assertEqual(
                 expected_time_str,
                 tf.stringify(t),

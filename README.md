@@ -12,9 +12,10 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.1.9 (LATEST RELEASE)
+### 1.1.9a (LATEST RELEASE)
 
 * Added Time, TimeDelta and TimeFormat (i.e. made time a class)
+* [a] fix: timezone offset BUG
 
 ### 1.1.8 
 
