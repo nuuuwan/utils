@@ -5,10 +5,7 @@ class TIMEZONE_OFFSET:
     LK = -19_800
     GMT = 0
 
-
 class SECONDS_IN:
-    """Units of time."""
-
     MINUTE = 60
     HOUR = 3600
     DAY = 86400
@@ -18,12 +15,10 @@ class SECONDS_IN:
     QTR = 365.25 * 86400 / 4
     YEAR = 365.25 * 86400
 
-
 class AVG_DAYS_IN:
     WEEK = 7
     MONTH = 365.25 / 12
     YEAR = 365.25
-
 
 class TimeDelta:
     def __init__(self, dut):
@@ -81,3 +76,7 @@ class TimeFormat:
         return time.strftime(
             self.format_str, time.localtime(t.ut + self.dut_timezone)
         )
+
+
+    DEFAULT_TIME_FORMAT = TimeFormat('%Y-%m-%d %H:%M:%S', TIMEZONE_OFFSET.LK)
+    DEFAULT_DATE_FORMAT = TimeFormat('%Y-%m-%d', TIMEZONE_OFFSET.LK)
