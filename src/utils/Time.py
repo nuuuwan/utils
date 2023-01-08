@@ -79,5 +79,3 @@ class TimeFormat:
         return time.strftime(
             self.format_str, time.localtime(t.ut + self.dut_timezone)
         )
-
-    
