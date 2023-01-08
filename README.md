@@ -12,12 +12,13 @@ pip install utils-nuuuwan
 
 ## Version History
 
+### 1.1.12 (NEXT RELEASE)
+
+* Make WWW primary, and add PendingDeprecationWarnings to stand-alone functions
+
 ### 1.1.11 (LATEST RELEASE)
 
 * Added Time, TimeDelta and TimeFormat (i.e. made time a class)
-* [a] fix: timezone offset BUG
-* [b] feat: various minor time related updates
-* [c] fix: Removed DEFAULT_TIME_FORMAT, DEFAULT_DATE_FORMAT
 
 ### 1.1.8 
 

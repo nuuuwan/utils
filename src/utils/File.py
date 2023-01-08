@@ -30,6 +30,11 @@ class File:
             fout.write(content)
             fout.close()
 
+    def writeBinary(self, content):
+        with open(self.file_name, 'wb') as fout:
+            fout.write(content)
+            fout.close()
+
     def read_lines(self):
         content = File.read(self)
         return content.split(DELIM_LINE)
