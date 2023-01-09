@@ -39,7 +39,6 @@ class TestDict(TestCase):
         self.assertEqual(d.d, {'a': 11, 'b': 22})
 
     def test_extract_keys(self):
-        print(TEST_D.extract_keys(['a']))
         self.assertEqual(TEST_D.extract_keys(['a']), Dict({'a': 1}))
 
     def test_items_sorted_by_key(self):
