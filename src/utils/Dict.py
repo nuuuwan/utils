@@ -1,50 +1,53 @@
 class Dict:
-    def __init__(self, d={}):
-        assert isinstance(d, dict)
-        self.d = d
+    def __init__(self, x={}):
+        assert isinstance(x, dict)
+        self.x = x
+
+    def todict(self):
+        return self.x
 
     def keys(self):
-        return self.d.keys()
+        return self.x.keys()
 
     def values(self):
-        return self.d.values()
+        return self.x.values()
 
     def items(self):
-        return self.d.items()
+        return self.x.items()
 
     def items_sorted_by_key(self):
         return sorted(
-            self.d.items(),
+            self.x.items(),
             key=lambda item: item[0],
         )
 
     def items_sorted_by_value(self):
         return sorted(
-            self.d.items(),
+            self.x.items(),
             key=lambda item: item[1],
         )
 
     def len(self):
-        return len(self.d)
+        return len(self.x)
 
     def __eq__(self, other):
         if isinstance(other, Dict):
-            return self.d == other.d
+            return self.x == other.x
         if isinstance(other, dict):
-            return self.d == other
+            return self.x == other
         return False
 
     def __getitem__(self, key):
-        return self.d[key]
+        return self.x[key]
 
     def __setitem__(self, key, value):
-        self.d[key] = value
+        self.x[key] = value
 
     def __delitem__(self, key):
-        del self.d[key]
+        del self.x[key]
 
     def iter(self):
-        return iter(self.d)
+        return iter(self.x)
 
     def extract_keys(self, keys):
         return Dict(
@@ -52,14 +55,14 @@ class Dict:
                 list(
                     filter(
                         lambda item: item[0] in keys,
-                        self.d.items(),
+                        self.x.items(),
                     )
                 )
             )
         )
 
     def __str__(self):
-        return self.d.__str__()
+        return self.x.__str__()
 
     def __repr__(self):
-        return self.d.__repr__()
+        return self.x.__repr__()

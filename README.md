@@ -19,6 +19,7 @@ pip install utils-nuuuwan
 * Deprecated colorx; replaced with RandomColor
 
 * Added (smart) Dict
+* Added (smart) List
 
 ### 1.1.11 (LATEST RELEASE)
 

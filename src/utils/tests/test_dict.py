@@ -8,9 +8,9 @@ TEST_D = Dict(TEST_DICT)
 
 class TestDict(TestCase):
     def test_init(self):
-        self.assertEqual(TEST_D.d, TEST_DICT)
-        d = Dict()
-        self.assertEqual(d.d, {})
+        self.assertEqual(TEST_D.todict(), TEST_DICT)
+        x = Dict()
+        self.assertEqual(x.todict(), {})
 
     def test_keys(self):
         self.assertEqual(TEST_D.keys(), TEST_DICT.keys())
@@ -33,10 +33,10 @@ class TestDict(TestCase):
             self.assertEqual(TEST_D[k], TEST_DICT[k])
 
     def test_setitem(self):
-        d = Dict()
-        d['a'] = 11
-        d['b'] = 22
-        self.assertEqual(d.d, {'a': 11, 'b': 22})
+        x = Dict()
+        x['a'] = 11
+        x['b'] = 22
+        self.assertEqual(x.todict(), {'a': 11, 'b': 22})
 
     def test_extract_keys(self):
         self.assertEqual(TEST_D.extract_keys(['a']), Dict({'a': 1}))

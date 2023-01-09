@@ -2,6 +2,7 @@
 from warnings import warn
 
 from utils.Dict import Dict
+from utils.List import List
 
 
 def dict_list_to_index(dict_list, key):
@@ -22,16 +23,15 @@ def dict_list_to_index(dict_list, key):
 
 
 def unique(lst):
+    warn(PendingDeprecationWarning)
     """Get unique values from list."""
-    return list(set(lst))
+    return List(lst).unique().tolist()
 
 
 def flatten(list_of_list):
+    warn(PendingDeprecationWarning)
     """Flatten list of lists."""
-    flattened_list = []
-    for lst in list_of_list:
-        flattened_list += lst
-    return flattened_list
+    return List(list_of_list).flatten().tolist()
 
 
 def sort_dict_items_by_key(_dict):
@@ -43,7 +43,7 @@ def sort_dict_items_by_key(_dict):
 def dict_get(_dict, keys):
     warn(PendingDeprecationWarning)
     """Get dict values by keys."""
-    return Dict(_dict).extract_keys(keys).d
+    return Dict(_dict).extract_keys(keys).x
 
 
 def dict_list_get_values_for_key(dict_list, key):
