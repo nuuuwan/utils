@@ -20,6 +20,7 @@ pip install utils-nuuuwan
 
 * Added (smart) Dict
 * Added (smart) List
+* Added Iter
 
 ### 1.1.11 (LATEST RELEASE)
 

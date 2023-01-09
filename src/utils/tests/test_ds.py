@@ -48,5 +48,5 @@ class TestDS(unittest.TestCase):
 
     def test_get_count(self):
         int_list = [(i + 1) for i in range(0, 10000)]
-        key_to_count = ds.get_count(int_list, lambda i: [i % 3])
+        key_to_count = ds.get_count(int_list, lambda i: i % 3)
         self.assertEqual({0: 3333, 1: 3334, 2: 3333}, key_to_count)

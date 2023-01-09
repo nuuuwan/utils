@@ -39,3 +39,7 @@ class TestList(TestCase):
 
     def test_unique(self):
         self.assertEqual(List([1, 2, 3, 2]).unique(), List([1, 2, 3]))
+
+    def test_iter(self):
+        for idx, item in enumerate(TEST_LIST):
+            self.assertEqual(item, TEST_LIST_RAW[idx])

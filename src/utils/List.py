@@ -1,10 +1,16 @@
-class List:
+from utils.Iter import Iter
+
+
+class List(Iter):
     def __init__(self, x=[]):
         assert isinstance(x, list)
         self.x = x
 
     def tolist(self):
         return self.x
+
+    def iter(self):
+        return iter(self.x)
 
     def __len__(self):
         return len(self.x)

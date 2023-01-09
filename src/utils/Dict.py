@@ -1,4 +1,7 @@
-class Dict:
+from utils.Iter import Iter
+
+
+class Dict(Iter):
     def __init__(self, x={}):
         assert isinstance(x, dict)
         self.x = x
