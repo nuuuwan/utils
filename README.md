@@ -16,6 +16,8 @@ pip install utils-nuuuwan
 
 * Make WWW primary, and add PendingDeprecationWarnings to stand-alone functions
 
+* Deprecated colorx; replaced with RandomColor
+
 ### 1.1.11 (LATEST RELEASE)
 
 * Added Time, TimeDelta and TimeFormat (i.e. made time a class)
