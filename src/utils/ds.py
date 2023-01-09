@@ -1,4 +1,7 @@
 """Utils related to lists and dicts."""
+from warnings import warn
+
+from utils.Dict import Dict
 
 
 def dict_list_to_index(dict_list, key):
@@ -32,16 +35,15 @@ def flatten(list_of_list):
 
 
 def sort_dict_items_by_key(_dict):
+    warn(PendingDeprecationWarning)
     """Sort dict items by key."""
-    return sorted(
-        _dict.items(),
-        key=lambda item: item[0],
-    )
+    return Dict(_dict).items_sorted_by_key()
 
 
 def dict_get(_dict, keys):
+    warn(PendingDeprecationWarning)
     """Get dict values by keys."""
-    return [_dict[key] for key in keys]
+    return Dict(_dict).extract_keys(keys).d
 
 
 def dict_list_get_values_for_key(dict_list, key):
@@ -50,6 +52,7 @@ def dict_list_get_values_for_key(dict_list, key):
 
 
 def dict_set(_dict, keys, values):
+    warn(PendingDeprecationWarning)
     """Set dict values by keys."""
     for key, value in zip(keys, values):
         _dict[key] = value

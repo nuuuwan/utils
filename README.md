@@ -18,6 +18,8 @@ pip install utils-nuuuwan
 
 * Deprecated colorx; replaced with RandomColor
 
+* Added (smart) Dict
+
 ### 1.1.11 (LATEST RELEASE)
 
 * Added Time, TimeDelta and TimeFormat (i.e. made time a class)
