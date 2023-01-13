@@ -4,7 +4,7 @@ import os
 import threading
 import time
 
-from utils import filex, hashx, jsonx
+from utils import filex, hashx
 
 DEFAULT_TIMEOUT = 60
 DEFAULT_DIR = '/tmp/cache'
@@ -71,7 +71,7 @@ class _Cache:
 
     def __set(self, key, data):
         self.__acquire_lock(key)
-        packet = {'data': jsonx.serialize(data), 'set_time': time.time()}
+        packet = {'data': json.dumps(data), 'set_time': time.time()}
         filex.write(
             self.__get_cache_file_name(key),
             json.dumps(packet, ensure_ascii=True),
@@ -100,7 +100,7 @@ class _Cache:
             if 'set_time' in packet:
                 min_set_time = time.time() - self.__timeout
                 if packet['set_time'] > min_set_time:
-                    return jsonx.deserialize(packet['data'])
+                    return json.loads(packet['data'])
 
         data = fallback()
         if data is not None:
