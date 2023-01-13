@@ -18,6 +18,8 @@ pip install utils-nuuuwan
 * deprecate: jsonx
 * feat: import cache directly, instead of cache.cache
 * deprecate: db
+* renamed www -> WWW
+* Deprecated printx
 
 ### 1.1.13 (LATEST RELEASE)
 
