@@ -35,7 +35,7 @@ class TestXMLX(unittest.TestCase):
         actual_file = '/tmp/utils.tests.test_xmlx.html'
         html.store(actual_file)
 
-        expected_file = 'src/utils/tests/test_xmlx_example1.html'
+        expected_file = 'tests/test_xmlx_example1.html'
         self.assertListEqual(
             list(io.open(actual_file)),
             list(io.open(expected_file)),

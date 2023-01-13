@@ -3,7 +3,7 @@ import unittest
 
 from utils import WWW, CSVFile, File, JSONFile, TSVFile
 
-DIR_TESTS = 'src/utils/tests'
+DIR_TESTS = 'tests'
 
 
 URL_BASE = os.path.join(
