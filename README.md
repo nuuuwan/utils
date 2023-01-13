@@ -20,6 +20,7 @@ pip install utils-nuuuwan
 * deprecate: db
 * renamed www -> WWW
 * Deprecated printx
+* Deprecated sysx
 
 ### 1.1.13 (LATEST RELEASE)
 
