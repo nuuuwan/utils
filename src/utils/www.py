@@ -35,10 +35,18 @@ class WWW:
         try:
             resp = requests.get(self.url, headers={'user-agent': USER_AGENT})
             if resp.status_code != 200:
-                return None
-            return resp.content
-        except requests.exceptions.ConnectionError:
-            return None
+                raise Exception(
+                    f'Failed to read {self.url}. resp.status_code != 200. '
+                )
+            content = resp.content
+            content_size = len(content)
+            if content_size == 0:
+                raise Exception(
+                    f'Failed to read {self.url}. content_size == 0.'
+                )
+            return content
+        except requests.exceptions.ConnectionError as e:
+            raise Exception(f'Failed to read {self.url}. {e}')
 
     def readSelenium(self):
         options = Options()
