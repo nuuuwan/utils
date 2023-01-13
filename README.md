@@ -13,7 +13,7 @@ pip install utils-nuuuwan
 ## Version History
 
 
-### 1.1.14
+### 1.1.14 (LATEST RELEASE)
 
 * Deprecated jsonx
 * feat: import cache directly, instead of cache.cache
@@ -25,7 +25,7 @@ pip install utils-nuuuwan
 * Deprecated filex, tsv
 * Deprecated ds
 
-### 1.1.13 (LATEST RELEASE)
+### 1.1.13 
 
 * Deprecated zipx
 * Deprecated legacy www
