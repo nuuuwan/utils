@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from utils import Table, TableRow
+from utils.Table import Table, TableRow
 
 TEST_DICT_LIST = [
     dict(name='Alice', age=30),

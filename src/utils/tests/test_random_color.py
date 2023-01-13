@@ -2,7 +2,7 @@
 import random
 import unittest
 
-from utils import RandomColor
+from utils.RandomColor import RandomColor
 
 
 class TestColorX(unittest.TestCase):

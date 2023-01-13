@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from utils import List
+from utils.List import List
 
 TEST_LIST_RAW = ['a', 'b', 'c', 'd']
 TEST_LIST = List(TEST_LIST_RAW)

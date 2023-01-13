@@ -1,6 +1,6 @@
 import unittest
 
-from utils import GoogleMaps
+from utils.GoogleMaps import GoogleMaps
 
 SKIP_API_KEY = 'Needs GoogleMaps API Key'
 

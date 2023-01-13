@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from utils import List
+from utils.List import List
 
 
 class TestIter(TestCase):

@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from utils import Git
+from utils.Git import Git
 
 TEST_REPO_URL = 'https://github.com/nuuuwan/utils'
 TEST_DIR_REPO = '/tmp/test.utils'

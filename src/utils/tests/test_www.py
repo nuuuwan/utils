@@ -1,9 +1,10 @@
 import os
 import unittest
 
-from utils import WWW, CSVFile, File, JSONFile, TSVFile
+from utils.File import CSVFile, File, JSONFile, TSVFile
+from utils.WWW import WWW
 
-DIR_TESTS = 'tests'
+DIR_TESTS = 'src/utils/tests'
 
 
 URL_BASE = os.path.join(
