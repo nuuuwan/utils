@@ -12,7 +12,7 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.1.12 (NEXT RELEASE)
+### 1.1.12 (LATEST RELEASE)
 
 * Make WWW primary, and add PendingDeprecationWarnings to stand-alone functions
 
@@ -22,8 +22,9 @@ pip install utils-nuuuwan
 * Added (smart) List
 * Added Iter
 * Added Table and TableRow
+* Deprecated zipx
 
-### 1.1.11 (LATEST RELEASE)
+### 1.1.11 
 
 * Added Time, TimeDelta and TimeFormat (i.e. made time a class)
 
