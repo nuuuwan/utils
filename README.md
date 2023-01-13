@@ -23,6 +23,7 @@ pip install utils-nuuuwan
 * Deprecated sysx
 * Deprecated timex
 * Deprecated filex, tsv
+* Deprecated ds
 
 ### 1.1.13 (LATEST RELEASE)
 
