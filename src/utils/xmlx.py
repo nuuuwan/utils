@@ -1,7 +1,8 @@
 import xml.dom.minidom as minidom
 import xml.etree.ElementTree as ElementTree
 
-from utils import dt, filex
+from utils import dt
+from utils.File import File
 
 FONT_FAMILY = 'sans-serif'
 DEFAULT_ATTRIB_MAP = {
@@ -87,4 +88,4 @@ class _:
         return self.__str__()
 
     def store(self, xml_file):
-        filex.write(xml_file, str(self))
+        File(xml_file).write(str(self))

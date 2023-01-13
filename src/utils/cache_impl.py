@@ -4,7 +4,8 @@ import os
 import threading
 import time
 
-from utils import filex, hashx
+from utils import hashx
+from utils.File import JSONFile
 
 DEFAULT_TIMEOUT = 60
 DEFAULT_DIR = '/tmp/cache'
@@ -63,7 +64,7 @@ class _Cache:
         return os.path.exists(self.__get_cache_file_name(key))
 
     def __get_from_file(self, key):
-        data_json = filex.read(self.__get_cache_file_name(key))
+        data_json = JSONFile(self.__get_cache_file_name(key)).read()
         if data_json == '':
             return None
         packet = json.loads(data_json)
@@ -72,9 +73,8 @@ class _Cache:
     def __set(self, key, data):
         self.__acquire_lock(key)
         packet = {'data': json.dumps(data), 'set_time': time.time()}
-        filex.write(
-            self.__get_cache_file_name(key),
-            json.dumps(packet, ensure_ascii=True),
+        JSONFile(self.__get_cache_file_name(key)).write(
+            packet,
         )
         self.__store[key] = packet
         self.__release_lock(key)

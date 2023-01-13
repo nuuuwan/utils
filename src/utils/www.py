@@ -6,7 +6,7 @@ import requests
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
-from utils import File, tsv
+from utils.File import File, XSVFile
 
 USER_AGENT = (
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) '
@@ -60,7 +60,7 @@ class WWW:
 
     def readXSV(self, separator):
         content = self.read()
-        return tsv._read_helper(content.split('\n'), separator)
+        return XSVFile._readHelper(separator, content.split('\n'))
 
     def readCSV(self):
         return self.readXSV(',')

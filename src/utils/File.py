@@ -59,15 +59,14 @@ class XSVFile(File):
         File.__init__(self, file_name)
         self.delimiter = delimiter
 
-    def read(self):
-        csv_lines = File.read_lines(self)
-
+    @staticmethod
+    def _readHelper(delimiter: str, xsv_lines: list):
         data_list = []
         field_names = None
         reader = csv.reader(
-            csv_lines,
+            xsv_lines,
             dialect=DIALECT,
-            delimiter=self.delimiter,
+            delimiter=delimiter,
         )
         for row in reader:
             if not field_names:
@@ -82,6 +81,10 @@ class XSVFile(File):
                 if data:
                     data_list.append(data)
         return data_list
+
+    def read(self):
+        xsv_lines = File.read_lines(self)
+        return XSVFile._readHelper(self.delimiter, xsv_lines)
 
     def write(self, data_list):
         with open(self.file_name, 'w') as fout:
