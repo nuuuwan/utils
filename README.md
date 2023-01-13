@@ -16,6 +16,7 @@ pip install utils-nuuuwan
 ### 1.1.14
 
 * deprecated: jsonx
+* feat: import cache directly, instead of cache.cache
 
 ### 1.1.13 (LATEST RELEASE)
 
