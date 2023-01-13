@@ -2,10 +2,10 @@ import os
 
 import googlemaps
 
-from utils import timex
 from utils.cache import cache
+from utils.Time import SECONDS_IN
 
-CACHE_NAME, CACHE_TIMEOUT = 'GoogleMaps', timex.SECONDS_IN.YEAR
+CACHE_NAME, CACHE_TIMEOUT = 'GoogleMaps', SECONDS_IN.YEAR
 
 
 def get_api_key():

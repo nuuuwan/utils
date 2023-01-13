@@ -2,7 +2,7 @@
 
 import random
 
-from utils import timex
+from utils.Time import Time, TimeFormat
 
 MIN_INT, MAX_INT = 10**15, 10**16 - 1
 
@@ -25,6 +25,6 @@ def write(file_name, content, mode='w'):
 def get_tmp_file():
     """Get tmp file name."""
     return '/tmp/tmp.%s.%d' % (
-        timex.format_time(timex.get_unixtime(), '%Y%m%d%H%M%S'),
+        TimeFormat('%Y%m%d%H%M%S').stringify(Time.now()),
         random.randint(MIN_INT, MAX_INT),
     )

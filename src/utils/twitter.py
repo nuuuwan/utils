@@ -5,8 +5,8 @@ import logging
 
 import tweepy
 
-from utils import timex
 from utils.cache import cache
+from utils.Time import SECONDS_IN, Time, TimeFormat
 
 MAX_LEN_TWEET = 280
 MAX_MEDIA_FILES = 4
@@ -47,7 +47,9 @@ def _upload_media(api, image_files):
 
 
 def _update_profile_description(api):
-    date_with_timezone = timex.format_current_date_with_timezone()
+    date_with_timezone = TimeFormat('YYYY-MM-DD HH:mm:ss Z').stringify(
+        Time.now()
+    )
     description = 'Automatically updated at {date_with_timezone}'.format(
         date_with_timezone=date_with_timezone
     )
@@ -163,7 +165,7 @@ class Twitter:
             log.error('Missing API. Cannot search')
             return None
 
-        @cache('utils.twitter', timex.SECONDS_IN.YEAR)
+        @cache('utils.twitter', SECONDS_IN.YEAR)
         def fallback(query_text=query_text):
             log.info('Inner call')
             results_list = self.api.search_users(query_text)

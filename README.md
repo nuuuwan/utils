@@ -15,12 +15,13 @@ pip install utils-nuuuwan
 
 ### 1.1.14
 
-* deprecate: jsonx
+* Deprecated jsonx
 * feat: import cache directly, instead of cache.cache
-* deprecate: db
+* Deprecated db
 * renamed www -> WWW
 * Deprecated printx
 * Deprecated sysx
+* Deprecated timex
 
 ### 1.1.13 (LATEST RELEASE)
 
