@@ -12,12 +12,12 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.1.13 (NEXT RELEASE)
+### 1.1.13 (LATEST RELEASE)
 
 * Deprecated zipx
 * Deprecated legacy www
 
-### 1.1.12 (LATEST RELEASE)
+### 1.1.12 
 
 * Make WWW primary, and add PendingDeprecationWarnings to stand-alone functions
 
