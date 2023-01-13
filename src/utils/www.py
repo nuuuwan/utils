@@ -1,18 +1,12 @@
 """Utils for reading remote files."""
 import json
-import logging
 import ssl
-import time
-from warnings import warn
 
 import requests
-from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
-from utils import File, filex, timex, tsv
-from utils.browserx import Browser
-from utils.cache import cache
+from utils import File, tsv
 
 USER_AGENT = (
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) '
