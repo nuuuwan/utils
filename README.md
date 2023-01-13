@@ -13,6 +13,10 @@ pip install utils-nuuuwan
 ## Version History
 
 
+### 1.1.15 
+
+* Deprecated xy, geo, latlng
+
 ### 1.1.14 (LATEST RELEASE)
 
 * Deprecated jsonx
