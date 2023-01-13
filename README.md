@@ -12,6 +12,11 @@ pip install utils-nuuuwan
 
 ## Version History
 
+
+### 1.1.14
+
+* deprecated: jsonx
+
 ### 1.1.13 (LATEST RELEASE)
 
 * Deprecated zipx
