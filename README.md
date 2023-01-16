@@ -13,7 +13,7 @@ pip install utils-nuuuwan
 ## Version History
 
 
-### 1.1.16  (LATEST RELEASE)
+### 1.1.16 (CURRENT RELEASE)
 
 * Refactored log to have Log(name)
 * Added Time addition 
