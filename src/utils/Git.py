@@ -1,9 +1,9 @@
 import os
 import shutil
 
-from utils import logx
+from utils.Log import Log
 
-log = logx.get_logger('Git')
+log = Log('Git')
 
 
 class Git:

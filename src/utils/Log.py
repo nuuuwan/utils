@@ -1,7 +1,6 @@
 """Utils."""
 
 import logging
-from warnings import warn
 
 from py_console import console, textColor
 
@@ -24,7 +23,7 @@ class CustomLoggingFormatter(logging.Formatter):
 
 
 class Log(logging.Logger):
-    def __init__(self, name: str, level: int):
+    def __init__(self, name: str, level: int = logging.DEBUG):
         super(Log, self).__init__(name, level)
         self.propagate = False
 
@@ -33,11 +32,6 @@ class Log(logging.Logger):
         sh.setLevel(logging.DEBUG)
         sh.setFormatter(formatter)
         self.handlers = [sh]
-
-
-def get_logger(name: str):
-    warn('get_logger(name) is deprecated, use Log(name) instead')
-    return Log(name, logging.DEBUG)
 
 
 if __name__ == '__main__':

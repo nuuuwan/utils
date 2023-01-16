@@ -4,6 +4,7 @@ from utils.File import CSVFile, File, JSONFile, TSVFile, XSVFile, Zip
 from utils.Git import Git
 from utils.GoogleMaps import GoogleMaps
 from utils.List import List
+from utils.Log import Log
 from utils.RandomColor import RandomColor
 from utils.String import String
 from utils.Table import Table, TableRow
