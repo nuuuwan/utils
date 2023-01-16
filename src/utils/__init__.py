@@ -9,4 +9,4 @@ from utils.String import String
 from utils.Table import Table, TableRow
 from utils.Time import (AVG_DAYS_IN, SECONDS_IN, TIMEZONE_OFFSET, Time,
                         TimeDelta, TimeFormat)
-from utils.WWW import WWW
+from utils.www import WWW
