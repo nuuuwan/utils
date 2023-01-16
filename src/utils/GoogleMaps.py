@@ -5,7 +5,7 @@ import googlemaps
 from utils.cache import cache
 from utils.Time import SECONDS_IN
 
-CACHE_NAME, CACHE_TIMEOUT = 'GoogleMaps', SECONDS_IN.YEAR
+CACHE_NAME, CACHE_TIMEOUT = 'GoogleMaps', SECONDS_IN.AVG_YEAR
 
 
 def get_api_key():

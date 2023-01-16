@@ -8,6 +8,5 @@ from utils.List import List
 from utils.Log import Log
 from utils.String import String
 from utils.Table import Table, TableRow
-from utils.Time import (AVG_DAYS_IN, SECONDS_IN, TIMEZONE_OFFSET, Time,
-                        TimeDelta, TimeFormat)
+from utils.Time import SECONDS_IN, TIMEZONE_OFFSET, Time, TimeDelta, TimeFormat
 from utils.www import WWW
