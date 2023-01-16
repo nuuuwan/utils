@@ -12,6 +12,8 @@ pip install utils-nuuuwan
 
 ## Version History
 
+### 1.1.17
+* Added TimeIDs 
 
 ### 1.1.16 (CURRENT RELEASE)
 

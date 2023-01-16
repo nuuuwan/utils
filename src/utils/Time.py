@@ -24,7 +24,7 @@ class AVG_DAYS_IN:
 
 
 class TimeDelta:
-    def __init__(self, dut):
+    def __init__(self, dut: int = 0):
         self.dut = dut
 
     def __eq__(self, other) -> bool:
@@ -45,7 +45,9 @@ class TimeDelta:
 
 
 class Time:
-    def __init__(self, ut):
+    def __init__(self, ut: int = None):
+        if ut is None:
+            ut = time.time()
         self.ut = ut
 
     def __eq__(self, other) -> bool:
@@ -59,7 +61,7 @@ class Time:
 
     @staticmethod
     def now():
-        return Time(time.time())
+        return Time()
 
 
 class TimeFormat:
@@ -82,3 +84,7 @@ class TimeFormat:
         return time.strftime(
             self.format_str, time.localtime(t.ut + self.dut_timezone)
         )
+
+
+TIME_FORMAT_DATE_ID = TimeFormat('%Y-%m-%d')
+TIME_FORMAT_TIME_ID = TimeFormat('%Y-%m-%d %H:%M:%S')
