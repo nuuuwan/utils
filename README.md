@@ -13,12 +13,12 @@ pip install utils-nuuuwan
 ## Version History
 
 
-### 1.1.15 
+### 1.1.15 (LATEST RELEASE)
 
 * Deprecated xy, geo, latlng
 * Refactored dt into String
 
-### 1.1.14 (LATEST RELEASE)
+### 1.1.14 
 
 * Deprecated jsonx
 * feat: import cache directly, instead of cache.cache
