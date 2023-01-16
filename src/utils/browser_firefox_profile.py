@@ -10,7 +10,7 @@ MIME_TYPES_NEVER_ASK = [
 ]
 
 
-def _get():
+def get_firefox_profile():
     firefox_profile = webdriver.FirefoxProfile()
     firefox_profile.set_preference('browser.download.folderList', 2)
     firefox_profile.set_preference(
