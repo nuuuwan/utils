@@ -13,6 +13,11 @@ pip install utils-nuuuwan
 ## Version History
 
 
+### 1.1.16
+
+* Refactored log to have Log(name)
+
+
 ### 1.1.15 (LATEST RELEASE)
 
 * Deprecated xy, geo, latlng

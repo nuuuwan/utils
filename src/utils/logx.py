@@ -1,44 +1,47 @@
 """Utils."""
 
 import logging
+from warnings import warn
 
 from py_console import console, textColor
 
-
-def get_level_color(levelno):
-    return {
-        logging.CRITICAL: textColor.MAGENTA,
-        logging.ERROR: textColor.RED,
-        logging.WARNING: textColor.YELLOW,
-        logging.INFO: textColor.GREEN,
-        logging.DEBUG: textColor.BLUE,
-        logging.NOTSET: textColor.WHITE,
-    }.get(levelno, textColor.WHITE)
+LEVEL_TO_COLOR = {
+    logging.CRITICAL: textColor.MAGENTA,
+    logging.ERROR: textColor.RED,
+    logging.WARNING: textColor.YELLOW,
+    logging.INFO: textColor.BLUE,
+    logging.DEBUG: textColor.GREEN,
+    logging.NOTSET: textColor.WHITE,
+}
 
 
 class CustomLoggingFormatter(logging.Formatter):
     def format(self, record):
-        color = get_level_color(record.levelno)
+        color = LEVEL_TO_COLOR[record.levelno]
         return console.highlight(
             f'({record.name}-{record.levelname}): {record.msg}', color
         )
 
 
-def get_logger(logger_name='custom'):
-    formatter = CustomLoggingFormatter()
-    sh = logging.StreamHandler()
-    sh.setLevel(logging.DEBUG)
-    sh.setFormatter(formatter)
+class Log(logging.Logger):
+    def __init__(self, name: str, level: int):
+        super(Log, self).__init__(name, level)
+        self.propagate = False
 
-    log = logging.getLogger(logger_name)
-    log.propagate = False
-    log.setLevel(logging.DEBUG)
-    log.handlers = [sh]
-    return log
+        formatter = CustomLoggingFormatter()
+        sh = logging.StreamHandler()
+        sh.setLevel(logging.DEBUG)
+        sh.setFormatter(formatter)
+        self.handlers = [sh]
+
+
+def get_logger(name: str):
+    warn('get_logger(name) is deprecated, use Log(name) instead')
+    return Log(name, logging.DEBUG)
 
 
 if __name__ == '__main__':
-    log = get_logger('testing')
+    log = Log('testing')
     log.critical('This is CRITICAL')
     log.error('This is ERROR')
     log.warning('This is WARNING')
