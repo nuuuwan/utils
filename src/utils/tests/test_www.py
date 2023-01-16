@@ -13,14 +13,6 @@ URL_BASE = os.path.join(
     'main/src/utils/tests',
 )
 
-TEST_URL_HIMAWARI = os.path.join(
-    'https://www.data.jma.go.jp',
-    'mscweb/data/himawari/img/ha5/ha5_snd_0040.jpg',
-)
-
-
-TEST_IMAGE_HIMAWARI = os.path.join(DIR_TESTS, 'himawari.jpg')
-
 
 def get_test_file(ext: str) -> str:
     return os.path.join(DIR_TESTS, f'data.{ext}')
@@ -35,11 +27,6 @@ class TestCase(unittest.TestCase):
         self.assertEqual(
             File(get_test_file('png')).readBinary(),
             WWW(get_test_url('png')).readBinary(),
-        )
-
-        self.assertEqual(
-            File(TEST_IMAGE_HIMAWARI).readBinary(),
-            WWW(TEST_URL_HIMAWARI).readBinary(),
         )
 
     def test_read_selenium(self):
