@@ -21,6 +21,12 @@ class TestTime(TestCase):
         t1 = Time(1234567890)
         self.assertEqual(t1 - t0, TimeDelta(90))
 
+    def test_add(self):
+        t0 = Time(1234567800)
+        dt = TimeDelta(100)
+        t1 = Time(1234567900)
+        self.assertEqual(t0 + dt, t1)
+
     def test_delta_humanize(self):
         for dut, expected_humanized in [
             [0, '0sec'],

@@ -54,6 +54,9 @@ class Time:
     def __sub__(self, other) -> TimeDelta:
         return TimeDelta(self.ut - other.ut)
 
+    def __add__(self, other: TimeDelta):
+        return Time(self.ut + other.dut)
+
     @staticmethod
     def now():
         return Time(time.time())

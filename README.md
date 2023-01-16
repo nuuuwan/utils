@@ -16,6 +16,7 @@ pip install utils-nuuuwan
 ### 1.1.16
 
 * Refactored log to have Log(name)
+* Added Time addition 
 
 
 ### 1.1.15 (LATEST RELEASE)
