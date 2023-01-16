@@ -13,15 +13,15 @@ pip install utils-nuuuwan
 ## Version History
 
 
-### 1.1.16
+### 1.1.16  (LATEST RELEASE)
 
 * Refactored log to have Log(name)
 * Added Time addition 
 * Renamed RandomColor to Color
 * Cleaned-up Browser
+* Deleted Image
 
-
-### 1.1.15 (LATEST RELEASE)
+### 1.1.15 
 
 * Deprecated xy, geo, latlng
 * Refactored dt into String
