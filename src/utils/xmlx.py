@@ -1,7 +1,7 @@
 import xml.dom.minidom as minidom
 import xml.etree.ElementTree as ElementTree
 
-from utils import dt
+from utils import String
 from utils.File import File
 
 FONT_FAMILY = 'sans-serif'
@@ -24,7 +24,7 @@ def style(**kwargs):
         list(
             map(
                 lambda item: '%s:%s;'
-                % (dt.to_kebab(str(item[0])), str(item[1])),
+                % (String(str(item[0])).kebab, str(item[1])),
                 kwargs.items(),
             )
         )

@@ -16,6 +16,7 @@ pip install utils-nuuuwan
 ### 1.1.15 
 
 * Deprecated xy, geo, latlng
+* Refactored dt into String
 
 ### 1.1.14 (LATEST RELEASE)
 
