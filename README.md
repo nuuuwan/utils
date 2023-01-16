@@ -14,6 +14,7 @@ pip install utils-nuuuwan
 
 ### 1.1.17
 * Added TimeIDs 
+* Added TimeUnits 
 
 ### 1.1.16 (CURRENT RELEASE)
 
