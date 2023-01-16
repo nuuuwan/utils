@@ -17,6 +17,7 @@ pip install utils-nuuuwan
 
 * Refactored log to have Log(name)
 * Added Time addition 
+* Renamed RandomColor to Color
 
 
 ### 1.1.15 (LATEST RELEASE)

@@ -1,9 +1,7 @@
 import random
 
-PRECISION = 2
 
-
-class RandomColor:
+class Color:
     @staticmethod
     def _8bit():
         return random.randint(0, 255)
@@ -21,17 +19,17 @@ class RandomColor:
         return random.randint(0, 100)
 
     @staticmethod
-    def rgb(r=None, g=None, b=None, a=None):
-        r = r if r else RandomColor._8bit()
-        g = g if g else RandomColor._8bit()
-        b = b if b else RandomColor._8bit()
-        a = a if a else RandomColor._float()
+    def rgba(r=None, g=None, b=None, a=None):
+        r = r or Color._8bit()
+        g = g or Color._8bit()
+        b = b or Color._8bit()
+        a = a or Color._float()
         return f'rgba({r:d},{g:d},{b:d},{a:.2f})'
 
     @staticmethod
     def hsla(h=None, s=None, light=None, a=None):
-        h = h if h else RandomColor._360()
-        s = s if s else RandomColor._percent()
-        light = light if light else RandomColor._percent()
-        a = a if a else RandomColor._float()
+        h = h or Color._360()
+        s = s or Color._percent()
+        light = light or Color._percent()
+        a = a or Color._float()
         return f'hsla({h:d},{s:d}%,{light:d}%,{a:.2f})'
