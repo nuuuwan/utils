@@ -12,12 +12,12 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.1.17
+### 1.1.17 (CURRENT RELEASE)
 * Added TimeIDs 
 * Added TimeUnits 
 * #Refactor Time into new folder 
 
-### 1.1.16 (CURRENT RELEASE)
+### 1.1.16 
 
 * Refactored log to have Log(name)
 * Added Time addition 
