@@ -15,6 +15,7 @@ pip install utils-nuuuwan
 ### 1.1.17
 * Added TimeIDs 
 * Added TimeUnits 
+* #Refactor Time into new folder 
 
 ### 1.1.16 (CURRENT RELEASE)
 
