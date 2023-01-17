@@ -3,7 +3,7 @@ import os
 import googlemaps
 
 from utils.cache import cache
-from utils.Time import SECONDS_IN
+from utils.time.TimeUnit import SECONDS_IN
 
 CACHE_NAME, CACHE_TIMEOUT = 'GoogleMaps', SECONDS_IN.AVG_YEAR
 

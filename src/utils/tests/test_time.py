@@ -1,7 +1,7 @@
 import time
 from unittest import TestCase
 
-from utils.Time import TIMEZONE_OFFSET, Time, TimeDelta, TimeFormat
+from utils import TIMEZONE_OFFSET, Time, TimeDelta, TimeFormat
 
 
 class TestTime(TestCase):

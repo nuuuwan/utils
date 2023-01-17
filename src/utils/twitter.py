@@ -6,7 +6,9 @@ import logging
 import tweepy
 
 from utils.cache import cache
-from utils.Time import SECONDS_IN, Time, TimeFormat
+from utils.time.Time import Time
+from utils.time.TimeFormat import TimeFormat
+from utils.time.TimeUnit import SECONDS_IN
 
 MAX_LEN_TWEET = 280
 MAX_MEDIA_FILES = 4
