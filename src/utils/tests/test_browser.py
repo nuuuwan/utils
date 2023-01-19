@@ -8,7 +8,6 @@ from utils import Browser
 TEST_URL = os.path.join(
     'https://nuuuwan.github.io',
     'utils',
-    'data.html',
 )
 
 
@@ -17,13 +16,13 @@ class TestBrowser(TestCase):
         browser = Browser()
         browser.open(TEST_URL)
         elem_h1 = browser.find_element(By.TAG_NAME, 'h1')
-        self.assertIn('This is a test', elem_h1.text)
+        self.assertEqual('Heading 1', elem_h1.text)
 
-        elem_h1_2 = browser.find_elements(By.TAG_NAME, 'h1')[0]
-        self.assertIn('This is a test', elem_h1_2.text)
+        elem_h2_2 = browser.find_elements(By.TAG_NAME, 'h2')[1]
+        self.assertEqual('Heading 1.2', elem_h2_2.text)
 
-        elem_h1_3 = browser.wait_for_element(By.TAG_NAME, 'h1')[0]
-        self.assertIn('This is a test', elem_h1_3.text)
+        elem_h2_1 = browser.wait_for_element(By.TAG_NAME, 'h2')
+        self.assertEqual('Heading 1.1', elem_h2_1.text)
 
         browser.quit()
 
