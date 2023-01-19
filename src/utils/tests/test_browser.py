@@ -6,8 +6,8 @@ from selenium.webdriver.common.by import By
 from utils import Browser
 
 TEST_URL = os.path.join(
-    'https://raw.githubusercontent.com',
-    'nuuuwan/utils/main/src/utils/tests',
+    'https://nuuuwan.github.io',
+    'utils',
     'data.html',
 )
 
