@@ -1,14 +1,17 @@
-"""Browser utils."""
-
+import time
 
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
-from utils import browser_firefox_profile
 from utils.Log import Log
 
-MAX_T_WAIT = 60
-WINDOW_WIDTH, WINDOW_HEIGHT = 1920, 1080
+DEFAULT_WINDOW_DIM = (1920, 1080)
+TIME_DEFAULT_WAIT = 10
+TIME_DEFAULT_SLEEP = 1
+
+log = Log('Browser')
 
 
 class Browser:
@@ -18,38 +21,48 @@ class Browser:
         """Construct."""
         options = Options()
         options.headless = True
-        self.browser = webdriver.Firefox(
+        self.driver = webdriver.Firefox(
             options=options,
-            firefox_profile=browser_firefox_profile.get_firefox_profile(),
         )
-        self.browser.set_window_size(WINDOW_WIDTH, WINDOW_HEIGHT)
+        self.set_window_dim(DEFAULT_WINDOW_DIM)
 
-        self.log = Log('Browser')
-        self.log.debug('Opened Selenium Firefox Browser.')
+    def set_window_dim(self, dim: tuple):
+        width, height = dim
+        self.driver.set_window_size(width, height)
 
     def open(self, url: str):
-        self.browser.get(url)
-        self.log.debug(f'Opened "{url}".')
+        self.driver.get(url)
+        log.debug(f'Opened "{url}".')
 
     def scroll_to_bottom(self):
         """Scroll to the bottom of the page."""
         SCRIPT_SCROLL = 'window.scrollTo(0, document.body.scrollHeight);'
-        self.browser.execute_script(SCRIPT_SCROLL)
+        self.driver.execute_script(SCRIPT_SCROLL)
 
     @property
     def source(self):
         """Get page source."""
-        return self.browser.page_source
+        return self.driver.page_source
 
     @property
     def downloadScreenshot(self, image_file_name):
-        self.browser.save_screenshot(image_file_name)
-        self.log.debug(f'Downloaded screenshot to "{image_file_name}".')
+        self.driver.save_screenshot(image_file_name)
+        log.debug(f'Downloaded screenshot to "{image_file_name}".')
 
     def find_element(self, by, value):
-        return self.browser.find_element(by, value)
+        return self.driver.find_element(by, value)
+
+    def find_elements(self, by, value):
+        return self.driver.find_elements(by, value)
+
+    def wait_for_element(self, by, value, timeout: int = TIME_DEFAULT_WAIT):
+        return WebDriverWait(self.driver, timeout).until(
+            EC.presence_of_element_located((by, value))
+        )
+
+    def sleep(self, timeout=TIME_DEFAULT_SLEEP):
+        time.sleep(timeout)
 
     def quit(self):
-        """Quit."""
-        self.browser.close()
-        self.browser.quit()
+        self.driver.close()
+        self.driver.quit()
