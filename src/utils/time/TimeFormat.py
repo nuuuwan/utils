@@ -1,10 +1,11 @@
 import time
 
 from utils.time.Time import Time
+from utils.time.TIMEZONE_OFFSET import TIMEZONE_OFFSET
 
 
 class TimeFormat:
-    def __init__(self, format_str: str, timezone_offset=0):
+    def __init__(self, format_str: str, timezone_offset=TIMEZONE_OFFSET.LK):
         self.format_str = format_str
         self.timezone_offset = timezone_offset
 
@@ -29,4 +30,4 @@ TIME_FORMAT_DATE = TimeFormat('%Y-%m-%d')
 TIME_FORMAT_TIME = TimeFormat('%Y-%m-%d %H:%M:%S %Z')
 
 TIME_FORMAT_DATE_ID = TimeFormat('%Y%m%d')
-TIME_FORMAT_TIME_ID = TimeFormat('%Y%m%d%H%M%S%Z')
+TIME_FORMAT_TIME_ID = TimeFormat('%Y%m%d.%H%M%S.%Z')

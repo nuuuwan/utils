@@ -13,6 +13,7 @@ pip install utils-nuuuwan
 ## Version History
 
 ### 1.1.18
+* feat: Added get_time_id, get_date_id
 * feat: Added find_element etc to Browser 
 * More Time/TimeDelta operators
 * Added Browser to default __init__. Added get screenshot 

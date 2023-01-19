@@ -1,7 +1,8 @@
 import time
 from unittest import TestCase
 
-from utils import TIMEZONE_OFFSET, Time, TimeDelta, TimeFormat
+from utils import (TIMEZONE_OFFSET, Time, TimeDelta, TimeFormat, get_date_id,
+                   get_time_id)
 
 
 class TestTime(TestCase):
@@ -56,3 +57,11 @@ class TestTime(TestCase):
                 t2,
                 tf.parse(expected_time_str),
             )
+
+    def test_time_id(self):
+        time_id = get_time_id()
+        self.assertEqual(len(time_id), 21)
+
+    def test_date_id(self):
+        date_id = get_date_id()
+        self.assertEqual(len(date_id), 8)
