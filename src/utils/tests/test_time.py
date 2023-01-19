@@ -60,7 +60,7 @@ class TestTime(TestCase):
 
     def test_time_id(self):
         time_id = get_time_id()
-        self.assertEqual(len(time_id), 21)
+        self.assertEqual(len(time_id), 15)
 
     def test_date_id(self):
         date_id = get_date_id()

@@ -27,7 +27,7 @@ class TimeFormat:
 
 
 TIME_FORMAT_DATE = TimeFormat('%Y-%m-%d')
-TIME_FORMAT_TIME = TimeFormat('%Y-%m-%d %H:%M:%S %Z')
+TIME_FORMAT_TIME = TimeFormat('%Y-%m-%d %H:%M:%S')
 
 TIME_FORMAT_DATE_ID = TimeFormat('%Y%m%d')
-TIME_FORMAT_TIME_ID = TimeFormat('%Y%m%d.%H%M%S.%Z')
+TIME_FORMAT_TIME_ID = TimeFormat('%Y%m%d.%H%M%S')
