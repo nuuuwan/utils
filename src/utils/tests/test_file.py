@@ -59,15 +59,15 @@ class TestCase(unittest.TestCase):
         zip = Zip(json_file_name)
         zip.zip()
         self.assertFalse(os.path.exists(json_file_name))
-        self.assertTrue(os.path.exists(zip.zip_file_name))
+        self.assertTrue(os.path.exists(zip.zip_path))
 
-        zip_file_size = os.path.getsize(zip.zip_file_name)
+        zip_file_size = os.path.getsize(zip.zip_path)
         expected_zip_file_size = 2_143
         self.assertEqual(expected_zip_file_size, zip_file_size)
 
         zip.unzip()
         self.assertTrue(os.path.exists(json_file_name))
-        self.assertFalse(os.path.exists(zip.zip_file_name))
+        self.assertFalse(os.path.exists(zip.zip_path))
 
         actual_data = json_file.read()
         self.assertTrue(data, actual_data)
