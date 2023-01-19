@@ -13,10 +13,20 @@ class Time:
         return self.ut == other.ut
 
     def __sub__(self, other) -> TimeDelta:
-        return TimeDelta(self.ut - other.ut)
+        if isinstance(other, TimeDelta):
+            return Time(self.ut - other.dut)
+        if isinstance(other, Time):
+            return TimeDelta(self.ut - other.ut)
+        raise TypeError(
+            "unsupported operand type(s) for -: 'Time' and '%s'" % type(other)
+        )
 
-    def __add__(self, other: TimeDelta):
-        return Time(self.ut + other.dut)
+    def __add__(self, other):
+        if isinstance(other, TimeDelta):
+            return Time(self.ut + other.dut)
+        raise TypeError(
+            "unsupported operand type(s) for -: 'Time' and '%s'" % type(other)
+        )
 
     @staticmethod
     def now():

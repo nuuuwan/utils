@@ -12,6 +12,11 @@ pip install utils-nuuuwan
 
 ## Version History
 
+### 1.1.18
+* More Time/TimeDelta operators
+* Added Browser to default __init__. Added get screenshot 
+
+
 ### 1.1.17 (CURRENT RELEASE)
 * Added TimeIDs 
 * Added TimeUnits 
