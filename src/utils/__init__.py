@@ -2,6 +2,7 @@ from utils.Browser import Browser
 from utils.cache import cache
 from utils.Color import Color
 from utils.Dict import Dict
+from utils.Directory import Directory
 from utils.File import CSVFile, File, JSONFile, TSVFile, XSVFile, Zip
 from utils.Git import Git
 from utils.GoogleMaps import GoogleMaps

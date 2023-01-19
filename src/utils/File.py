@@ -3,35 +3,41 @@ import json
 import os
 import zipfile
 
+from utils.FileOrDirectory import FileOrDirectory
+
 DIALECT = 'excel'
 DELIMITER_CSV = ','
 DELIMITER_TSV = '\t'
 DELIM_LINE = '\n'
 
 
-class File:
-    def __init__(self, file_name):
-        self.file_name = file_name
+class File(FileOrDirectory):
+    def __init__(self, path):
+        self.path = path
+
+    @property
+    def ext(self):
+        return self.name.split('.')[-1]
 
     def read(self):
-        with open(self.file_name, 'r') as fin:
+        with open(self.path, 'r') as fin:
             content = fin.read()
             fin.close()
         return content
 
     def readBinary(self):
-        with open(self.file_name, 'rb') as fin:
+        with open(self.path, 'rb') as fin:
             content = fin.read()
             fin.close()
         return content
 
     def write(self, content):
-        with open(self.file_name, 'w') as fout:
+        with open(self.path, 'w') as fout:
             fout.write(content)
             fout.close()
 
     def writeBinary(self, content):
-        with open(self.file_name, 'wb') as fout:
+        with open(self.path, 'wb') as fout:
             fout.write(content)
             fout.close()
 
@@ -55,8 +61,8 @@ class JSONFile(File):
 
 
 class XSVFile(File):
-    def __init__(self, file_name, delimiter):
-        File.__init__(self, file_name)
+    def __init__(self, path, delimiter):
+        File.__init__(self, path)
         self.delimiter = delimiter
 
     @staticmethod
@@ -87,7 +93,7 @@ class XSVFile(File):
         return XSVFile._readHelper(self.delimiter, xsv_lines)
 
     def write(self, data_list):
-        with open(self.file_name, 'w') as fout:
+        with open(self.path, 'w') as fout:
             writer = csv.writer(
                 fout,
                 dialect=DIALECT,
@@ -113,51 +119,51 @@ class XSVFile(File):
 
 
 class CSVFile(XSVFile):
-    def __init__(self, file_name):
-        return XSVFile.__init__(self, file_name, DELIMITER_CSV)
+    def __init__(self, path):
+        return XSVFile.__init__(self, path, DELIMITER_CSV)
 
 
 class TSVFile(XSVFile):
-    def __init__(self, file_name):
-        return XSVFile.__init__(self, file_name, DELIMITER_TSV)
+    def __init__(self, path):
+        return XSVFile.__init__(self, path, DELIMITER_TSV)
 
 
 class Zip:
-    def __init__(self, file_name):
-        self.file_name = file_name
+    def __init__(self, path):
+        self.path = path
 
     @property
-    def zip_file_name(self):
-        return self.file_name + '.zip'
+    def zip_path(self):
+        return self.path + '.zip'
 
     @property
     def arc_name(self):
-        return os.path.basename(os.path.normpath(self.file_name))
+        return os.path.basename(os.path.normpath(self.path))
 
     @property
     def dir_zip(self):
-        return os.path.dirname(os.path.normpath(self.file_name))
+        return os.path.dirname(os.path.normpath(self.path))
 
     def zip(self, skip_delete=False):
-        assert os.path.exists(self.file_name)
+        assert os.path.exists(self.path)
         with zipfile.ZipFile(
-            self.zip_file_name,
+            self.zip_path,
             mode='w',
             compression=zipfile.ZIP_DEFLATED,
         ) as zip_file:
-            zip_file.write(self.file_name, arcname=self.arc_name)
-            assert os.path.exists(self.zip_file_name)
+            zip_file.write(self.path, arcname=self.arc_name)
+            assert os.path.exists(self.zip_path)
 
         if not skip_delete:
-            os.remove(self.file_name)
-            assert not os.path.exists(self.file_name)
+            os.remove(self.path)
+            assert not os.path.exists(self.path)
 
     def unzip(self, skip_delete=False):
-        assert os.path.exists(self.zip_file_name)
-        with zipfile.ZipFile(self.zip_file_name) as zip_file:
+        assert os.path.exists(self.zip_path)
+        with zipfile.ZipFile(self.zip_path) as zip_file:
             zip_file.extractall(self.dir_zip)
-            assert os.path.exists(self.file_name)
+            assert os.path.exists(self.path)
 
         if not skip_delete:
-            os.remove(self.zip_file_name)
-            assert not os.path.exists(self.zip_file_name)
+            os.remove(self.zip_path)
+            assert not os.path.exists(self.zip_path)
