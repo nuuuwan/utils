@@ -12,7 +12,7 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.1.18
+### 1.1.18 (CURRENT RELEASE)
 * feat: Add Directory etc
 * feat: Added get_time_id, get_date_id
 * feat: Added find_element etc to Browser 
@@ -20,7 +20,7 @@ pip install utils-nuuuwan
 * Added Browser to default __init__. Added get screenshot 
 
 
-### 1.1.17 (CURRENT RELEASE)
+### 1.1.17 
 * Added TimeIDs 
 * Added TimeUnits 
 * #Refactor Time into new folder 
