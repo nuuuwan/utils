@@ -1,3 +1,4 @@
+from utils.Browser import Browser
 from utils.cache import cache
 from utils.Color import Color
 from utils.Dict import Dict
