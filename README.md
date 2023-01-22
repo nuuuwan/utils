@@ -12,7 +12,11 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.1.18 (CURRENT RELEASE)
+### 1.1.19 (CURRENT RELEASE)
+* fix: cache BUG
+
+
+### 1.1.18 
 * feat: Add Directory etc
 * feat: Added get_time_id, get_date_id
 * feat: Added find_element etc to Browser 

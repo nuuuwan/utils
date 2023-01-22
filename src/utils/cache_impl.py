@@ -64,10 +64,7 @@ class _Cache:
         return os.path.exists(self.__get_cache_file_name(key))
 
     def __get_from_file(self, key):
-        data_json = JSONFile(self.__get_cache_file_name(key)).read()
-        if data_json == '':
-            return None
-        packet = json.loads(data_json)
+        packet = JSONFile(self.__get_cache_file_name(key)).read()
         return packet
 
     def __set(self, key, data):
