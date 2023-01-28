@@ -7,13 +7,17 @@ class TimeDelta:
 
     def humanize(self):
         dut = self.dut
-        if dut < 60:
-            return f'{dut:.0f}sec'
-        dut /= 60
-        if dut < 60:
-            return f'{dut:.0f}min'
-        dut /= 60
-        if dut < 24:
-            return f'{dut:.0f}hr'
-        dut /= 24
-        return f'{dut:.0f}day'
+
+        for dut_limit, label in [
+            (60, 'second'),
+            (60, 'minute'),
+            (24, 'hour'),
+            (7, 'day'),
+            (None, 'week'),
+        ]:
+            if not dut_limit or dut < dut_limit:
+                if dut == 1:
+                    return f'{dut}{label}'
+                return f'{dut}{label}s'
+            else:
+                dut /= dut_limit
