@@ -12,6 +12,11 @@ pip install utils-nuuuwan
 
 ## Version History
 
+### 1.2
+* Deprecated cache #BREAKING
+
+* Various refactoring 
+
 ### 1.1.19 (CURRENT RELEASE)
 * fix: cache BUG
 
