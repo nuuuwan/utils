@@ -18,11 +18,13 @@ class TwitterBase:
     def api(self):
         try:
             auth = tweepy.OAuthHandler(
-                self.self.twtr_api_key, self.twtr_api_secret_key
+                self.twtr_api_key, self.twtr_api_secret_key
             )
+            log.debug('Created Twitter API auth.')
             auth.set_access_token(
                 self.twtr_access_token, self.twtr_access_token_secret
             )
+            log.debug('Set Twitter Access Token.')
             return tweepy.API(auth)
         except Exception as e:
             log.error(f'Twitter API Setup failed: {e}')

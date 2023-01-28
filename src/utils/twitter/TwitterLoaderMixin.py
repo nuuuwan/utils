@@ -1,7 +1,17 @@
 import argparse
+import os
 
 
 class TwitterLoaderMixin:
+    @classmethod
+    def from_environ_vars(cls):
+        return cls(
+            os.environ['TWTR_API_KEY'],
+            os.environ['TWTR_API_SECRET_KEY'],
+            os.environ['TWTR_ACCESS_TOKEN'],
+            os.environ['TWTR_ACCESS_TOKEN_SECRET'],
+        )
+
     @classmethod
     def from_args(cls):
         parser = argparse.ArgumentParser()

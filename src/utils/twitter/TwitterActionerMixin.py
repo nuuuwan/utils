@@ -4,6 +4,7 @@
 from utils.Log import Log
 from utils.time.Time import Time
 from utils.time.TimeFormat import TimeFormat
+from utils.time.TIMEZONE_OFFSET import TIMEZONE_OFFSET
 from utils.twitter.Tweet import Tweet
 
 log = Log('Twitter')
@@ -38,22 +39,20 @@ def _upload_media(api, image_files):
         media_id = api.media_upload(image_file).media_id
         media_ids.append(media_id)
         log.info(
-            'Uploaded status image %s to twitter as %s',
-            image_file,
-            media_id,
+            f'Uploaded status image {image_file} to twitter as {media_id}',
         )
     return media_ids
 
 
 def _update_profile_description(api):
-    date_with_timezone = TimeFormat('YYYY-MM-DD HH:mm:ss Z').stringify(
-        Time.now()
-    )
-    description = 'Automatically updated at {date_with_timezone}'.format(
-        date_with_timezone=date_with_timezone
+    date_with_timezone = TimeFormat(
+        '%Y-%m-%d %H:%M:%S', TIMEZONE_OFFSET.LK
+    ).stringify(Time.now())
+    description = (
+        f'Automatically updated at {date_with_timezone} (#SriLanka Time)'
     )
     api.update_profile(description=description)
-    log.info('Updated profile description to: %s', description)
+    log.info(f'Updated profile description to: {description}')
 
 
 class TwitterActionerMixin:
@@ -63,14 +62,16 @@ class TwitterActionerMixin:
             tweet.image_file_path_list,
         )
         return _update_status(
-            self.api, Tweet.text, media_ids, tweet.in_reply_to_status_id
+            self.api, tweet.text, media_ids, tweet.in_reply_to_status_id
         )
 
     def update_profile_description(self):
         _update_profile_description(self.api)
 
     def update_profile_image(self, profile_image_file):
+        log.debug(f'update_profile_image: {profile_image_file}')
         self.api.update_profile_image(profile_image_file)
 
     def update_banner_image(self, banner_image_file):
+        log.debug(f'update_banner_image: {banner_image_file}')
         self.api.update_profile_banner(banner_image_file)
