@@ -47,14 +47,18 @@ class TestCase(unittest.TestCase):
         data_list = tsv_file.read()
         self.assertEqual(TEST_DATA_LIST, data_list)
 
-    def test_zip_read_and_write(self):
+    def write_test_json_file(self):
         json_file_name = '/tmp/utils.test_zip_read_and_write.json'
         data = [i for i in range(0, 1_000)]
         json_file = JSONFile(json_file_name)
         json_file.write(data)
         json_file_size = os.path.getsize(json_file_name)
-        expexted_json_file_size = 6_892
-        self.assertEqual(expexted_json_file_size, json_file_size)
+        expected_json_file_size = 6_892
+        self.assertEqual(expected_json_file_size, json_file_size)
+        return json_file_name, json_file, data
+
+    def test_zip_read_and_write(self):
+        json_file_name, json_file, data = self.write_test_json_file()
 
         zip = Zip(json_file_name)
         zip.zip()
