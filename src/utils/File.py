@@ -92,6 +92,24 @@ class XSVFile(File):
         xsv_lines = File.read_lines(self)
         return XSVFile._readHelper(self.delimiter, xsv_lines)
 
+    @staticmethod
+    def get_field_names(data_list):
+        return list(data_list[0].keys())
+
+    @staticmethod
+    def get_data_rows(data_list, field_names):
+        return list(
+            map(
+                lambda data: list(
+                    map(
+                        lambda field_name: data[field_name],
+                        field_names,
+                    )
+                ),
+                data_list,
+            )
+        )
+
     def write(self, data_list):
         with open(self.path, 'w') as fout:
             writer = csv.writer(
@@ -100,21 +118,9 @@ class XSVFile(File):
                 delimiter=self.delimiter,
             )
 
-            field_names = list(data_list[0].keys())
+            field_names = XSVFile.get_field_names(data_list)
             writer.writerow(field_names)
-            writer.writerows(
-                list(
-                    map(
-                        lambda data: list(
-                            map(
-                                lambda field_name: data[field_name],
-                                field_names,
-                            )
-                        ),
-                        data_list,
-                    )
-                ),
-            )
+            writer.writerows(XSVFile.get_data_rows(data_list, field_names))
             fout.close()
 
 
