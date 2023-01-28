@@ -12,13 +12,13 @@ pip install utils-nuuuwan
 
 ## Version History
 
-### 1.2.0
+### 1.2.0 (CURRENT RELEASE)
 * Deprecated cache, GoogleMaps #BREAKING
 * Major updates to Twitter 
 
 * Various refactoring 
 
-### 1.1.19 (CURRENT RELEASE)
+### 1.1.19 
 * fix: cache BUG
 
 
