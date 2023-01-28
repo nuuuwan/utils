@@ -14,6 +14,7 @@ pip install utils-nuuuwan
 
 ### 1.2.1 
 * Added FiledVariable  
+* Added File.delete
 
 ### 1.2.0 (CURRENT RELEASE)
 * Deprecated cache, GoogleMaps #BREAKING
