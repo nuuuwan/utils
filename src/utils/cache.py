@@ -2,8 +2,12 @@
 import json
 from functools import wraps
 
-from utils.cache_impl import (DEFAULT_CACHE_NAME, DEFAULT_DIR, DEFAULT_TIMEOUT,
-                              _Cache)
+from utils.cache_impl import (
+    DEFAULT_CACHE_NAME,
+    DEFAULT_DIR,
+    DEFAULT_TIMEOUT,
+    _Cache,
+)
 
 
 def cache(
