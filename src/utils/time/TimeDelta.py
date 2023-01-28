@@ -16,8 +16,9 @@ class TimeDelta:
             (None, 'week'),
         ]:
             if not dut_limit or dut < dut_limit:
-                if dut == 1:
-                    return f'{dut}{label}'
-                return f'{dut}{label}s'
+                suffix = ''
+                if dut != 1:
+                    suffix = 's'
+                return f'{dut:.0f} {label}{suffix}'
             else:
                 dut /= dut_limit

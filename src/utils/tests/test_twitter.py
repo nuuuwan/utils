@@ -2,7 +2,7 @@
 
 import unittest
 
-from utils import twitter
+from utils import Twitter
 
 SKIP_API_CREDENTIALS = 'Needs Twitter API credentials'
 
@@ -13,7 +13,7 @@ class TestCase(unittest.TestCase):
     @unittest.skip(SKIP_API_CREDENTIALS)
     def test_twitter(self):
         """Test."""
-        twtr = twitter.Twitter(None, None, None, None)
+        twtr = Twitter.Twitter(None, None, None, None)
         self.assertEqual(twtr.tweet('Test'), None)
 
 

@@ -1,14 +1,8 @@
 import time
 from unittest import TestCase
 
-from utils import (
-    TIMEZONE_OFFSET,
-    Time,
-    TimeDelta,
-    TimeFormat,
-    get_date_id,
-    get_time_id,
-)
+from utils import (TIMEZONE_OFFSET, Time, TimeDelta, TimeFormat, get_date_id,
+                   get_time_id)
 
 
 class TestTime(TestCase):
@@ -36,12 +30,12 @@ class TestTime(TestCase):
 
     def test_delta_humanize(self):
         for dut, expected_humanized in [
-            [0, '0sec'],
-            [1, '1sec'],
-            [60, '1min'],
-            [120, '2min'],
-            [3600, '1hr'],
-            [86400, '1day'],
+            [0, '0 seconds'],
+            [1, '1 second'],
+            [60, '1 minute'],
+            [120, '2 minutes'],
+            [3600, '1 hour'],
+            [86400, '1 day'],
         ]:
             self.assertEqual(TimeDelta(dut).humanize(), expected_humanized)
 
