@@ -35,49 +35,63 @@ def style(**kwargs):
 class _:
     def __init__(
         self,
-        tag,
-        child_list_or_str_or_other=None,
-        attrib_custom={},
+        tag: str,
+        child_list_or_str_or_other: list or str or None = None,
+        attrib_custom: dict or None = {},
     ):
-        """XML Element."""
-        tag_real = tag.split('-')[0]
+        self.tag = tag
+        self.child_list_or_str_or_other = child_list_or_str_or_other
+        self.attrib_custom = attrib_custom
 
-        attrib = DEFAULT_ATTRIB_MAP.get(tag, {})
-        attrib.update(attrib_custom)
-        attrib = dict(
+    @property
+    def expanded_attrib(self):
+        expanded_attrib = DEFAULT_ATTRIB_MAP.get(self.tag, {})
+        expanded_attrib.update(self.attrib_custom)
+        expanded_attrib = dict(
             zip(
-                list(map(lambda k: k.replace('_', '-'), attrib.keys())),
-                list(map(str, attrib.values())),
+                list(
+                    map(lambda k: k.replace('_', '-'), expanded_attrib.keys())
+                ),
+                list(map(str, expanded_attrib.values())),
             ),
         )
+        return expanded_attrib
 
-        element = ElementTree.Element(tag_real)
-        element.attrib = attrib
+    @property
+    def tag_real(self):
+        return self.tag.split('-')[0]
 
-        if isinstance(child_list_or_str_or_other, list):
-            child_list = child_list_or_str_or_other
-            child_element_list = list(
-                map(
-                    lambda child: child.element,
-                    list(
-                        filter(
-                            lambda child_or_none: child_or_none is not None,
-                            child_list,
-                        )
-                    ),
-                )
+    @property
+    def child_element_list(self):
+        if not isinstance(self.child_list_or_str_or_other, list):
+            return []
+        nonnull_child_list = list(
+            filter(
+                lambda child_or_none: child_or_none is not None,
+                self.child_list_or_str_or_other,
             )
-            for child_element in child_element_list:
-                element.append(child_element)
+        )
+        return list(
+            map(
+                lambda child: child.element,
+                nonnull_child_list,
+            )
+        )
 
-        elif isinstance(child_list_or_str_or_other, str):
-            element.text = str(child_list_or_str_or_other)
-
-        self.__element__ = element
+    @property
+    def text(self):
+        if isinstance(self.child_list_or_str_or_other, str):
+            return self.child_list_or_str_or_other
+        return ''
 
     @property
     def element(self):
-        return self.__element__
+        element = ElementTree.Element(self.tag_real)
+        element.attrib = self.expanded_attrib
+        for child_element in self.child_element_list:
+            element.append(child_element)
+        element.text = self.text
+        return element
 
     def __str__(self):
         s = ElementTree.tostring(self.element, encoding='utf-8').decode()
