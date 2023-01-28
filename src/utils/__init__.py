@@ -3,6 +3,7 @@ from utils.Color import Color
 from utils.Dict import Dict
 from utils.Directory import Directory
 from utils.File import CSVFile, File, JSONFile, TSVFile, XSVFile, Zip
+from utils.FiledVariable import FiledVariable
 from utils.Git import Git
 from utils.List import List
 from utils.Log import Log

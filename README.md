@@ -12,6 +12,9 @@ pip install utils-nuuuwan
 
 ## Version History
 
+### 1.2.1 
+* Added FiledVariable  
+
 ### 1.2.0 (CURRENT RELEASE)
 * Deprecated cache, GoogleMaps #BREAKING
 * Major updates to Twitter 
