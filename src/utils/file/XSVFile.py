@@ -6,9 +6,9 @@ DIALECT = 'excel'
 
 
 class XSVFile(File):
-    def __init__(self, path, delimiter):
-        File.__init__(self, path)
-        self.delimiter = delimiter
+    @property
+    def delimiter(self):
+        raise NotImplementedError
 
     @staticmethod
     def _readHelper(delimiter: str, xsv_lines: list):
