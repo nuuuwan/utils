@@ -27,8 +27,15 @@ class TestDict(TestCase):
         self.assertEqual(TEST_DICT.len(), len(TEST_DICT_RAW))
 
     def test_eq(self):
-        self.assertEqual(TEST_DICT, TEST_DICT_RAW)
-        self.assertEqual(TEST_DICT, Dict(TEST_DICT_RAW))
+        self.assertTrue(TEST_DICT == TEST_DICT_RAW)
+        self.assertTrue(TEST_DICT == Dict(TEST_DICT_RAW))
+        self.assertFalse(
+            Dict({'a': 3, 'b': 2, 'c': 1}) == {'a': 3, 'b': 2, 'c': 14}
+        )
+        self.assertFalse(
+            Dict({'a': 3, 'b': 2, 'c': 1}) == Dict({'a': 3, 'b': 2, 'c': 14})
+        )
+        self.assertFalse(TEST_DICT == 1)
 
     def test_getitem(self):
         for k in TEST_DICT_RAW.keys():
@@ -54,3 +61,20 @@ class TestDict(TestCase):
             Dict({'a': 3, 'b': 2, 'c': 1}).items_sorted_by_value(),
             [('c', 1), ('b', 2), ('a', 3)],
         )
+
+    def test_del(self):
+        d = Dict({'a': 3, 'b': 2, 'c': 1})
+        del d['a']
+        self.assertEqual(d, Dict({'b': 2, 'c': 1}))
+
+    def test_iter(self):
+        k_list = []
+        for k in TEST_DICT:
+            k_list.append(k)
+        self.assertEqual(k_list, list(TEST_DICT_RAW.keys()))
+
+    def test_str(self):
+        self.assertEqual(str(TEST_DICT), str(TEST_DICT_RAW))
+
+    def test_repr(self):
+        self.assertEqual(Dict.__repr__(TEST_DICT), str(TEST_DICT_RAW))

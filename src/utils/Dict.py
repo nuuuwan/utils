@@ -49,8 +49,8 @@ class Dict(Iter):
     def __delitem__(self, key):
         del self.x[key]
 
-    def iter(self):
-        return iter(self.x)
+    def __iter__(self):
+        return self.x.__iter__()
 
     def extract_keys(self, keys):
         return Dict(
