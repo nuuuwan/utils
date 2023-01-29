@@ -7,6 +7,14 @@ class Color:
         return random.randint(0, 255)
 
     @staticmethod
+    def _4bit_hex():
+        return random.choice('0123456789abcdef')
+
+    @staticmethod
+    def _8bit_hex():
+        return Color._4bit_hex() + Color._4bit_hex()
+
+    @staticmethod
     def _360():
         return random.randint(0, 355)
 
@@ -33,3 +41,7 @@ class Color:
         light = light or Color._percent()
         a = a or Color._float()
         return f'hsla({h:d},{s:d}%,{light:d}%,{a:.2f})'
+
+    @staticmethod
+    def hex():
+        return '#' + ''.join([Color._8bit_hex() for _ in range(3)])
