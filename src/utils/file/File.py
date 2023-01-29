@@ -3,7 +3,7 @@ import json
 import os
 import zipfile
 
-from utils.FileOrDirectory import FileOrDirectory
+from utils.file.FileOrDirectory import FileOrDirectory
 
 DIALECT = 'excel'
 DELIMITER_CSV = ','

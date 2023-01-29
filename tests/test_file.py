@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from utils.File import CSVFile, File, JSONFile, TSVFile, Zip
+from utils.file.File import CSVFile, File, JSONFile, TSVFile, Zip
 
 TEST_DATA_LIST = [
     {'name': 'Alpha', 'age': '1'},

@@ -6,7 +6,7 @@ import requests
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
-from utils.File import File, XSVFile
+from utils.file.File import File, XSVFile
 
 USER_AGENT = (
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) '

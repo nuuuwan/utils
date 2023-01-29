@@ -1,7 +1,7 @@
 import os
 
-from utils.File import File
-from utils.FileOrDirectory import FileOrDirectory
+from utils.file.File import File
+from utils.file.FileOrDirectory import FileOrDirectory
 
 
 class Directory(FileOrDirectory):

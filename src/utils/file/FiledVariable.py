@@ -1,6 +1,6 @@
 from functools import cached_property
 
-from utils.File import JSONFile
+from utils.file.File import JSONFile
 
 
 class FiledVariable:

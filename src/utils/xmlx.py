@@ -2,7 +2,7 @@ import xml.dom.minidom as minidom
 import xml.etree.ElementTree as ElementTree
 
 from utils import String
-from utils.File import File
+from utils.file.File import File
 
 FONT_FAMILY = 'sans-serif'
 DEFAULT_ATTRIB_MAP = {
