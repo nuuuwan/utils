@@ -44,7 +44,6 @@ class Browser:
         """Get page source."""
         return self.driver.page_source
 
-    @property
     def downloadScreenshot(self, image_file_name):
         self.driver.save_screenshot(image_file_name)
         log.debug(f'Downloaded screenshot to "{image_file_name}".')
