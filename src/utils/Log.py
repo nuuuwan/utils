@@ -32,13 +32,3 @@ class Log(logging.Logger):
         sh.setLevel(logging.DEBUG)
         sh.setFormatter(formatter)
         self.handlers = [sh]
-
-
-if __name__ == '__main__':
-    log = Log('testing')
-    log.critical('This is CRITICAL')
-    log.error('This is ERROR')
-    log.warning('This is WARNING')
-    log.info('This is INFO')
-    log.debug('This is DEBUG')
-    print('This is a regular print')
