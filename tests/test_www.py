@@ -4,13 +4,13 @@ import unittest
 from utils.File import CSVFile, File, JSONFile, TSVFile
 from utils.www import WWW
 
-DIR_TESTS = 'src/utils/tests'
+DIR_TESTS = 'tests'
 
 
 URL_BASE = os.path.join(
     'https://raw.githubusercontent.com',
     'nuuuwan/utils',
-    'main/src/utils/tests',
+    'main/tests',
 )
 
 

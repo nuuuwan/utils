@@ -34,7 +34,7 @@ class TestActionerMixin(unittest.TestCase):
         twitter = Twitter.from_environ_vars()
         tweet = Tweet(
             TEST_QUOTE,
-            ['src/utils/tests/types_of_data.png'],
+            ['tests/types_of_data.png'],
         )
         response = twitter.send(tweet)
         self.assertIsNotNone(response)
@@ -46,7 +46,7 @@ class TestActionerMixin(unittest.TestCase):
         for i in range(0, 4):
             tweet = Tweet(
                 f'{i}/ ' + TEST_QUOTE,
-                ['src/utils/tests/types_of_data.png'],
+                ['tests/types_of_data.png'],
                 previous_tweet_id,
             )
             response = twitter.send(tweet)
@@ -62,12 +62,12 @@ class TestActionerMixin(unittest.TestCase):
     @unittest.skip(SKIP_API_CREDENTIALS)
     def test_update_profile_image(self):
         twitter = Twitter.from_environ_vars()
-        twitter.update_profile_image('src/utils/tests/lanka_data_logo.png')
+        twitter.update_profile_image('tests/lanka_data_logo.png')
 
     @unittest.skip(SKIP_API_CREDENTIALS)
     def test_update_banner_image(self):
         twitter = Twitter.from_environ_vars()
-        twitter.update_banner_image('src/utils/tests/banner.png')
+        twitter.update_banner_image('tests/banner.png')
 
 
 if __name__ == '__main__':
