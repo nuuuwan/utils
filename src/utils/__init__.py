@@ -1,9 +1,14 @@
 from utils.Browser import Browser
 from utils.Color import Color
 from utils.Dict import Dict
+from utils.file.CSVFile import CSVFile
 from utils.file.Directory import Directory
-from utils.file.File import CSVFile, File, JSONFile, TSVFile, XSVFile, Zip
+from utils.file.File import File
 from utils.file.FiledVariable import FiledVariable
+from utils.file.JSONFile import JSONFile
+from utils.file.TSVFile import TSVFile
+from utils.file.XSVFile import XSVFile
+from utils.file.Zip import Zip
 from utils.Git import Git
 from utils.List import List
 from utils.Log import Log
