@@ -1,5 +1,3 @@
-from functools import cached_property
-
 from utils import hashx
 from utils.file.JSONFile import JSONFile
 
@@ -23,11 +21,16 @@ class FiledVariable:
     def file(self):
         return JSONFile(self.file_path)
 
-    def clear(self):
+    def clear_file(self):
         self.file.delete()
 
-    @cached_property
+    def clear_cache(self):
+        global FILE_VARIABLE_CACHE
+        FILE_VARIABLE_CACHE = {}
+
+    @property
     def value(self):
+        global FILE_VARIABLE_CACHE
         if self.cache_key in FILE_VARIABLE_CACHE:
             return FILE_VARIABLE_CACHE[self.cache_key]
 
