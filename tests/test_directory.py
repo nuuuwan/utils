@@ -5,8 +5,9 @@ from utils import Directory, File
 
 class TestDirectory(TestCase):
     def test_init(self):
-        dir_tests = Directory('tests')
-        self.assertEqual(dir_tests.path, 'tests')
-        self.assertEqual(dir_tests.name, 'tests')
-        self.assertEqual(dir_tests.children[0], File('tests/banner.png'))
-        self.assertTrue(dir_tests == Directory('tests'))
+        dir_tests = Directory('src/utils')
+        self.assertEqual(dir_tests.path, 'src/utils')
+        self.assertEqual(dir_tests.name, 'utils')
+        self.assertEqual(dir_tests.children[0], File('src/utils/Browser.py'))
+
+        self.assertEqual(dir_tests, Directory('src/utils'))

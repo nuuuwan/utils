@@ -5,6 +5,10 @@ from utils import FiledVariable
 
 
 class TestFiledVariable(TestCase):
+    def test_cache_keys(self):
+        fv = FiledVariable('test_key', None)
+        self.assertEqual(fv.cache_key, '8c32d1183251df9828f929b935ae0419')
+
     def test_init(self):
         MAX_N = 1_000_000
         VALUE = (MAX_N) * (MAX_N - 1) // 2

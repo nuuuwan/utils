@@ -19,7 +19,13 @@ TEST_DATA_ITEM_LIST = [
 ]
 
 
-class TestCase(unittest.TestCase):
+class TestFile(unittest.TestCase):
+    def test_eq(self):
+        file1 = File('/tmp/test1.txt')
+        file2 = File('/tmp/test2.txt')
+        self.assertEqual(file1, file1)
+        self.assertNotEqual(file1, file2)
+
     def test_read_and_write(self):
         """Test."""
         content = 'Hello' * 100
@@ -27,6 +33,12 @@ class TestCase(unittest.TestCase):
         file.write(content)
         content2 = file.read()
         self.assertEqual(content, content2)
+        self.assertEqual(file.ext, 'txt')
+
+        lines = [f'Hello {i}' for i in range(0, 100)]
+        file.write_lines(lines)
+        lines2 = file.read_lines()
+        self.assertEqual(lines, lines2)
 
     def test_json_read_and_write(self):
         for data in TEST_DATA_ITEM_LIST:
@@ -34,6 +46,10 @@ class TestCase(unittest.TestCase):
             json_file.write(data)
             data2 = json_file.read()
             self.assertEqual(data, data2)
+
+    def test_csv_delimiter(self):
+        csv_file = CSVFile('')
+        self.assertEqual(',', csv_file.delimiter)
 
     def test_csv_read_and_write(self):
         csv_file = CSVFile('/tmp/utils.test_file.csv')

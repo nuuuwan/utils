@@ -1,6 +1,9 @@
 from functools import cached_property
 
+from utils import hashx
 from utils.file.File import JSONFile
+
+FILE_VARIABLE_CACHE = {}
 
 
 class FiledVariable:
@@ -9,8 +12,12 @@ class FiledVariable:
         self.func_get = func_get
 
     @property
+    def cache_key(self):
+        return hashx.md5(self.key)
+
+    @property
     def file_path(self):
-        return f'/tmp/{self.key}.json'
+        return f'/tmp/{self.cache_key}.json'
 
     @property
     def file(self):
@@ -21,9 +28,12 @@ class FiledVariable:
 
     @cached_property
     def value(self):
+        if self.cache_key in FILE_VARIABLE_CACHE:
+            return FILE_VARIABLE_CACHE[self.cache_key]
+
         if self.file.exists:
             return self.file.read()
-        else:
-            value = self.func_get()
-            self.file.write(value)
-            return value
+
+        value = self.func_get()
+        self.file.write(value)
+        return value
