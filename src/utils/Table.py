@@ -10,7 +10,7 @@ class TableRow:
         return list(self.d.keys())
 
     @staticmethod
-    def from_dict(self, d):
+    def from_dict(d):
         return TableRow(d)
 
     def __eq__(self, other):

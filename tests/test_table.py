@@ -20,11 +20,16 @@ class TestTable(TestCase):
     def test_row_eq(self):
         self.assertEqual(TEST_ROW, TableRow(TEST_DICT_LIST[0]))
 
+        self.assertNotEqual(TEST_ROW, "TableRow")
+
     def test_row_fields(self):
         self.assertEqual(TEST_ROW.fields, ['name', 'age'])
 
     def test_row_getattr(self):
         self.assertEqual(TEST_ROW.name, TEST_DICT_LIST[0]['name'])
+
+    def test_from_dict(self):
+        self.assertEqual(TableRow.from_dict(TEST_DICT_LIST[0]), TEST_ROW)
 
     # Table
     def test_init(self):
@@ -67,3 +72,7 @@ class TestTable(TestCase):
                 ]
             ),
         )
+
+    def test_eq(self):
+        self.assertEqual(TEST_TABLE, Table(TEST_DICT_LIST))
+        self.assertNotEqual(TEST_TABLE, "Table")
