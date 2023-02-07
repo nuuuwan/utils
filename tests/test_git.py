@@ -1,5 +1,5 @@
 import os
-import unittest
+import unittest, skip
 
 from utils.Git import Git
 
@@ -33,6 +33,7 @@ class TestGit(unittest.TestCase):
         os.system(cmd)
         git.add_and_commit('test')
 
+    @skip('Changes repo code')
     def test_push(self):
         git = TEST_GIT
         git.clone(TEST_DIR_REPO, force=True)
