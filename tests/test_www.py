@@ -28,6 +28,9 @@ class TestCase(unittest.TestCase):
             WWW(get_test_url('png')).readBinary(),
         )
 
+        with self.assertRaises(Exception):
+            WWW(get_test_url('png') + '.1234').readBinary()
+
     def test_read_selenium(self):
         content = WWW(get_test_url('html')).readSelenium()
         self.assertIn(

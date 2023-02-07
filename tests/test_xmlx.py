@@ -2,7 +2,7 @@
 import io
 import unittest
 
-from utils.xmlx import _, style
+from utils.xmlx import _, render_link_styles, style
 
 TEST_BODY = _(
     'body',
@@ -26,6 +26,21 @@ TEST_BODY = _(
 
 class TestXMLX(unittest.TestCase):
     """Test."""
+
+    def test_render_link_styles(self):
+        """Test."""
+        expected = '''<?xml version="1.0" ?>
+<link rel="stylesheet" href="styles.css"/>
+'''
+        actual = str(render_link_styles())
+        self.assertEqual(expected, actual)
+
+    def test_repr(self):
+        """Test."""
+        expected = '<?xml version="1.0" ?>\n<p>This is a paragraph</p>\n'
+
+        actual = repr(_('p', 'This is a paragraph'))
+        self.assertEqual(expected, actual)
 
     def test_log_metric(self):
         """Test."""

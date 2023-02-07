@@ -14,6 +14,11 @@ class TimeUnit:
     def __mul__(self, other):
         return TimeUnit(self.seconds * other)
 
+    def __eq__(self, other):
+        if isinstance(other, TimeUnit):
+            return self.seconds == other.seconds
+        return False
+
 
 SECOND = TimeUnit(1)
 MINUTE = SECOND * 60

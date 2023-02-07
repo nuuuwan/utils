@@ -1,8 +1,8 @@
 import time
 from unittest import TestCase
 
-from utils import (TIMEZONE_OFFSET, Time, TimeDelta, TimeFormat, get_date_id,
-                   get_time_id)
+from utils import (TIMEZONE_OFFSET, Time, TimeDelta, TimeFormat, TimeUnit,
+                   get_date_id, get_time_id)
 
 
 class TestTime(TestCase):
@@ -17,10 +17,19 @@ class TestTime(TestCase):
         self.assertGreater(t.ut, ut - 10)
         self.assertGreater(ut + 10, t.ut)
 
+        with self.assertRaises(TypeError):
+            t + 1
+
     def test_sub(self):
         t0 = Time(1234567800)
         t1 = Time(1234567890)
-        self.assertEqual(t1 - t0, TimeDelta(90))
+        dut10 = TimeDelta(90)
+
+        self.assertEqual(t1 - t0, dut10)
+        self.assertEqual(t1 - dut10, t0)
+
+        with self.assertRaises(TypeError):
+            t0 - 1
 
     def test_add(self):
         t0 = Time(1234567800)
@@ -34,8 +43,8 @@ class TestTime(TestCase):
             [1, '1 second'],
             [60, '1 minute'],
             [120, '2 minutes'],
-            [3600, '1 hour'],
-            [86400, '1 day'],
+            [3_600, '1 hour'],
+            [86_400, '1 day'],
         ]:
             self.assertEqual(TimeDelta(dut).humanize(), expected_humanized)
 
@@ -65,3 +74,18 @@ class TestTime(TestCase):
     def test_date_id(self):
         date_id = get_date_id()
         self.assertEqual(len(date_id), 8)
+
+    def test_time_unit_truediv(self):
+        self.assertEqual(TimeUnit(1) / 2, TimeUnit(0.5))
+        self.assertEqual(TimeUnit(1) / TimeUnit(0.5), 2.0)
+
+        with self.assertRaises(TypeError):
+            2 / TimeUnit(2)
+
+    def test_time_unit_mul(self):
+        self.assertEqual(TimeUnit(1) * 2, TimeUnit(2))
+
+    def test_time_unit_eq(self):
+        self.assertEqual(TimeUnit(1) * 2, TimeUnit(2))
+        self.assertNotEqual(TimeUnit(1) * 2, TimeUnit(3))
+        self.assertNotEqual(TimeUnit(1) * 2, 2)
