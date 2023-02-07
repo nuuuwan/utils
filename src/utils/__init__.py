@@ -9,7 +9,7 @@ from utils.file.JSONFile import JSONFile
 from utils.file.TSVFile import TSVFile
 from utils.file.XSVFile import XSVFile
 from utils.file.Zip import Zip
-from utils.Git import Git
+from utils.GitReadOnly import Git
 from utils.List import List
 from utils.Log import Log
 from utils.String import String
