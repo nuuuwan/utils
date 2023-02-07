@@ -1,5 +1,7 @@
 import os
-import unittest, skip
+import unittest
+
+import skip
 
 from utils.Git import Git
 

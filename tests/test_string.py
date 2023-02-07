@@ -67,3 +67,18 @@ class TestDT(unittest.TestCase):
                 String(input).camel,
                 expected_output,
             )
+
+    def test_str_and_repr(self):
+        for input in [
+            'This is a test',
+            '123',
+            '123 Testing 123',
+        ]:
+            self.assertEqual(
+                str(String(input)),
+                input,
+            )
+            self.assertEqual(
+                repr(String(input)),
+                input,
+            )
