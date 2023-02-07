@@ -9,8 +9,8 @@ class List(Iter):
     def tolist(self):
         return self.x
 
-    def iter(self):
-        return iter(self.x)
+    def __iter__(self):
+        return self.x.__iter__()
 
     def __len__(self):
         return len(self.x)

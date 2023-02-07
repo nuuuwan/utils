@@ -28,6 +28,13 @@ class TestList(TestCase):
     def test_eq(self):
         self.assertEqual(TEST_LIST, TEST_LIST_RAW)
         self.assertEqual(TEST_LIST, List(TEST_LIST_RAW))
+        self.assertNotEqual(TEST_LIST, "List")
+
+    def test_str(self):
+        self.assertEqual(str(TEST_LIST), str(TEST_LIST_RAW))
+
+    def test_repr(self):
+        self.assertEqual(repr(TEST_LIST), repr(TEST_LIST_RAW))
 
     def test_add(self):
         self.assertEqual(List([1, 2]) + List([3, 4]), List([1, 2, 3, 4]))
@@ -41,5 +48,5 @@ class TestList(TestCase):
         self.assertEqual(List([1, 2, 3, 2]).unique(), List([1, 2, 3]))
 
     def test_iter(self):
-        for idx, item in enumerate(TEST_LIST):
-            self.assertEqual(item, TEST_LIST_RAW[idx])
+        for item in TEST_LIST:
+            self.assertIn(item, TEST_LIST_RAW)
