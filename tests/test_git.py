@@ -1,8 +1,6 @@
 import os
 import unittest
 
-import skip
-
 from utils.Git import Git
 
 TEST_REPO_URL = 'https://github.com/nuuuwan/utils'
@@ -35,7 +33,7 @@ class TestGit(unittest.TestCase):
         os.system(cmd)
         git.add_and_commit('test')
 
-    @skip('Changes repo code')
+    @unittest.skip('Changes repo code')
     def test_push(self):
         git = TEST_GIT
         git.clone(TEST_DIR_REPO, force=True)
