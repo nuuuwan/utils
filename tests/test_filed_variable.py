@@ -28,3 +28,5 @@ class TestFiledVariable(TestCase):
         self.assertEqual(fvar.value, VALUE)
         dt = time.time() - t0
         self.assertLess(dt, 0.001)
+
+        self.assertEqual(fvar.value, VALUE)

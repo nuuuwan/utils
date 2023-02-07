@@ -1,8 +1,7 @@
 import os
 import unittest
 
-from utils.file.File import CSVFile, File, JSONFile, TSVFile
-from utils.www import WWW
+from utils import WWW, CSVFile, File, JSONFile, TSVFile
 
 DIR_TESTS = 'tests'
 

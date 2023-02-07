@@ -1,7 +1,7 @@
 from functools import cached_property
 
 from utils import hashx
-from utils.file.File import JSONFile
+from utils.file.JSONFile import JSONFile
 
 FILE_VARIABLE_CACHE = {}
 
@@ -36,4 +36,5 @@ class FiledVariable:
 
         value = self.func_get()
         self.file.write(value)
+        FILE_VARIABLE_CACHE[self.cache_key] = value
         return value

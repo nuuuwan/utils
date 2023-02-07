@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from utils.file.File import CSVFile, File, JSONFile, TSVFile, Zip
+from utils import CSVFile, File, JSONFile, TSVFile, XSVFile, Zip
 
 TEST_DATA_LIST = [
     {'name': 'Alpha', 'age': '1'},
@@ -25,6 +25,7 @@ class TestFile(unittest.TestCase):
         file2 = File('/tmp/test2.txt')
         self.assertEqual(file1, file1)
         self.assertNotEqual(file1, file2)
+        self.assertNotEqual(file1, 'file2')
 
     def test_read_and_write(self):
         """Test."""
@@ -47,9 +48,21 @@ class TestFile(unittest.TestCase):
             data2 = json_file.read()
             self.assertEqual(data, data2)
 
+    def test_xsv_delimiter(self):
+        xsv_file = XSVFile('')
+        with self.assertRaises(NotImplementedError) as _:
+            xsv_file.delimiter
+
+    def test_xsv_read_helper(self):
+        delimiter = ' '
+        xsv_lines = ['a b c', '1 2 3']
+        data_list = XSVFile._readHelper(delimiter, xsv_lines)
+        expected_data_list = [{'a': '1', 'b': '2', 'c': '3'}]
+        self.assertEqual(expected_data_list, data_list)
+
     def test_csv_delimiter(self):
         csv_file = CSVFile('')
-        self.assertEqual(',', csv_file.delimiter)
+        self.assertEqual(csv_file.delimiter, ',')
 
     def test_csv_read_and_write(self):
         csv_file = CSVFile('/tmp/utils.test_file.csv')
@@ -77,6 +90,12 @@ class TestFile(unittest.TestCase):
         json_file_name, json_file, data = self.write_test_json_file()
 
         zip = Zip(json_file_name)
+        self.assertEqual(
+            zip.zip_path,
+            f'{json_file_name}.zip',
+        )
+        self.assertEqual(zip.arc_name, 'utils.test_zip_read_and_write.json')
+
         zip.zip()
         self.assertFalse(os.path.exists(json_file_name))
         self.assertTrue(os.path.exists(zip.zip_path))
