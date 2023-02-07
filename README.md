@@ -15,8 +15,7 @@ pip install utils-nuuuwan
 
 ### 1.2.2 (CURRENT RELEASE)
 * Fix Multiple Twitter API Creation BUG
-* refactoring, reducing complexity,pyk
- test coverage
+* refactoring, reducing complexity, test coverage
 
 ### 1.2.1 
 * Added FiledVariable  
