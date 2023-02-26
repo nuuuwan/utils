@@ -19,6 +19,9 @@ class Directory(FileOrDirectory):
     def name(self):
         return self.path.split('/')[-1]
 
+    def mkdir(self):
+        os.system(f'mkdir -p "{self.path}"')
+
     @property
     def children(self):
         _children = []

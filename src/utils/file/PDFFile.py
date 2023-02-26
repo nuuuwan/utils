@@ -32,7 +32,7 @@ class PDFFile(File):
             table_files.append(File(table_path))
         return table_files
 
-    @cached_property
+    @property
     def table_files(self):
         if self.dir_tables.exists:
             return self.load_table_files()
