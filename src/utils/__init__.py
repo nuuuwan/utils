@@ -21,4 +21,4 @@ from utils.time import (DAYS_IN, SECONDS_IN, TIME_FORMAT_DATE,
                         TimeFormat, TimeUnit, get_date_id, get_time_id)
 from utils.twitter.Tweet import Tweet
 from utils.twitter.Twitter import Twitter
-from utils.www import WWW
+from utils.WWW import WWW

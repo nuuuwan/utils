@@ -16,6 +16,7 @@ pip install utils-nuuuwan
 * PDFFile
 * Added mkdir to Directory
 * lint errors
+* Make WWW more like a folder
 
 ### 1.2.2 (CURRENT RELEASE)
 * Fix Multiple Twitter API Creation BUG

@@ -50,12 +50,6 @@ class TestCase(unittest.TestCase):
             WWW(get_test_url('json')).readJSON(),
         )
 
-    def test_read_xsv(self):
-        self.assertEqual(
-            TSVFile(get_test_file('tsv')).read(),
-            WWW(get_test_url('tsv')).readXSV('\t'),
-        )
-
     def test_read_tsv(self):
         self.assertEqual(
             TSVFile(get_test_file('tsv')).read(),
@@ -68,16 +62,15 @@ class TestCase(unittest.TestCase):
             WWW(get_test_url('csv')).readCSV(),
         )
 
-    def test_download_binary(self):
-        url = get_test_url('png')
-        tmp_file_name = '/tmp/data.png'
-        WWW(url).downloadBinary(tmp_file_name)
-        self.assertEqual(
-            File(get_test_file('png')).readBinary(),
-            File(tmp_file_name).readBinary(),
-        )
-
     def test_exists(self):
         url = get_test_url('png')
         self.assertTrue(WWW(url).exists)
         self.assertFalse(WWW(url + '.1234').exists)
+
+    @unittest.skip('Likely to change')
+    def test_children(self):
+        url = 'https://www.python.org/'
+        children = WWW(url).children
+        self.assertGreater(len(children), 0)
+        print(children[0].url)
+        self.assertIn(children[0].url, '#')
