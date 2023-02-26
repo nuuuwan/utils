@@ -12,6 +12,8 @@ pip install utils-nuuuwan
 
 ## Version History (1.2.x)
 
+### 1.2.3 
+* PDFFile
 
 ### 1.2.2 (CURRENT RELEASE)
 * Fix Multiple Twitter API Creation BUG

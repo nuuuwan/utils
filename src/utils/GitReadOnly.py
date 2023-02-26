@@ -28,9 +28,11 @@ class GitReadOnly:
         assert self.dir_repo is not None
         assert self.branch_name is not None
 
-        return (
-            f'git clone  -b {self.branch_name} --single-branch '
-            + f' {self.git_repo_url} {self.dir_repo}'
+        return ''.join(
+            [
+                f'git clone  -b {self.branch_name} --single-branch ',
+                f' {self.git_repo_url} {self.dir_repo}',
+            ]
         )
 
     @property

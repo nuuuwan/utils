@@ -14,10 +14,8 @@ class TimeFormat:
         return time.timezone - self.timezone_offset
 
     def parse(self, time_str: str) -> Time:
-        ut = (
-            time.mktime(time.strptime(time_str, self.format_str))
-            - self.dut_timezone
-        )
+        ut_base = time.mktime(time.strptime(time_str, self.format_str))
+        ut = ut_base - self.dut_timezone
         return Time(ut)
 
     def stringify(self, t: Time) -> str:
