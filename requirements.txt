@@ -10,3 +10,4 @@ selenium
 tweepy
 PyPDF2
 camelot-py
+opencv-python

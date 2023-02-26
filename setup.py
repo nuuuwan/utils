@@ -38,6 +38,7 @@ setuptools.setup(
         'tweepy',
         'PyPDF2',
         'camelot-py',
+        'opencv-python',
     ],
     test_suite='nose.collector',
     tests_require=['nose'],
