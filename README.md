@@ -12,13 +12,13 @@ pip install utils-nuuuwan
 
 ## Version History (1.2.x)
 
-### 1.2.3 
+### 1.2.3 (CURRENT RELEASE)
 * PDFFile
 * Added mkdir to Directory
 * lint errors
 * Make WWW more like a folder
 
-### 1.2.2 (CURRENT RELEASE)
+### 1.2.2 
 * Fix Multiple Twitter API Creation BUG
 * refactoring, reducing complexity, test coverage
 
