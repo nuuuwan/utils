@@ -36,7 +36,7 @@ setuptools.setup(
         'requests',
         'selenium',
         'tweepy',
-        'PyPDF2',
+        'PyPDF2==2.0.0',
         'camelot-py',
         'opencv-python',
     ],
