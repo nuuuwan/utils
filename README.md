@@ -14,6 +14,7 @@ pip install utils-nuuuwan
 
 ### 1.2.3 
 * PDFFile
+* lint errors
 
 ### 1.2.2 (CURRENT RELEASE)
 * Fix Multiple Twitter API Creation BUG

@@ -36,6 +36,8 @@ setuptools.setup(
         'requests',
         'selenium',
         'tweepy',
+        'PyPDF2',
+        'camelot-py',
     ],
     test_suite='nose.collector',
     tests_require=['nose'],

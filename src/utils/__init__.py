@@ -6,6 +6,7 @@ from utils.file.Directory import Directory
 from utils.file.File import File
 from utils.file.FiledVariable import FiledVariable
 from utils.file.JSONFile import JSONFile
+from utils.file.PDFFile import PDFFile
 from utils.file.TSVFile import TSVFile
 from utils.file.XSVFile import XSVFile
 from utils.file.Zip import Zip

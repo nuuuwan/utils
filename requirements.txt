@@ -8,3 +8,5 @@ py_console
 requests
 selenium
 tweepy
+PyPDF2
+camelot-py
