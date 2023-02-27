@@ -32,6 +32,7 @@ HASH_LENGTH = 8
 
 BINARY_EXT_LIST = ['pdf', 'png', 'jpg', 'jpeg']
 NON_BINARY_EXT_LIST = ['json', 'tsv', 'csv', 'txt']
+HTML_EXT_LIST = ['htm', 'html']
 CUSTOM_EXT_LIST = BINARY_EXT_LIST + NON_BINARY_EXT_LIST
 
 # pylint: disable=W0212
@@ -42,15 +43,6 @@ class WWW:
     def __init__(self, url: str):
         self.url = url
 
-    def readSelenium(self):
-        options = Options()
-        options.headless = True
-        driver = webdriver.Firefox(options=options)
-        driver.get(self.url)
-        content = driver.page_source
-        driver.quit()
-        return content
-
     @property
     def hash_id(self):
         return hashx.md5(self.url)[:HASH_LENGTH]
@@ -58,7 +50,7 @@ class WWW:
     @property
     def ext(self):
         ext = 'htm'
-        for ext2 in CUSTOM_EXT_LIST:
+        for ext2 in CUSTOM_EXT_LIST + HTML_EXT_LIST:
             if self.url.endswith(ext2):
                 ext = ext2
                 break
@@ -68,26 +60,38 @@ class WWW:
     def local_path(self):
         return os.path.join('/tmp', f'www.{self.hash_id}.{self.ext}')
 
-    def downloadBinary(self, file_path):
+    def read_html(self):
+        options = Options()
+        options.add_argument('-headless')
+        driver = webdriver.Firefox(options=options)
+        driver.get(self.url)
+        content = driver.page_source
+        driver.quit()
+        return content
+
+    def download_html(self):
+        html = self.read_html()
+        File(self.local_path).write(html)
+        return self.local_path
+
+    def download_binary(self, file_path):
         os.system(f'wget -o "{file_path}" "{self.url}"')
         log.debug(f'Downloaded {self.url} to {file_path}')
+        return self.local_path
 
-    def write(self):
+    def download(self):
         if os.path.exists(self.local_path):
-            return
+            return self.local_path
 
         if not self.exists:
             raise Exception(f'WWW does not exist: {self.url}')
 
-        if self.ext == 'htm':
-            content = self.readSelenium()
-            File(self.local_path).write(content)
-            return
-
-        os.system(f'wget -O "{self.local_path}" "{self.url}"')
+        if self.ext in HTML_EXT_LIST:
+            return self.download_html()
+        return self.download_binary(self.local_path)
 
     def read(self):
-        self.write()
+        self.download()
         if self.ext in NON_BINARY_EXT_LIST:
             return File(self.local_path).read()
         return File(self.local_path).readBinary()
@@ -102,12 +106,6 @@ class WWW:
             return False
 
     @property
-    def soup(self):
-        if self.ext != 'htm':
-            return None
-        return BeautifulSoup(self.read(), 'html.parser')
-
-    @property
     def children(self):
         soup = self.soup
         if not soup:
@@ -117,21 +115,26 @@ class WWW:
         raw_urls = list(filter(lambda x: x.url, raw_urls))
         return list(sorted(set(raw_urls), key=lambda x: x.url))
 
+    @property
+    def soup(self):
+        if self.ext != 'htm':
+            return None
+        return BeautifulSoup(self.read(), 'html.parser')
+
     # -----------
     # Legacy methods (should be deprecated)
     # -----------
     def readJSON(self):
-        self.write()
-        return JSONFile(self.local_path).read()
+        return JSONFile(self.download()).read()
 
     def readTSV(self):
-        self.write()
-        return TSVFile(self.local_path).read()
+        return TSVFile(self.download()).read()
 
     def readCSV(self):
-        self.write()
-        return CSVFile(self.local_path).read()
+        return CSVFile(self.download()).read()
 
     def readBinary(self):
-        self.write()
-        return File(self.local_path).readBinary()
+        return File(self.download()).readBinary()
+
+    def readSelenium(self):
+        return self.read_html()
