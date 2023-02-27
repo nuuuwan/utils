@@ -64,7 +64,13 @@ class WWW:
         options = Options()
         options.add_argument('-headless')
         driver = webdriver.Firefox(options=options)
-        driver.get(self.url)
+
+        try:
+            driver.get(self.url)
+        except BaseException:
+            log.error(f'Failed to read html: {self.url}')
+            return None
+
         content = driver.page_source
         driver.quit()
         return content
@@ -74,10 +80,14 @@ class WWW:
         File(self.local_path).write(html)
         return self.local_path
 
-    def download_binary(self, file_path):
-        os.system(f'wget -o "{file_path}" "{self.url}"')
-        log.debug(f'Downloaded {self.url} to {file_path}')
-        return self.local_path
+    @staticmethod
+    def download_binary(url, file_path):
+        CHUNK_SIZE = 1024
+        r = requests.get(url, stream=True)
+        with open(file_path, 'wb') as fd:
+            for chunk in r.iter_content(CHUNK_SIZE):
+                fd.write(chunk)
+        return file_path
 
     def download(self):
         if os.path.exists(self.local_path):
@@ -88,11 +98,11 @@ class WWW:
 
         if self.ext in HTML_EXT_LIST:
             return self.download_html()
-        return self.download_binary(self.local_path)
+        return WWW.download_binary(self.url, self.local_path)
 
     def read(self):
         self.download()
-        if self.ext in NON_BINARY_EXT_LIST:
+        if self.ext in NON_BINARY_EXT_LIST + HTML_EXT_LIST:
             return File(self.local_path).read()
         return File(self.local_path).readBinary()
 
@@ -102,14 +112,16 @@ class WWW:
             response = requests.head(self.url, timeout=EXISTS_TIMEOUT)
             # pylint: disable=E1101
             return response.status_code == requests.codes.ok
-        except requests.exceptions.ConnectTimeout:
+        except BaseException:
             return False
 
     @property
     def children(self):
-        soup = self.soup
-        if not soup:
+        try:
+            soup = self.soup
+        except BaseException:
             return []
+
         links = soup.find_all('a')
         raw_urls = [WWW(link.get('href')) for link in links]
         raw_urls = list(filter(lambda x: x.url, raw_urls))
@@ -117,7 +129,7 @@ class WWW:
 
     @property
     def soup(self):
-        if self.ext != 'htm':
+        if self.ext not in HTML_EXT_LIST:
             return None
         return BeautifulSoup(self.read(), 'html.parser')
 
