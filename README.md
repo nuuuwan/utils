@@ -12,7 +12,10 @@ pip install utils-nuuuwan
 
 ## Version History (1.2.x)
 
-### 1.2.5 (CURRENT RELEASE)
+### 1.2.6  (CURRENT RELEASE)
+* WWW: Updated local_path for download
+
+### 1.2.5
 * Fix windows-specific BUGS
 
 ### 1.2.4 
