@@ -6,10 +6,12 @@ from utils import WWW, CSVFile, File, JSONFile, TSVFile
 DIR_TESTS = 'tests'
 
 
-URL_BASE = os.path.join(
-    'https://raw.githubusercontent.com',
-    'nuuuwan/utils',
-    'main/tests',
+URL_BASE = '/'.join(
+    [
+        'https://raw.githubusercontent.com',
+        'nuuuwan/utils',
+        'main/tests',
+    ]
 )
 
 URL_HTML = 'https://nuuuwan.github.io/utils/index.html'
@@ -26,14 +28,14 @@ def strip_html(html):
 def get_test_url(ext: str) -> str:
     if ext == 'html':
         return URL_HTML
-    return os.path.join(URL_BASE, f'data.{ext}')
+    return f'{URL_BASE}/data.{ext}'
 
 
 def cleanup_local_files():
-    os.system('rm -rf /tmp/www*')
+    pass
 
 
-class TestCase(unittest.TestCase):
+class TestWWW(unittest.TestCase):
     def test_download_html(self):
         cleanup_local_files()
         for _ in range(2):
@@ -69,12 +71,6 @@ class TestCase(unittest.TestCase):
         self.assertGreater(len(children), 0)
         print(children[0].url)
         self.assertIn(children[0].url, '#')
-
-    def test_children_fail(self):
-        cleanup_local_files()
-        url = 'https://www.python1234.org/'
-        children = WWW(url).children
-        self.assertEqual(children, [])
 
     # ----------------------------
     # To Deprecate

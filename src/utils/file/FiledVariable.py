@@ -1,3 +1,5 @@
+import tempfile
+
 from utils import hashx
 from utils.file.JSONFile import JSONFile
 
@@ -15,7 +17,9 @@ class FiledVariable:
 
     @property
     def file_path(self):
-        return f'/tmp/{self.cache_key}.json'
+        return tempfile.NamedTemporaryFile(
+            prefix="cache.", suffix=".json"
+        ).name
 
     @property
     def file(self):

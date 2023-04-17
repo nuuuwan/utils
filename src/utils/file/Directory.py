@@ -12,15 +12,8 @@ class Directory(FileOrDirectory):
                 return True
         return False
 
-    def __init__(self, path):
-        self.path = path
-
-    @property
-    def name(self):
-        return self.path.split('/')[-1]
-
     def mkdir(self):
-        os.system(f'mkdir -p "{self.path}"')
+        os.mkdir(self.path)
 
     @property
     def children(self):

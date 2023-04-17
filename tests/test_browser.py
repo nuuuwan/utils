@@ -1,13 +1,15 @@
-import os
+import tempfile
 from unittest import TestCase
 
 from selenium.webdriver.common.by import By
 
 from utils import Browser
 
-TEST_URL = os.path.join(
-    'https://nuuuwan.github.io',
-    'utils',
+TEST_URL = '/'.join(
+    [
+        'https://nuuuwan.github.io',
+        'utils',
+    ]
 )
 
 
@@ -37,6 +39,10 @@ class TestBrowser(TestCase):
         browser.open(TEST_URL)
         browser.set_window_dim((100, 200))
         browser.scroll_to_bottom()
-        browser.downloadScreenshot('/tmp/screenshot.png')
+        browser.downloadScreenshot(
+            tempfile.NamedTemporaryFile(
+                prefix="screenshot.", suffix=".png"
+            ).name
+        )
         browser.sleep(1)
         browser.quit()

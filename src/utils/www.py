@@ -49,16 +49,14 @@ class WWW:
 
     @property
     def ext(self):
-        ext = 'htm'
-        for ext2 in CUSTOM_EXT_LIST + HTML_EXT_LIST:
-            if self.url.endswith(ext2):
-                ext = ext2
-                break
-        return ext
+        for ext in CUSTOM_EXT_LIST + HTML_EXT_LIST:
+            if self.url.endswith(ext):
+                return ext
+        return 'htm'
 
     @property
     def local_path(self):
-        return os.path.join('/tmp', f'www.{self.hash_id}.{self.ext}')
+        return f'www.{self.hash_id}.{self.ext}'
 
     def read_html(self):
         options = Options()
@@ -91,6 +89,7 @@ class WWW:
 
     def download(self):
         if os.path.exists(self.local_path):
+            log.debug(f'local path exists: {self.local_path}')
             return self.local_path
 
         if not self.exists:
@@ -117,11 +116,7 @@ class WWW:
 
     @property
     def children(self):
-        try:
-            soup = self.soup
-        except BaseException:
-            return []
-
+        soup = self.soup
         links = soup.find_all('a')
         raw_urls = [WWW(link.get('href')) for link in links]
         raw_urls = list(filter(lambda x: x.url, raw_urls))
@@ -130,7 +125,7 @@ class WWW:
     @property
     def soup(self):
         if self.ext not in HTML_EXT_LIST:
-            return None
+            log.warning(f'Cannot extract soup from non-html file: {self.url}')
         return BeautifulSoup(self.read(), 'html.parser')
 
     # -----------

@@ -1,5 +1,6 @@
 """Test."""
 import io
+import tempfile
 import unittest
 
 from utils.xmlx import _, render_link_styles, style
@@ -47,7 +48,9 @@ class TestXMLX(unittest.TestCase):
         head = _('head')
         body = TEST_BODY
         html = _('html', [head, body])
-        actual_file = '/tmp/utils.tests.test_xmlx.html'
+        actual_file = tempfile.NamedTemporaryFile(
+            prefix="utils.tests.test_xmlx.", suffix=".html"
+        ).name
         html.store(actual_file)
 
         expected_file = 'tests/test_xmlx_example1.html'

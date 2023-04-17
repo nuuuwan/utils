@@ -9,9 +9,6 @@ DELIM_LINE = '\n'
 
 
 class File(FileOrDirectory):
-    def __init__(self, path):
-        self.path = path
-
     def delete(self):
         if self.exists:
             os.remove(self.path)
@@ -33,7 +30,7 @@ class File(FileOrDirectory):
         return content
 
     def write(self, content):
-        with open(self.path, 'w') as fout:
+        with open(self.path, 'w', encoding="utf-8") as fout:
             fout.write(content)
             fout.close()
 

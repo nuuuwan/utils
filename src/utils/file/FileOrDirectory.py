@@ -2,9 +2,12 @@ import os
 
 
 class FileOrDirectory:
+    def __init__(self, path):
+        self.path = path
+
     @property
     def name(self):
-        return self.path.split('/')[-1]
+        return self.path.split(os.sep)[-1]
 
     @property
     def exists(self):
