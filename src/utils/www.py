@@ -1,6 +1,7 @@
 """Utils for reading remote files."""
 import os
 import ssl
+import tempfile
 
 import requests
 from bs4 import BeautifulSoup
@@ -56,7 +57,9 @@ class WWW:
 
     @property
     def local_path(self):
-        return f'www.{self.hash_id}.{self.ext}'
+        return os.path.join(
+            tempfile.gettempdir(), f'www.{self.hash_id}.{self.ext}'
+        )
 
     def read_html(self):
         options = Options()
