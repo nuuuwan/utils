@@ -12,10 +12,10 @@ pip install utils-nuuuwan
 
 ## Version History (1.2.x)
 
-### 1.2.5
+### 1.2.5 (CURRENT RELEASE)
 * Fix windows-specific BUGS
 
-### 1.2.4 (CURRENT RELEASE)
+### 1.2.4 
 * Removed Dependency on WGET from WWW. Updated local file logic. 
 
 ### 1.2.3 
