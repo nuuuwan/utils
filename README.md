@@ -12,7 +12,11 @@ pip install utils-nuuuwan
 
 ## Version History (1.2.x)
 
-### 1.2.6  (CURRENT RELEASE)
+
+### 1.2.7  (CURRENT RELEASE)
+* fix TSVFile encoding BUG
+
+### 1.2.6 
 * WWW: Updated local_path for download
 
 ### 1.2.5
