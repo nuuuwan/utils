@@ -6,6 +6,7 @@ DIALECT = 'excel'
 DELIMITER_CSV = ','
 DELIMITER_TSV = '\t'
 DELIM_LINE = '\n'
+ENCODING = 'utf-8'
 
 
 class File(FileOrDirectory):
@@ -18,7 +19,7 @@ class File(FileOrDirectory):
         return self.name.split('.')[-1]
 
     def read(self):
-        with open(self.path, 'r') as fin:
+        with open(self.path, 'r', encoding=ENCODING) as fin:
             content = fin.read()
             fin.close()
         return content
@@ -30,7 +31,7 @@ class File(FileOrDirectory):
         return content
 
     def write(self, content):
-        with open(self.path, 'w', encoding="utf-8") as fout:
+        with open(self.path, 'w', encoding=ENCODING) as fout:
             fout.write(content)
             fout.close()
 

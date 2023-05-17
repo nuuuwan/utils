@@ -56,7 +56,7 @@ class XSVFile(File):
         )
 
     def write(self, data_list):
-        with open(self.path, 'w') as fout:
+        with open(self.path, 'w', encoding="utf8") as fout:
             writer = csv.writer(
                 fout,
                 dialect=DIALECT,
