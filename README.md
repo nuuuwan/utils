@@ -12,6 +12,8 @@ pip install utils-nuuuwan
 
 ## Version History (1.2.x)
 
+### 1.2.8 
+* Deprecated Browser
 
 ### 1.2.7  (CURRENT RELEASE)
 * fix TSVFile encoding BUG

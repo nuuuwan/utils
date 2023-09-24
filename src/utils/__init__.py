@@ -1,4 +1,3 @@
-from utils.Browser import Browser
 from utils.Color import Color
 from utils.Dict import Dict
 from utils.file.CSVFile import CSVFile

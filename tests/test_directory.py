@@ -1,7 +1,7 @@
 import os
 from unittest import TestCase
 
-from utils import Directory, File
+from utils import Directory
 
 
 class TestDirectory(TestCase):
@@ -9,9 +9,3 @@ class TestDirectory(TestCase):
         dir_tests = Directory(os.path.join('src', 'utils'))
         self.assertEqual(dir_tests.path, os.path.join('src', 'utils'))
         self.assertEqual(dir_tests.name, 'utils')
-        self.assertEqual(
-            dir_tests.children[0],
-            File(os.path.join('src', 'utils', 'Browser.py')),
-        )
-
-        self.assertEqual(dir_tests, Directory(os.path.join('src', 'utils')))
