@@ -19,4 +19,5 @@ This library is a aggregation of the following libraries
 
 
 ## Version History
+* 2.0.1 - Fixed missing requires in setup.py
 * 2.0.0 - contains utils_base, utils_git, utils_twitter and utils_www.

@@ -3,7 +3,7 @@
 import setuptools
 
 DIST_NAME = 'utils'
-VERSION = "2.0.0"
+VERSION = "2.0.1"
 DESCRIPTION = "Utilities, complementing the Python Standard Library"
 
 setuptools.setup(
@@ -27,19 +27,10 @@ setuptools.setup(
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.10",
     install_requires=[
-        'area',
-        'bs4',
-        'googlemaps',
-        'matplotlib',
-        'pillow',
-        'psutil',
-        'py_console',
-        'requests',
-        'selenium',
-        'tweepy',
-        'PyPDF2==2.0.0',
-        'camelot-py',
-        'opencv-python',
+        'utils_base-nuuuwan',
+        'utils_twitter-nuuuwan',
+        'utils_www-nuuuwan',
+        'utils_git-nuuuwan',
     ],
     test_suite='nose.collector',
     tests_require=['nose'],
