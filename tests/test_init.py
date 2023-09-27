@@ -1,6 +1,6 @@
 import unittest
 
-from utils import WWW, Color, Git, Tweet
+from utils import WWW, Color, Git, Tweet, _log
 
 
 class TestCase(unittest.TestCase):
@@ -9,3 +9,4 @@ class TestCase(unittest.TestCase):
         self.assertIsNotNone(Git)
         self.assertIsNotNone(Tweet)
         self.assertIsNotNone(WWW)
+        self.assertIsNotNone(_log)
