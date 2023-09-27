@@ -3,14 +3,15 @@
 import setuptools
 
 DIST_NAME = 'utils'
-VERSION = "1.2.7"
+VERSION = "2.0.0"
+DESCRIPTION = "Utilities, complementing the Python Standard Library"
 
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
     version=VERSION,
     author="Nuwan I. Senaratna",
     author_email="nuuuwan@gmail.com",
-    description="Simple extensions to the core python libraries.",
+    description=DESCRIPTION,
     long_description="",
     long_description_content_type="text/markdown",
     url="https://github.com/nuuuwan/%s" % DIST_NAME,

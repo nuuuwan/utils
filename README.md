@@ -1,48 +1,22 @@
 # Utils
 
-General utilities complimenting and expanding on standard python.
+Utilities, complementing the Python Standard Library
 
-## Setup & Install
-
-https://pypi.org/project/utils-nuuuwan/#history
+## Setup & Install0
 
 ```
 pip install utils-nuuuwan
 ```
 
-## Version History (1.2.x)
+## Implementation Details
 
-### 1.2.8 
-* Deprecated Browser
+This library is a aggregation of the following libraries
 
-### 1.2.7  (CURRENT RELEASE)
-* fix TSVFile encoding BUG
+* [utils_base](https://pypi.org/project/utils_base-nuuuwan/)
+* [utils_git](https://pypi.org/project/utils_git-nuuuwan/)
+* [utils_twitter](https://pypi.org/project/utils_twitter-nuuuwan/)
+* [utils_www](https://pypi.org/project/utils_www-nuuuwan/)
 
-### 1.2.6 
-* WWW: Updated local_path for download
 
-### 1.2.5
-* Fix windows-specific BUGS
-
-### 1.2.4 
-* Removed Dependency on WGET from WWW. Updated local file logic. 
-
-### 1.2.3 
-* PDFFile
-* Added mkdir to Directory
-* lint errors
-* Make WWW more like a folder
-
-### 1.2.2 
-* Fix Multiple Twitter API Creation BUG
-* refactoring, reducing complexity, test coverage
-
-### 1.2.1 
-* Added FiledVariable  
-* Added File.delete
-
-### 1.2.0 
-* Deprecated cache, GoogleMaps #BREAKING
-* Major updates to Twitter 
-
-* Various refactoring 
+## Version History
+* 2.0.0 - contains utils_base, utils_git, utils_twitter and utils_www.
