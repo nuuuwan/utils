@@ -20,7 +20,10 @@ This library is a aggregation of the following libraries
 
 # Version History
 
-## 2.0.2 (CURRENT)
+## 2.0.3 (CURRENT)
+* Fixed missing mr, hashx, xmlx BUG
+
+## 2.0.2
 * Imported _log from utils_base
 
 ## 2.0.1 

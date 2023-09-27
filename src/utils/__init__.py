@@ -4,7 +4,7 @@ from utils_base import (DAYS_IN, SECONDS_IN, TIME_FORMAT_DATE,
                         Dict, Directory, File, FiledVariable, JSONFile, List,
                         Log, PDFFile, String, Table, TableRow, Time, TimeDelta,
                         TimeFormat, TimeUnit, TSVFile, XSVFile, Zip, _log,
-                        get_date_id, get_time_id)
+                        get_date_id, get_time_id, hashx, mr, xmlx)
 from utils_git import Git
 from utils_twitter import Tweet, Twitter
 from utils_www import WWW
