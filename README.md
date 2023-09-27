@@ -20,10 +20,10 @@ This library is a aggregation of the following libraries
 
 # Version History
 
-## 2.0.2
+## 2.0.2 (CURRENT)
 * Imported _log from utils_base
 
-## 2.0.1 (CURRENT)
+## 2.0.1 
 * Fixed missing requires in setup.py
 
 ## 2.0.0
