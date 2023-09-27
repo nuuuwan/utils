@@ -18,6 +18,13 @@ This library is a aggregation of the following libraries
 * [utils_www](https://pypi.org/project/utils_www-nuuuwan/)
 
 
-## Version History
-* 2.0.1 - Fixed missing requires in setup.py
-* 2.0.0 - contains utils_base, utils_git, utils_twitter and utils_www.
+# Version History
+
+## 2.0.2
+* Imported _log from utils_base
+
+## 2.0.1 (CURRENT)
+* Fixed missing requires in setup.py
+
+## 2.0.0
+* Base version, ontaining utils_base, utils_git, utils_twitter and utils_www.
