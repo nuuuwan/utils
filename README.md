@@ -21,6 +21,9 @@ This library is a aggregation of the following libraries
 
 ## Version History
 
+### 2.0.4
+* Fixed [#5](https://github.com/nuuuwan/utils/issues/5) 
+
 ### 2.0.3 (CURRENT)
 * Fixed missing mr, hashx, xmlx BUG
 
