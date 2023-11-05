@@ -22,5 +22,5 @@ This library is a aggregation of the following libraries
 ## Recent Version History
 
 ### 2.0.6
-* utils_base-nuuuwan==1.0.3
+* utils_base-nuuuwan==1.0.4
 

@@ -27,7 +27,7 @@ setuptools.setup(
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.10",
     install_requires=[
-        'utils_base-nuuuwan==1.0.3',
+        'utils_base-nuuuwan==1.0.4',
         'utils_twitter-nuuuwan',
         'utils_www-nuuuwan',
         'utils_git-nuuuwan',
