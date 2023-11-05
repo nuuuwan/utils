@@ -3,7 +3,7 @@
 import setuptools
 
 DIST_NAME = 'utils'
-VERSION = "2.0.5"
+VERSION = "2.0.6"
 DESCRIPTION = "Utilities, complementing the Python Standard Library"
 
 setuptools.setup(
@@ -27,7 +27,7 @@ setuptools.setup(
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.10",
     install_requires=[
-        'utils_base-nuuuwan',
+        'utils_base-nuuuwan==1.0.3',
         'utils_twitter-nuuuwan',
         'utils_www-nuuuwan',
         'utils_git-nuuuwan',
