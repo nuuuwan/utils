@@ -21,6 +21,9 @@ This library is a aggregation of the following libraries
 
 ## Version History
 
+### 2.0.5 
+* Add utils_git.KeyValueStore
+
 ### 2.0.4 (CURRENT)
 * Fixed [#5](https://github.com/nuuuwan/utils/issues/5) - 
 

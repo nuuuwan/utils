@@ -3,7 +3,7 @@
 import setuptools
 
 DIST_NAME = 'utils'
-VERSION = "2.0.4"
+VERSION = "2.0.5"
 DESCRIPTION = "Utilities, complementing the Python Standard Library"
 
 setuptools.setup(
