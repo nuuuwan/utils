@@ -3,9 +3,15 @@
 import setuptools
 
 DIST_NAME = 'utils'
-VERSION = "2.0.6"
+VERSION = "2.0.7"
 DESCRIPTION = "Utilities, complementing the Python Standard Library"
-
+INSTALL_REQUIRES = [
+    'utils_base-nuuuwan',
+    'utils_git-nuuuwan',
+    'utils_lang-nuuuwan',
+    'utils_twitter-nuuuwan',
+    'utils_www-nuuuwan',
+]
 setuptools.setup(
     name="%s-nuuuwan" % DIST_NAME,
     version=VERSION,
@@ -26,12 +32,7 @@ setuptools.setup(
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.10",
-    install_requires=[
-        'utils_base-nuuuwan==1.0.4',
-        'utils_twitter-nuuuwan',
-        'utils_www-nuuuwan',
-        'utils_git-nuuuwan',
-    ],
+    install_requires=INSTALL_REQUIRES,
     test_suite='nose.collector',
     tests_require=['nose'],
 )

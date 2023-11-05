@@ -1,4 +1,5 @@
-utils_base-nuuuwan==1.0.4
+utils_base-nuuuwan
+utils_git-nuuuwan
+utils_lang-nuuuwan
 utils_twitter-nuuuwan
 utils_www-nuuuwan
-utils_git-nuuuwan
