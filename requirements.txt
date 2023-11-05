@@ -1,3 +1,5 @@
+# Autogenerate by build_requirements
+utils_ai-nuuuwan
 utils_base-nuuuwan
 utils_git-nuuuwan
 utils_lang-nuuuwan

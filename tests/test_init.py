@@ -1,21 +1,7 @@
 import unittest
 
-from utils import (
-    AI,
-    TTS,
-    WWW,
-    Console,
-    Git,
-    Image,
-    LatLng,
-    Translator,
-    Tweet,
-    _,
-    _log,
-    hashx,
-    mr,
-    xmlx,
-)
+from utils import (AI, TTS, WWW, Console, Git, Image, LatLng, Translator,
+                   Tweet, _, _log, hashx, mr, xmlx)
 
 
 class TestCase(unittest.TestCase):
