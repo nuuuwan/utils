@@ -1,8 +1,10 @@
 import unittest
 
 from utils import (
+    AI,
     TTS,
     WWW,
+    Console,
     Git,
     Image,
     LatLng,
@@ -31,5 +33,7 @@ class TestCase(unittest.TestCase):
             LatLng,
             Translator,
             TTS,
+            Console,
+            AI,
         ]:
             self.assertIsNotNone(x)
