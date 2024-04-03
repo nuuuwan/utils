@@ -1,25 +1,13 @@
 import unittest
 
 from utils import (AI, TTS, WWW, Console, Git, Image, LatLng, Translator,
-                   Tweet, _, _log, hashx, mr, xmlx)
+                   Tweet, _, Log, Hash, Parallel, XMLElement)
 
 
 class TestCase(unittest.TestCase):
     def test_init(self):
         for x in [
-            WWW,
-            Git,
-            Tweet,
-            _,
-            _log,
-            hashx,
-            mr,
-            xmlx,
-            Image,
-            LatLng,
-            Translator,
-            TTS,
-            Console,
-            AI,
+            AI, TTS, WWW, Console, Git, Image, LatLng, Translator,
+                   Tweet, _, Log, Hash, Parallel, XMLElement
         ]:
             self.assertIsNotNone(x)

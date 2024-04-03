@@ -3,7 +3,7 @@
 import setuptools
 
 DIST_NAME = 'utils'
-VERSION = "2.0.8"
+VERSION = "2.0.9"
 DESCRIPTION = "Utilities, complementing the Python Standard Library"
 INSTALL_REQUIRES = [
     'utils_ai-nuuuwan',

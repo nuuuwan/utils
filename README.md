@@ -24,12 +24,21 @@ This library is a aggregation of the following libraries
 
 ## Recent Version History
 
+### 2.0.10 (NEXT VERSION)
+
+### 2.0.9 (CURRENT VERSION)
+
+* Make compatible with utils_base-nuuuwan==1.0.8
+
 ### 2.0.8
+
 * utils_ai-nuuuwan==1.0.0
 
 ### 2.0.7
+
 * utils_lang-nuuuwan==1.0.1
 
 ### 2.0.6
+
 * utils_base-nuuuwan==1.0.4
 
