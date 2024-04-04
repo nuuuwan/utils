@@ -6,7 +6,7 @@ Utilities, complementing the Python Standard Library
 
 ## Setup & Install
 
-```
+```[bash]
 pip install utils-nuuuwan
 ```
 
@@ -21,12 +21,15 @@ This library is a aggregation of the following libraries
 * [utils_www](https://pypi.org/project/utils_www-nuuuwan/)
 * [utils_ai](https://pypi.org/project/utils_ai-nuuuwan/)
 
-
 ## Recent Version History
 
-### 2.0.10 (NEXT VERSION)
+### 2.0.11 (NEXT)
 
-### 2.0.9 (CURRENT VERSION)
+### 2.0.10 (CURRENT)
+
+* Replaced modules with wildcards
+
+### 2.0.9
 
 * Make compatible with utils_base-nuuuwan==1.0.8
 
@@ -41,4 +44,3 @@ This library is a aggregation of the following libraries
 ### 2.0.6
 
 * utils_base-nuuuwan==1.0.4
-
