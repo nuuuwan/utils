@@ -23,9 +23,11 @@ This library is a aggregation of the following libraries
 
 ## Recent Version History
 
-### 2.0.11 (NEXT)
+### 2.0.11 (CURRENT)
 
-### 2.0.10 (CURRENT)
+* Removed tests
+
+### 2.0.10
 
 * Replaced modules with wildcards
 
